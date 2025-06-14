@@ -51,9 +51,9 @@ const Home = () => {
             className="mb-8"
           >
             <img
-              src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
-              alt="John Doe"
-              className="w-40 h-40 rounded-full mx-auto border-4 border-white shadow-xl object-cover"
+              src="https://i.postimg.cc/g2MvX02F/profile-img.jpg"
+              alt="Dumindu Dulanjaya"
+              className="w-56 h-56 rounded-full mx-auto border-5 border-white shadow-xl object-cover"
             />
           </motion.div>
 
@@ -65,7 +65,7 @@ const Home = () => {
           >
             Hi, I'm{' '}
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              John Doe
+              Dumindu Dulanjaya
             </span>
           </motion.h1>
 
@@ -103,8 +103,8 @@ const Home = () => {
               onClick={() => {
                 // In a real app, this would download the actual CV
                 const link = document.createElement('a');
-                link.href = '/path-to-your-cv.pdf';
-                link.download = 'John_Doe_CV.pdf';
+                link.href = '/dumindu_dulanjaya_cv.pdf';
+                link.download = 'dumindu_dulanjaya_cv.pdf';
                 link.click();
               }}
             >

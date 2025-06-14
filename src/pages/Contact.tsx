@@ -44,7 +44,7 @@ const Contact = () => {
     {
       icon: <Linkedin className="w-6 h-6" />,
       label: 'LinkedIn',
-      href: 'https://linkedin.com/in/johndoe',
+      href: 'https://www.linkedin.com/in/dumindu-dulanjaya-486745305/',
       color: 'hover:text-blue-600'
     },
     {
@@ -56,13 +56,13 @@ const Contact = () => {
     {
       icon: <Instagram className="w-6 h-6" />,
       label: 'Instagram',
-      href: 'https://instagram.com/johndoe',
+      href: 'https://www.instagram.com/dumindu_dulanjaya?igsh=bDFtdWI1cG11azMz&utm_source=qr',
       color: 'hover:text-pink-600'
     },
     {
       icon: <MessageSquare className="w-6 h-6" />,
       label: 'WhatsApp',
-      href: 'https://wa.me/15551234567',
+      href: '',
       color: 'hover:text-green-600'
     }
   ];

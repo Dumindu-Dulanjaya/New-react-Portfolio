@@ -19,7 +19,7 @@ const About = () => {
     { name: 'Python', icon: <Zap className="w-8 h-8" />, level: 85 },
     { name: 'MongoDB', icon: <Database className="w-8 h-8" />, level: 82 },
     { name: 'UI/UX Design', icon: <Palette className="w-8 h-8" />, level: 88 },
-    { name: 'Mobile Dev', icon: <Smartphone className="w-8 h-8" />, level: 80 },
+    { name: 'Mobile Dev', icon: <Smartphone className="w-8 h-8" />, level: 30 },
     { name: 'Git', icon: <GitBranch className="w-8 h-8" />, level: 92 }
   ];
 
@@ -56,8 +56,7 @@ const About = () => {
             About <span className="text-blue-600">Me</span>
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Passionate developer with 5+ years of experience creating digital solutions 
-            that combine beautiful design with powerful functionality.
+            I'm a passionate Full Stack Developer with a Love for creating dynamic, user-friendly web applications. With expertise in both frontend and backend technologies, I strive to build seamless digital experiences that solve real-world problems.
           </p>
         </motion.div>
 
@@ -71,22 +70,14 @@ const About = () => {
             <h2 className="text-3xl font-bold text-gray-900 mb-6">My Journey</h2>
             <div className="space-y-4 text-gray-600 text-lg leading-relaxed">
               <p>
-                I started my journey in web development 5 years ago with a curiosity about 
-                how websites work. What began as a hobby quickly became a passion as I 
-                discovered the perfect blend of creativity and logical problem-solving 
-                that programming offers.
+                My journey in tech started with a fascination for how things work behind the scenes, and it has evolved into a passion for creat
+
               </p>
               <p>
-                I hold a Bachelor's degree in Computer Science from Tech University, 
-                where I built a strong foundation in software engineering principles. 
-                Since then, I've worked with startups and established companies, 
-                helping them bring their digital visions to life.
+                I’m a passionate and dedicated undergraduate student currently pursuing my studies at the Institute of Technology, University of Moratuwa (ITUM).I have a growing interest in areas such as web development, software engineering, and emerging technologies.
               </p>
               <p>
-                When I'm not coding, you can find me exploring new technologies, 
-                contributing to open-source projects, or sharing knowledge through 
-                tech blogs and community meetups. I believe in continuous learning 
-                and staying updated with the ever-evolving tech landscape.
+                As I continue my academic journey, I actively seek opportunities to expand my skills through hands-on projects, collaborations, and continuous learning. I enjoy contributing to open-source projects, learning from tech communities, and staying updated with the latest advancements in the tech world.
               </p>
             </div>
           </motion.div>
@@ -167,10 +158,10 @@ const About = () => {
                 <h4 className="text-lg font-semibold text-gray-900">
                   Bachelor of Computer Science
                 </h4>
-                <p className="text-blue-600 font-medium">Tech University</p>
-                <p className="text-gray-600">2016 - 2020</p>
+                <p className="text-blue-600 font-medium">Institute Of Technology University Of Moratuwa</p>
+                <p className="text-gray-600">2023 - Present</p>
                 <p className="text-gray-600 mt-2">
-                  Graduated with honors, focusing on software engineering and web technologies.
+                Undergraduated , focusing on software engineering and web technologies.
                 </p>
               </div>
             </div>
@@ -181,20 +172,20 @@ const About = () => {
             <div className="space-y-4">
               <div className="border-l-4 border-blue-600 pl-4">
                 <h4 className="text-lg font-semibold text-gray-900">
-                  Senior Full Stack Developer
+                  Learning Full Stack Developing
                 </h4>
-                <p className="text-blue-600 font-medium">Tech Innovations Inc.</p>
-                <p className="text-gray-600">2022 - Present</p>
+                <p className="text-blue-600 font-medium"></p>
+                <p className="text-gray-600">2023 - Present</p>
                 <p className="text-gray-600 mt-2">
-                  Leading development of scalable web applications and mentoring junior developers.
+                
                 </p>
               </div>
               <div className="border-l-4 border-gray-300 pl-4">
                 <h4 className="text-lg font-semibold text-gray-900">
                   Frontend Developer
                 </h4>
-                <p className="text-gray-600 font-medium">Digital Solutions Ltd.</p>
-                <p className="text-gray-600">2020 - 2022</p>
+                <p className="text-gray-600 font-medium"></p>
+                <p className="text-gray-600">2023 - Present</p>
                 <p className="text-gray-600 mt-2">
                   Developed responsive web applications using React and modern JavaScript.
                 </p>
