@@ -1,10 +1,3 @@
-Absolutely! Here's a **complete and professional `README.md`** file you can use for your React portfolio repository:
-
----
-
-### ✅ `README.md` — Full Code
-
-```markdown
 # 💼 Dumindu Dulanjaya - React Portfolio
 
 Welcome to my personal portfolio website, built using **React.js**. This site showcases my background, skills, projects, and contact information in a clean, modern, and responsive layout.
@@ -36,7 +29,6 @@ Welcome to my personal portfolio website, built using **React.js**. This site sh
 
 ## 📂 Project Structure
 
-```
 
 react-portfolio/
 ├── public/
@@ -54,7 +46,6 @@ react-portfolio/
 ├── README.md
 ├── package.json
 
-````
 
 ---
 
@@ -62,7 +53,6 @@ react-portfolio/
 
 Clone the repository and install dependencies:
 
-```bash
 # Clone this repository
 git clone https://github.com/Dumindu-Dulanjaya/New-react-Portfolio.git
 
@@ -74,7 +64,6 @@ npm install
 
 # Start the development server
 npm run dev
-````
 
 Then open [http://localhost:5173](http://localhost:5173) in your browser.
 
