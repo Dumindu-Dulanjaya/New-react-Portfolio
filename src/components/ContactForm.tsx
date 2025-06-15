@@ -7,6 +7,7 @@ const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    subject: '',
     message: ''
   });
   const [isLoading, setIsLoading] = useState(false);
@@ -26,21 +27,21 @@ const ContactForm = () => {
 
     try {
       // Initialize EmailJS with your public key
-      emailjs.init("your_public_key_here");
+      emailjs.init("Aw6O7bJspa9MAGC5T");
       
       await emailjs.send(
-        "your_service_id",
-        "your_template_id",
+        "service_bnyctlp",
+        "template_5bpyejn",
         {
           from_name: formData.name,
           from_email: formData.email,
+          subject: formData.subject,
           message: formData.message,
-          to_email: "your_email@example.com"
         }
       );
 
       setStatus('success');
-      setFormData({ name: '', email: '', message: '' });
+      setFormData({ name: '', email: '', subject: '', message: '' });
     } catch (error) {
       console.error('EmailJS error:', error);
       setStatus('error');
@@ -87,6 +88,22 @@ const ContactForm = () => {
           required
           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
           placeholder="your.email@example.com"
+        />
+      </div>
+
+      <div>
+        <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
+          Subject
+        </label>
+        <input
+          type="text"
+          name="subject"
+          id="subject"
+          value={formData.subject}
+          onChange={handleChange}
+          required
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+          placeholder="What's this about?"
         />
       </div>
 

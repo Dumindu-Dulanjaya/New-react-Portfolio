@@ -91,7 +91,7 @@ const About = () => {
           >
             <div className="relative z-10">
               <img
-                src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=600"
+                src="https://i.postimg.cc/253rrC6S/charlesdeluvio-Lks7vei-e-Ag-unsplash.jpg"
                 alt="Working at desk"
                 className="rounded-xl shadow-lg w-full h-96 object-cover"
               />

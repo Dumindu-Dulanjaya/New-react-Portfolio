@@ -6,44 +6,43 @@ import ProjectCard from '../components/ProjectCard';
 const Projects = () => {
   const projects = [
     {
-      title: 'E-Commerce Platform',
-      description: 'A full-stack e-commerce solution with React, Node.js, and MongoDB. Features include user authentication, payment integration, inventory management, and admin dashboard.',
-      image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=600',
-      liveLink: 'https://example-ecommerce.com',
-      githubLink: 'https://github.com/johndoe/ecommerce-platform',
-      techStack: ['React', 'Node.js', 'MongoDB', 'Express', 'Stripe', 'Tailwind CSS']
+      title: ' Just launched my Movie Search & Trailer Finder App with React!',
+      description: 'A React-based movie search application that allows users to search for movies by title, view posters, and get release years using the OMDb API.',
+      image: 'https://i.postimg.cc/V6SPt4Q9/jakub-zerdzicki-Rn-H1m7-DPt-AU-unsplash.jpg',
+      liveLink: 'https://lnkd.in/eaNhB7-4',
+      githubLink: 'https://github.com/Dumindu-Dulanjaya/movie-search-app.git',
+      techStack:  ['React', 'JavaScript', 'CSS','Tailwind CSS']
     },
     {
-      title: 'Task Management App',
-      description: 'A collaborative task management application with real-time updates, drag-and-drop functionality, team collaboration features, and detailed analytics.',
-      image: 'https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg?auto=compress&cs=tinysrgb&w=600',
-      liveLink: 'https://example-taskapp.com',
-      githubLink: 'https://github.com/johndoe/task-manager',
-      techStack: ['React', 'TypeScript', 'Firebase', 'Material-UI', 'Chart.js']
+      title: 'Library Management System',
+      description: 'Developed a full-stack Library Management System to automate book tracking, member management, and borrowing processes. The system provides librarians with an intuitive interface to manage inventory while giving users a seamless experience to explore available books.',
+      image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=600',
+      githubLink: 'https://github.com/Dumindu-Dulanjaya/Library-Management-System.git',
+      techStack: ['python' ]
     },
     {
       title: 'Weather Forecast App',
       description: 'A responsive weather application with location-based forecasts, interactive maps, weather alerts, and beautiful animated weather icons.',
       image: 'https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=600',
-      liveLink: 'https://example-weather.com',
-      githubLink: 'https://github.com/johndoe/weather-app',
+      liveLink: 'https://lnkd.in/e6JV3QjD',
+      githubLink: 'https://github.com/Dumindu-Dulanjaya/Weather-App.git',
       techStack: ['React', 'OpenWeather API', 'Mapbox', 'CSS3', 'PWA']
     },
     {
-      title: 'Social Media Dashboard',
-      description: 'A comprehensive social media analytics dashboard with data visualization, scheduled posting, engagement tracking, and multi-platform integration.',
-      image: 'https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?auto=compress&cs=tinysrgb&w=600',
-      liveLink: 'https://example-dashboard.com',
-      githubLink: 'https://github.com/johndoe/social-dashboard',
-      techStack: ['Vue.js', 'D3.js', 'Python', 'FastAPI', 'PostgreSQL']
+      title: 'Java Calculator App ',
+      description: 'Built a Java Swing calculator using MVC architecture for clean, scalable code!',
+      image: 'https://i.postimg.cc/52QWRnkX/404-Hlbfm6-J7-VR8-unsplash.jpg',
+      linkedLink: 'https://www.linkedin.com/posts/dumindu-dulanjaya-486745305_java-mvc-oop-activity-7321850110861066240-kdUR?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE3izGYBdTx9JhO1f0jqfjHkw5TyeeTuPYk',
+      githubLink: 'https://github.com/Dumindu-Dulanjaya/Calculator.git',
+      techStack: ['Java','Swing','MVC','OOP']
     },
     {
-      title: 'Online Learning Platform',
-      description: 'A modern e-learning platform with video streaming, progress tracking, interactive quizzes, certificate generation, and instructor tools.',
-      image: 'https://images.pexels.com/photos/4144923/pexels-photo-4144923.jpeg?auto=compress&cs=tinysrgb&w=600',
-      liveLink: 'https://example-learning.com',
-      githubLink: 'https://github.com/johndoe/learning-platform',
-      techStack: ['React', 'Next.js', 'Prisma', 'AWS S3', 'Stripe', 'Socket.io']
+      title: 'Web Confrence Management System',
+      description: 'A Web Conference Management System is an online platform designed to manage and streamline the planning, organization, and execution of virtual or in-person conferences.',
+      image: 'https://i.postimg.cc/253rrC6S/charlesdeluvio-Lks7vei-e-Ag-unsplash.jpg',
+      liveLink: 'https://web-conference-management-system-gray.vercel.app/',
+      githubLink: 'https://github.com/Dumindu-Dulanjaya/Web-Conference-Management-System.git',
+      techStack: ['Html', 'Css', 'Java Script', 'My sql']
     },
     {
       title: 'Portfolio Website',

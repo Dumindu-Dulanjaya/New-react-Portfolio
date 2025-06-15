@@ -53,7 +53,7 @@ const Home = () => {
             <img
               src="https://i.postimg.cc/g2MvX02F/profile-img.jpg"
               alt="Dumindu Dulanjaya"
-              className="w-56 h-56 rounded-full mx-auto border-5 border-white shadow-xl object-cover"
+              className="w-60 h-60 rounded-full mx-auto border-5 border-white shadow-xl object-cover"
             />
           </motion.div>
 
@@ -102,10 +102,13 @@ const Home = () => {
               whileTap={{ scale: 0.95 }}
               onClick={() => {
                 // In a real app, this would download the actual CV
+                const cvUrl = "https://github.com/Dumindu-Dulanjaya/test/blob/main/cv-2.pdf?raw=true";
                 const link = document.createElement('a');
-                link.href = '/dumindu_dulanjaya_cv.pdf';
-                link.download = 'dumindu_dulanjaya_cv.pdf';
+                link.href = cvUrl;
+                link.download = 'Dumindu_Dulanjaya_CV.pdf';
                 link.click();
+                document.body.appendChild(link);
+                document.body.removeChild(link);
               }}
             >
               <Download size={20} />

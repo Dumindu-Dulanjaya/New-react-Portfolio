@@ -10,13 +10,13 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="flex items-center space-x-2 mb-4 md:mb-0">
             <Code2 className="h-6 w-6 text-blue-400" />
-            <span className="font-bold text-lg">John Doe</span>
+            <span className="font-bold text-lg">Dumindu Dulanjaya</span>
           </div>
           
           <div className="flex items-center space-x-2 text-gray-400">
             <span>© {currentYear} Made with</span>
             <Heart className="h-4 w-4 text-red-500 fill-current" />
-            <span>by John Doe</span>
+            <span>by Dumindu dulanjaya</span>
           </div>
         </div>
       </div>
