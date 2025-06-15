@@ -48,8 +48,8 @@ const Projects = () => {
       title: 'Portfolio Website',
       description: 'A modern, responsive portfolio website with smooth animations, dark mode toggle, blog integration, and optimized performance.',
       image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=600',
-      liveLink: 'https://johndoeportfolio.com',
-      githubLink: 'https://github.com/johndoe/portfolio',
+      liveLink: 'https://new-react-portfolio-rho.vercel.app/',
+      githubLink: 'https://github.com/Dumindu-Dulanjaya/New-react-Portfolio',
       techStack: ['React', 'Framer Motion', 'Tailwind CSS', 'Vite', 'Netlify']
     }
   ];
@@ -87,12 +87,15 @@ const Projects = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => {
-              // In a real app, this would download the actual CV
-              const link = document.createElement('a');
-              link.href = '/path-to-your-cv.pdf';
-              link.download = 'John_Doe_CV.pdf';
-              link.click();
-            }}
+                // In a real app, this would download the actual CV
+                const cvUrl = "https://github.com/Dumindu-Dulanjaya/test/blob/main/cv-2.pdf?raw=true";
+                const link = document.createElement('a');
+                link.href = cvUrl;
+                link.download = 'Dumindu_Dulanjaya_CV.pdf';
+                link.click();
+                document.body.appendChild(link);
+                document.body.removeChild(link);
+              }}
           >
             <Download size={20} />
             <span>Download CV</span>

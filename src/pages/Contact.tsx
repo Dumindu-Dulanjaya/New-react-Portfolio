@@ -8,7 +8,8 @@ import {
   Linkedin, 
   Twitter, 
   Instagram,
-  MessageSquare
+  MessageSquare,
+  Facebook
 } from 'lucide-react';
 import ContactForm from '../components/ContactForm';
 
@@ -48,9 +49,9 @@ const Contact = () => {
       color: 'hover:text-blue-600'
     },
     {
-      icon: <Twitter className="w-6 h-6" />,
-      label: 'Twitter',
-      href: 'https://twitter.com/johndoe',
+      icon: <Facebook className="w-6 h-6" />,
+      label: 'Facebook',
+      href: '',
       color: 'hover:text-blue-400'
     },
     {
