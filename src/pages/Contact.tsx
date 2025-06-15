@@ -51,7 +51,7 @@ const Contact = () => {
     {
       icon: <Facebook className="w-6 h-6" />,
       label: 'Facebook',
-      href: '',
+      href: 'https://www.facebook.com/share/1GXmqjRvdi/?mibextid=wwXIfr',
       color: 'hover:text-blue-400'
     },
     {
