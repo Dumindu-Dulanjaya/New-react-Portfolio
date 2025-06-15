@@ -156,7 +156,7 @@ const About = () => {
             <div className="space-y-4">
               <div className="border-l-4 border-blue-600 pl-4">
                 <h4 className="text-lg font-semibold text-gray-900">
-                  Bachelor of Computer Science
+                  Diploma in Information Technology
                 </h4>
                 <p className="text-blue-600 font-medium">Institute Of Technology University Of Moratuwa</p>
                 <p className="text-gray-600">2023 - Present</p>

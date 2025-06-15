@@ -79,7 +79,7 @@ const Contact = () => {
           transition={{ duration: 0.7 }}
         >
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Get In <span className="text-blue-600">Touch</span>
+            Contact <span className="text-blue-600">Me</span>
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             I'm always interested in hearing about new opportunities and interesting projects. 

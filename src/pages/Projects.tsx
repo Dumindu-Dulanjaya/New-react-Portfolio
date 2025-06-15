@@ -16,7 +16,7 @@ const Projects = () => {
     {
       title: 'Library Management System',
       description: 'Developed a full-stack Library Management System to automate book tracking, member management, and borrowing processes. The system provides librarians with an intuitive interface to manage inventory while giving users a seamless experience to explore available books.',
-      image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=600',
+      image: 'https://i.postimg.cc/dVFh6fNZ/henrique-ferreira-AP5-7-Zqtf6-Y-unsplash-1.jpg',
       githubLink: 'https://github.com/Dumindu-Dulanjaya/Library-Management-System.git',
       techStack: ['python' ]
     },
@@ -143,7 +143,7 @@ const Projects = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Get In Touch
+            Contact Me
           </motion.a>
         </motion.div>
       </div>
