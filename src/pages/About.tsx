@@ -1,11 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Code, 
-  Database, 
-  Globe, 
-  Smartphone, 
-  Palette, 
+import {
+  Code,
+  Database,
+  Globe,
+  Smartphone,
+  Palette,
   GitBranch,
   Server,
   Zap
@@ -43,7 +43,7 @@ const About = () => {
   };
 
   return (
-    <div className="pt-16 min-h-screen bg-gray-50">
+    <div className="pt-16 min-h-screen bg-gray-50 dark:bg-slate-950 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         {/* Header */}
         <motion.div
@@ -52,10 +52,10 @@ const About = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
             About <span className="text-blue-600">Me</span>
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             I'm a passionate Full Stack Developer with a Love for creating dynamic, user-friendly web applications. With expertise in both frontend and backend technologies, I strive to build seamless digital experiences that solve real-world problems.
           </p>
         </motion.div>
@@ -67,8 +67,8 @@ const About = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">My Journey</h2>
-            <div className="space-y-4 text-gray-600 text-lg leading-relaxed">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">My Journey</h2>
+            <div className="space-y-4 text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
               <p>
                 My journey in tech started with a fascination for how things work behind the scenes, and it has evolved into a passion for creat
 
@@ -108,7 +108,7 @@ const About = () => {
           viewport={{ once: true, margin: "-100px" }}
         >
           <motion.h2
-            className="text-3xl font-bold text-gray-900 text-center mb-12"
+            className="text-3xl font-bold text-gray-900 dark:text-white text-center mb-12"
             variants={itemVariants}
           >
             Skills & Technologies
@@ -118,26 +118,26 @@ const About = () => {
             {skills.map((skill, index) => (
               <motion.div
                 key={skill.name}
-                className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300"
+                className="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow transition-colors duration-300"
                 variants={itemVariants}
                 whileHover={{ y: -5 }}
               >
-                <div className="flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mx-auto mb-4 text-blue-600">
+                <div className="flex items-center justify-center w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full mx-auto mb-4 text-blue-600 dark:text-blue-400">
                   {skill.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 text-center mb-4">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white text-center mb-4">
                   {skill.name}
                 </h3>
-                <div className="w-full bg-gray-200 rounded-full h-2 mb-2">
+                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mb-2">
                   <motion.div
-                    className="bg-blue-600 h-2 rounded-full"
+                    className="bg-blue-600 dark:bg-blue-500 h-2 rounded-full"
                     initial={{ width: 0 }}
                     whileInView={{ width: `${skill.level}%` }}
                     transition={{ duration: 1, delay: index * 0.1 }}
                     viewport={{ once: true }}
                   />
                 </div>
-                <p className="text-center text-gray-600 text-sm">{skill.level}%</p>
+                <p className="text-center text-gray-600 dark:text-gray-400 text-sm">{skill.level}%</p>
               </motion.div>
             ))}
           </div>
@@ -152,41 +152,39 @@ const About = () => {
           viewport={{ once: true }}
         >
           <div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">Education</h3>
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Education</h3>
             <div className="space-y-4">
               <div className="border-l-4 border-blue-600 pl-4">
-                <h4 className="text-lg font-semibold text-gray-900">
+                <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
                   Diploma in Information Technology
                 </h4>
-                <p className="text-blue-600 font-medium">Institute Of Technology University Of Moratuwa</p>
-                <p className="text-gray-600">2023 - Present</p>
-                <p className="text-gray-600 mt-2">
-                Undergraduated , focusing on software engineering and web technologies.
+                <p className="text-blue-600 dark:text-blue-400 font-medium">Institute Of Technology University Of Moratuwa</p>
+                <p className="text-gray-600 dark:text-gray-400">2023 - Present</p>
+                <p className="text-gray-600 dark:text-gray-300 mt-2">
+                  Undergraduated , focusing on software engineering and web technologies.
                 </p>
               </div>
             </div>
           </div>
 
           <div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">Experience</h3>
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Experience</h3>
             <div className="space-y-4">
               <div className="border-l-4 border-blue-600 pl-4">
-                <h4 className="text-lg font-semibold text-gray-900">
+                <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
                   Learning Full Stack Developing
                 </h4>
-                <p className="text-blue-600 font-medium"></p>
-                <p className="text-gray-600">2023 - Present</p>
-                <p className="text-gray-600 mt-2">
-                
-                </p>
+                <p className="text-blue-600 dark:text-blue-400 font-medium"></p>
+                <p className="text-gray-600 dark:text-gray-400">2023 - Present</p>
+                <p className="text-gray-600 dark:text-gray-300 mt-2"></p>
               </div>
-              <div className="border-l-4 border-gray-300 pl-4">
-                <h4 className="text-lg font-semibold text-gray-900">
+              <div className="border-l-4 border-gray-300 dark:border-gray-700 pl-4">
+                <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
                   Frontend Developer
                 </h4>
-                <p className="text-gray-600 font-medium"></p>
-                <p className="text-gray-600">2023 - Present</p>
-                <p className="text-gray-600 mt-2">
+                <p className="text-gray-600 dark:text-gray-400 font-medium"></p>
+                <p className="text-gray-600 dark:text-gray-400">2023 - Present</p>
+                <p className="text-gray-600 dark:text-gray-300 mt-2">
                   Developed responsive web applications using React and modern JavaScript.
                 </p>
               </div>

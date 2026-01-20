@@ -28,7 +28,7 @@ const ContactForm = () => {
     try {
       // Initialize EmailJS with your public key
       emailjs.init("Aw6O7bJspa9MAGC5T");
-      
+
       await emailjs.send(
         "service_bnyctlp",
         "template_5bpyejn",
@@ -60,7 +60,7 @@ const ContactForm = () => {
       viewport={{ once: true }}
     >
       <div>
-        <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+        <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
           Name
         </label>
         <input
@@ -70,13 +70,13 @@ const ContactForm = () => {
           value={formData.name}
           onChange={handleChange}
           required
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white dark:bg-slate-800 text-gray-900 dark:text-white"
           placeholder="Your full name"
         />
       </div>
 
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+        <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
           Email
         </label>
         <input
@@ -86,13 +86,13 @@ const ContactForm = () => {
           value={formData.email}
           onChange={handleChange}
           required
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white dark:bg-slate-800 text-gray-900 dark:text-white"
           placeholder="your.email@example.com"
         />
       </div>
 
       <div>
-        <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
+        <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
           Subject
         </label>
         <input
@@ -102,13 +102,13 @@ const ContactForm = () => {
           value={formData.subject}
           onChange={handleChange}
           required
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white dark:bg-slate-800 text-gray-900 dark:text-white"
           placeholder="What's this about?"
         />
       </div>
 
       <div>
-        <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+        <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
           Message
         </label>
         <textarea
@@ -118,7 +118,7 @@ const ContactForm = () => {
           value={formData.message}
           onChange={handleChange}
           required
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none"
+          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none bg-white dark:bg-slate-800 text-gray-900 dark:text-white"
           placeholder="Tell me about your project or just say hello..."
         />
       </div>
@@ -126,7 +126,7 @@ const ContactForm = () => {
       <motion.button
         type="submit"
         disabled={isLoading}
-        className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
+        className="w-full bg-blue-600 dark:bg-gradient-to-r dark:from-purple-600 dark:to-orange-500 text-white py-3 px-6 rounded-lg font-medium hover:bg-blue-700 dark:hover:opacity-90 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
       >

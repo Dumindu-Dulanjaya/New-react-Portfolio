@@ -65,7 +65,7 @@ const Projects = () => {
   };
 
   return (
-    <div className="pt-16 min-h-screen bg-gray-50">
+    <div className="pt-16 min-h-screen bg-gray-50 dark:bg-slate-950 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         {/* Header */}
         <motion.div
@@ -74,10 +74,10 @@ const Projects = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
             My <span className="text-blue-600">Projects</span>
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
             Here are some of the projects I've worked on. Each one represents a unique
             challenge and learning experience that has contributed to my growth as a developer.
           </p>
@@ -120,16 +120,16 @@ const Projects = () => {
 
         {/* Call to Action */}
         <motion.div
-          className="text-center mt-20 p-8 bg-white rounded-xl shadow-lg"
+          className="text-center mt-20 p-8 bg-white dark:bg-slate-900 rounded-xl shadow-lg transition-colors duration-300"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
             Interested in working together?
           </h2>
-          <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+          <p className="text-gray-600 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
             I'm always open to discussing new opportunities and interesting projects.
             Let's create something amazing together!
           </p>

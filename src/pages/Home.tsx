@@ -14,7 +14,7 @@ const Home = () => {
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Animated Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-100 to-purple-50">
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-100 to-purple-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 transition-colors duration-300">
         <div className="absolute inset-0">
           {[...Array(20)].map((_, i) => (
             <motion.div
@@ -55,7 +55,7 @@ const Home = () => {
             <div className="relative">
               <div className="absolute inset-0 bg-blue-600 rounded-full blur-2xl opacity-20 animate-pulse"></div>
               <img
-                src="https://i.postimg.cc/g2MvX02F/profile-img.jpg"
+                src="https://i.postimg.cc/g2MvX02F/profile1.jpeg"
                 alt="Dumindu Dulanjaya"
                 className="relative w-72 h-72 md:w-96 md:h-96 rounded-full border-4 border-white shadow-2xl object-cover z-10"
               />
@@ -65,7 +65,7 @@ const Home = () => {
           {/* Text Section - Right on desktop */}
           <div className="order-2 md:order-2 text-center md:text-left">
             <motion.h1
-              className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight"
+              className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight"
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
@@ -77,7 +77,7 @@ const Home = () => {
             </motion.h1>
 
             <motion.p
-              className="text-lg md:text-xl text-gray-600 mb-8 max-w-lg mx-auto md:mx-0"
+              className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-lg mx-auto md:mx-0"
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7, delay: 0.4 }}
@@ -94,7 +94,7 @@ const Home = () => {
             >
               <Link to="/projects">
                 <motion.button
-                  className="bg-blue-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-blue-700 transition-colors duration-200 flex items-center space-x-2 shadow-lg"
+                  className="bg-blue-600 dark:bg-gradient-to-r dark:from-purple-600 dark:to-orange-500 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-blue-700 dark:hover:opacity-90 transition-all duration-200 flex items-center space-x-2 shadow-lg"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -104,7 +104,7 @@ const Home = () => {
               </Link>
 
               <motion.button
-                className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-blue-600 hover:text-white transition-colors duration-200 flex items-center space-x-2"
+                className="border-2 border-blue-600 dark:border-white text-blue-600 dark:text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-blue-600 hover:text-white dark:hover:bg-white dark:hover:text-slate-900 transition-colors duration-200 flex items-center space-x-2"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => {
@@ -139,10 +139,10 @@ const Home = () => {
       </div>
 
       {/* Quick Preview Section */}
-      <section className="relative z-10 py-20 bg-white">
+      <section className="relative z-10 py-20 bg-white dark:bg-slate-950 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.h2
-            className="text-3xl md:text-4xl font-bold text-gray-900 mb-12"
+            className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-12"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
@@ -171,7 +171,7 @@ const Home = () => {
             ].map((service, index) => (
               <motion.div
                 key={index}
-                className="p-6 rounded-xl bg-gray-50 hover:bg-blue-50 transition-colors duration-200"
+                className="p-6 rounded-xl bg-gray-50 dark:bg-slate-900 hover:bg-blue-50 dark:hover:bg-slate-800 transition-colors duration-200"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -179,8 +179,8 @@ const Home = () => {
                 whileHover={{ y: -5 }}
               >
                 <div className="text-4xl mb-4">{service.icon}</div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{service.title}</h3>
-                <p className="text-gray-600">{service.description}</p>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{service.title}</h3>
+                <p className="text-gray-600 dark:text-gray-300">{service.description}</p>
               </motion.div>
             ))}
           </div>
