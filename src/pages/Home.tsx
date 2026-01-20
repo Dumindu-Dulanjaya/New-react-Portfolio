@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDown, Download, Eye } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import profileImg from '../assets/profile_img.jpg';
 
 const Home = () => {
   const scrollToNext = () => {
@@ -55,7 +56,7 @@ const Home = () => {
             <div className="relative">
               <div className="absolute inset-0 bg-blue-600 rounded-full blur-2xl opacity-20 animate-pulse"></div>
               <img
-                src="https://i.postimg.cc/g2MvX02F/profile1.jpeg"
+                src={profileImg}
                 alt="Dumindu Dulanjaya"
                 className="relative w-72 h-72 md:w-96 md:h-96 rounded-full border-4 border-white shadow-2xl object-cover z-10"
               />
