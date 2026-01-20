@@ -11,14 +11,14 @@ const Projects = () => {
       image: 'https://i.postimg.cc/V6SPt4Q9/jakub-zerdzicki-Rn-H1m7-DPt-AU-unsplash.jpg',
       liveLink: 'https://lnkd.in/eaNhB7-4',
       githubLink: 'https://github.com/Dumindu-Dulanjaya/movie-search-app.git',
-      techStack:  ['React', 'JavaScript', 'CSS','Tailwind CSS']
+      techStack: ['React', 'JavaScript', 'CSS', 'Tailwind CSS']
     },
     {
       title: 'Library Management System',
       description: 'Developed a full-stack Library Management System to automate book tracking, member management, and borrowing processes. The system provides librarians with an intuitive interface to manage inventory while giving users a seamless experience to explore available books.',
       image: 'https://i.postimg.cc/dVFh6fNZ/henrique-ferreira-AP5-7-Zqtf6-Y-unsplash-1.jpg',
       githubLink: 'https://github.com/Dumindu-Dulanjaya/Library-Management-System.git',
-      techStack: ['python' ]
+      techStack: ['python']
     },
     {
       title: 'Weather Forecast App',
@@ -34,7 +34,7 @@ const Projects = () => {
       image: 'https://i.postimg.cc/52QWRnkX/404-Hlbfm6-J7-VR8-unsplash.jpg',
       linkedLink: 'https://www.linkedin.com/posts/dumindu-dulanjaya-486745305_java-mvc-oop-activity-7321850110861066240-kdUR?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE3izGYBdTx9JhO1f0jqfjHkw5TyeeTuPYk',
       githubLink: 'https://github.com/Dumindu-Dulanjaya/Calculator.git',
-      techStack: ['Java','Swing','MVC','OOP']
+      techStack: ['Java', 'Swing', 'MVC', 'OOP']
     },
     {
       title: 'Web Confrence Management System',
@@ -78,24 +78,20 @@ const Projects = () => {
             My <span className="text-blue-600">Projects</span>
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-            Here are some of the projects I've worked on. Each one represents a unique 
+            Here are some of the projects I've worked on. Each one represents a unique
             challenge and learning experience that has contributed to my growth as a developer.
           </p>
-          
+
           <motion.button
             className="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors duration-200 flex items-center space-x-2 mx-auto"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => {
-                // In a real app, this would download the actual CV
-                const cvUrl = "https://github.com/Dumindu-Dulanjaya/test/blob/main/cv-2.pdf?raw=true";
-                const link = document.createElement('a');
-                link.href = cvUrl;
-                link.download = 'Dumindu_Dulanjaya_CV.pdf';
-                link.click();
-                document.body.appendChild(link);
-                document.body.removeChild(link);
-              }}
+              const link = document.createElement('a');
+              link.href = "/Dumindu Dulanjaya_CV___Full_Stack_Developer.pdf";
+              link.download = 'Dumindu_Dulanjaya_CV.pdf';
+              link.click();
+            }}
           >
             <Download size={20} />
             <span>Download CV</span>
@@ -134,7 +130,7 @@ const Projects = () => {
             Interested in working together?
           </h2>
           <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-            I'm always open to discussing new opportunities and interesting projects. 
+            I'm always open to discussing new opportunities and interesting projects.
             Let's create something amazing together!
           </p>
           <motion.a

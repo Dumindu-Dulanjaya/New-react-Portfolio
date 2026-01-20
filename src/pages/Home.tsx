@@ -43,89 +43,99 @@ const Home = () => {
 
       {/* Hero Content */}
       <div className="relative z-10 min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+
+          {/* Image Section - Left on desktop */}
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="mb-8"
+            className="order-1 md:order-1 flex justify-center md:justify-start"
           >
-            <img
-              src="https://i.postimg.cc/g2MvX02F/profile-img.jpg"
-              alt="Dumindu Dulanjaya"
-              className="w-60 h-60 rounded-full mx-auto border-5 border-white shadow-xl object-cover"
-            />
+            <div className="relative">
+              <div className="absolute inset-0 bg-blue-600 rounded-full blur-2xl opacity-20 animate-pulse"></div>
+              <img
+                src="https://i.postimg.cc/g2MvX02F/profile-img.jpg"
+                alt="Dumindu Dulanjaya"
+                className="relative w-72 h-72 md:w-96 md:h-96 rounded-full border-4 border-white shadow-2xl object-cover z-10"
+              />
+            </div>
           </motion.div>
 
-          <motion.h1
-            className="text-5xl md:text-7xl font-bold text-gray-900 mb-6"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-          >
-            Hi, I'm{' '}
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Dumindu Dulanjaya
-            </span>
-          </motion.h1>
+          {/* Text Section - Right on desktop */}
+          <div className="order-2 md:order-2 text-center md:text-left">
+            <motion.h1
+              className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight"
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+            >
+              Hi, I'm{' '}
+              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent block mt-2">
+                Dumindu Dulanjaya
+              </span>
+            </motion.h1>
 
-          <motion.p
-            className="text-xl md:text-2xl text-gray-600 mb-8 max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.4 }}
-          >
-            Full-Stack Developer & UI/UX Designer passionate about creating beautiful, 
-            functional digital experiences that make a difference.
-          </motion.p>
+            <motion.p
+              className="text-lg md:text-xl text-gray-600 mb-8 max-w-lg mx-auto md:mx-0"
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.4 }}
+            >
+              Full-Stack Developer & UI/UX Designer passionate about creating beautiful,
+              functional digital experiences that make a difference.
+            </motion.p>
 
-          <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.6 }}
-          >
-            <Link to="/projects">
+            <motion.div
+              className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start items-center"
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.6 }}
+            >
+              <Link to="/projects">
+                <motion.button
+                  className="bg-blue-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-blue-700 transition-colors duration-200 flex items-center space-x-2 shadow-lg"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Eye size={20} />
+                  <span>View Projects</span>
+                </motion.button>
+              </Link>
+
               <motion.button
-                className="bg-blue-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-blue-700 transition-colors duration-200 flex items-center space-x-2 shadow-lg"
+                className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-blue-600 hover:text-white transition-colors duration-200 flex items-center space-x-2"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  const link = document.createElement('a');
+                  link.href = "/Dumindu Dulanjaya_CV___Full_Stack_Developer.pdf";
+                  link.download = 'Dumindu_Dulanjaya_CV.pdf';
+                  link.click();
+                }}
               >
-                <Eye size={20} />
-                <span>View Projects</span>
+                <Download size={20} />
+                <span>Download CV</span>
               </motion.button>
-            </Link>
+            </motion.div>
+          </div>
 
-            <motion.button
-              className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-blue-600 hover:text-white transition-colors duration-200 flex items-center space-x-2"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => {
-                // In a real app, this would download the actual CV
-                const cvUrl = "https://github.com/Dumindu-Dulanjaya/test/blob/main/cv-2.pdf?raw=true";
-                const link = document.createElement('a');
-                link.href = cvUrl;
-                link.download = 'Dumindu_Dulanjaya_CV.pdf';
-                link.click();
-                document.body.appendChild(link);
-                document.body.removeChild(link);
-              }}
-            >
-              <Download size={20} />
-              <span>Download CV</span>
-            </motion.button>
-          </motion.div>
+        </div>
 
+        {/* Scroll Down Indicator */}
+        <motion.div
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 1 }}
+        >
           <motion.button
             onClick={scrollToNext}
-            className="animate-bounce"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 1 }}
+            className="animate-bounce p-2 bg-white rounded-full shadow-md text-blue-600"
           >
-            <ArrowDown className="w-8 h-8 text-blue-600 mx-auto" />
+            <ArrowDown className="w-6 h-6" />
           </motion.button>
-        </div>
+        </motion.div>
       </div>
 
       {/* Quick Preview Section */}
