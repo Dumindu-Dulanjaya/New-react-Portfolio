@@ -1,5 +1,11 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import img4 from '../assets/img4.jpeg';
+import img5 from '../assets/img5.jpeg';
+import img6 from '../assets/img6.jpeg';
+import img7 from '../assets/img7.jpeg';
+import img8 from '../assets/img8.jpeg';
 import {
   Code,
   Database,
@@ -12,6 +18,16 @@ import {
 } from 'lucide-react';
 
 const About = () => {
+  const images = [img4, img5, img6, img7, img8];
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 3000);
+
+    return () => clearInterval(timer);
+  }, []);
   const skills = [
     { name: 'React', icon: <Code className="w-8 h-8" />, level: 95 },
     { name: 'TypeScript', icon: <Code className="w-8 h-8" />, level: 90 },
@@ -82,20 +98,36 @@ const About = () => {
             </div>
           </motion.div>
 
-          {/* Image */}
+          {/* Image Slideshow */}
           <motion.div
-            className="relative"
+            className="relative h-96 rounded-xl overflow-hidden shadow-lg bg-gray-900"
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.4 }}
           >
-            <div className="relative z-10">
-              <img
-                src="https://i.postimg.cc/253rrC6S/charlesdeluvio-Lks7vei-e-Ag-unsplash.jpg"
-                alt="Working at desk"
-                className="rounded-xl shadow-lg w-full h-96 object-cover"
-              />
-            </div>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentIndex}
+                className="absolute inset-0 w-full h-full"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                {/* Blurred Background */}
+                <div
+                  className="absolute inset-0 bg-cover bg-center blur-xl opacity-50 scale-110"
+                  style={{ backgroundImage: `url(${images[currentIndex]})` }}
+                />
+
+                {/* Main Image */}
+                <img
+                  src={images[currentIndex]}
+                  alt={`Slide ${currentIndex + 1}`}
+                  className="relative z-10 w-full h-full object-contain p-2"
+                />
+              </motion.div>
+            </AnimatePresence>
             <div className="absolute -top-4 -right-4 w-full h-full bg-blue-200 rounded-xl -z-10"></div>
           </motion.div>
         </div>
