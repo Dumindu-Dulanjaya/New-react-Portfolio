@@ -8,6 +8,13 @@ import img7 from '../assets/img7.jpeg';
 import img8 from '../assets/img8.jpeg';
 import img10 from '../assets/img10.jpeg';
 import img11 from '../assets/img11.png';
+import img12 from '../assets/img12.jpeg';
+import img13 from '../assets/img13.jpeg';
+import img14 from '../assets/img14.jpeg';
+import img15 from '../assets/img15.jpeg';
+import img16 from '../assets/img16.jpeg';
+import img17 from '../assets/img17.jpeg';
+import img18 from '../assets/img18.jpeg';
 
 
 const Achievements = () => {
@@ -35,7 +42,8 @@ const Achievements = () => {
             description: "Developed SmartMed, a medical center management system presented at the 4th International Research Conference 2025. The platform digitalizes university healthcare by connecting hospitals and medical centers with features such as QR-based patient access, AI chatbot consultations, digital prescriptions, video consultations, inventory management, and SMS notifications.",
             icon: Star,
             color: "text-green-500",
-            bg: "bg-green-100 dark:bg-green-900/20"
+            bg: "bg-green-100 dark:bg-green-900/20",
+            images: [img12, img13, img14, img15, img16, img17, img18]
         }
 
     ];
