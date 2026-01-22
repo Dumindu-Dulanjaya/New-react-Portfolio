@@ -12,6 +12,7 @@ const ContactForm = () => {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -26,10 +27,14 @@ const ContactForm = () => {
     setStatus('idle');
 
     try {
-      // Initialize EmailJS with your public key
-      emailjs.init("Aw6O7bJspa9MAGC5T");
+      console.log('Sending email with:', {
+        serviceId: "service_bnyctlp",
+        templateId: "template_5bpyejn",
+        publicKey: "Aw6O7bJspa9MAGC5T",
+        formData
+      });
 
-      await emailjs.send(
+      const response = await emailjs.send(
         "service_bnyctlp",
         "template_5bpyejn",
         {
@@ -37,13 +42,22 @@ const ContactForm = () => {
           from_email: formData.email,
           subject: formData.subject,
           message: formData.message,
-        }
+        },
+        "Aw6O7bJspa9MAGC5T"
       );
 
+      console.log('EmailJS Success:', response);
       setStatus('success');
       setFormData({ name: '', email: '', subject: '', message: '' });
     } catch (error) {
-      console.error('EmailJS error:', error);
+      console.error('EmailJS Failed:', error);
+      let msg = 'Sorry, there was an error sending your message. Please try again.';
+      if (typeof error === 'object' && error !== null && 'text' in error) {
+        msg = `Error: ${(error as any).text}`;
+      } else if (error instanceof Error) {
+        msg = `Error: ${error.message}`;
+      }
+      setErrorMessage(msg);
       setStatus('error');
     } finally {
       setIsLoading(false);
@@ -159,7 +173,7 @@ const ContactForm = () => {
           animate={{ opacity: 1, y: 0 }}
           className="p-4 bg-red-50 border border-red-200 rounded-lg text-red-800"
         >
-          Sorry, there was an error sending your message. Please try again or contact me directly.
+          {errorMessage || 'Sorry, there was an error sending your message. Please try again.'}
         </motion.div>
       )}
     </motion.form>
