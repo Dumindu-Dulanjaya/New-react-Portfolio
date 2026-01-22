@@ -65,14 +65,14 @@ const Achievements = () => {
                     </p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-16">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pb-16 max-w-5xl mx-auto">
                     {achievements.map((achievement, index) => (
                         <motion.div
                             key={achievement.id}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className={`bg-white dark:bg-slate-900 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-6 border border-gray-100 dark:border-slate-800 ${achievement.images ? 'cursor-pointer' : ''}`}
+                            className={`bg-white dark:bg-slate-900 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 p-6 border border-gray-100 dark:border-slate-800 flex flex-col h-full ${achievement.images ? 'cursor-pointer hover:scale-[1.02] hover:border-gray-300 dark:hover:border-slate-600' : ''}`}
                             onClick={() => achievement.images && setSelectedAchievement(achievement.id)}
                         >
                             <div className={`w-12 h-12 rounded-lg ${achievement.bg} flex items-center justify-center mb-6`}>
@@ -90,9 +90,18 @@ const Achievements = () => {
                                 <span>{achievement.date}</span>
                             </div>
 
-                            <p className="text-gray-600 dark:text-gray-300">
+                            <p className="text-gray-600 dark:text-gray-300 flex-grow">
                                 {achievement.description}
                             </p>
+
+                            {achievement.images && (
+                                <div className="mt-4 pt-4 border-t border-gray-200 dark:border-slate-700">
+                                    <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400">
+                                        <span className="font-medium">📸 {achievement.images.length} images</span>
+                                        <span className="text-xs bg-gray-100 dark:bg-slate-800 px-3 py-1 rounded-full">Click to view gallery</span>
+                                    </div>
+                                </div>
+                            )}
                         </motion.div>
                     ))}
                 </div>
