@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Trophy, Award, Star, Calendar, X } from 'lucide-react';
+import { Trophy, Award, Star, Calendar, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import img4 from '../assets/img4.jpeg';
 import img5 from '../assets/img5.jpeg';
 import img6 from '../assets/img6.jpeg';
@@ -12,6 +12,7 @@ import img11 from '../assets/img11.png';
 
 const Achievements = () => {
     const [selectedAchievement, setSelectedAchievement] = useState<number | null>(null);
+    const [fullScreenImage, setFullScreenImage] = useState<{ src: string; index: number } | null>(null);
 
     const achievements = [
         {
@@ -125,7 +126,8 @@ const Achievements = () => {
                                                 initial={{ opacity: 0, y: 20 }}
                                                 animate={{ opacity: 1, y: 0 }}
                                                 transition={{ delay: idx * 0.1 }}
-                                                className="relative aspect-square overflow-hidden rounded-lg bg-gray-100 dark:bg-slate-800"
+                                                className="relative aspect-square overflow-hidden rounded-lg bg-gray-100 dark:bg-slate-800 cursor-pointer"
+                                                onClick={() => setFullScreenImage({ src: img, index: idx })}
                                             >
                                                 <img
                                                     src={img}
@@ -138,6 +140,82 @@ const Achievements = () => {
                                 </motion.div>
                             </motion.div>
                         ) : null;
+                    })()}
+                </AnimatePresence>
+
+                {/* Full-Screen Image Viewer */}
+                <AnimatePresence>
+                    {fullScreenImage !== null && (() => {
+                        const achievement = achievements.find(a => a.id === selectedAchievement);
+                        const images = achievement?.images || [];
+                        const currentIndex = fullScreenImage.index;
+
+                        const handlePrevious = () => {
+                            const newIndex = currentIndex > 0 ? currentIndex - 1 : images.length - 1;
+                            setFullScreenImage({ src: images[newIndex], index: newIndex });
+                        };
+
+                        const handleNext = () => {
+                            const newIndex = currentIndex < images.length - 1 ? currentIndex + 1 : 0;
+                            setFullScreenImage({ src: images[newIndex], index: newIndex });
+                        };
+
+                        return (
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                className="fixed inset-0 bg-black/95 z-[60] flex items-center justify-center p-4"
+                                onClick={() => setFullScreenImage(null)}
+                            >
+                                <button
+                                    onClick={() => setFullScreenImage(null)}
+                                    className="absolute top-4 right-4 p-3 bg-white/10 hover:bg-white/20 rounded-full transition-colors z-10"
+                                >
+                                    <X className="w-8 h-8 text-white" />
+                                </button>
+
+                                {/* Navigation Buttons */}
+                                {images.length > 1 && (
+                                    <>
+                                        <button
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                handlePrevious();
+                                            }}
+                                            className="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-white/10 hover:bg-white/20 rounded-full transition-colors z-10"
+                                        >
+                                            <ChevronLeft className="w-8 h-8 text-white" />
+                                        </button>
+                                        <button
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                handleNext();
+                                            }}
+                                            className="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-white/10 hover:bg-white/20 rounded-full transition-colors z-10"
+                                        >
+                                            <ChevronRight className="w-8 h-8 text-white" />
+                                        </button>
+                                    </>
+                                )}
+
+                                {/* Image Counter */}
+                                <div className="absolute top-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white font-medium">
+                                    {currentIndex + 1} / {images.length}
+                                </div>
+
+                                <motion.img
+                                    key={fullScreenImage.src}
+                                    initial={{ scale: 0.8, opacity: 0 }}
+                                    animate={{ scale: 1, opacity: 1 }}
+                                    exit={{ scale: 0.8, opacity: 0 }}
+                                    src={fullScreenImage.src}
+                                    alt={`Full screen view - Image ${currentIndex + 1}`}
+                                    className="max-w-full max-h-full object-contain"
+                                    onClick={(e) => e.stopPropagation()}
+                                />
+                            </motion.div>
+                        );
                     })()}
                 </AnimatePresence>
             </div>
