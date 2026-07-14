@@ -74,7 +74,7 @@ const ContactForm = () => {
       viewport={{ once: true }}
     >
       <div>
-        <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+        <label htmlFor="name" className="block text-xs font-mono uppercase tracking-wider text-neutral-400 mb-2">
           Name
         </label>
         <input
@@ -84,13 +84,13 @@ const ContactForm = () => {
           value={formData.name}
           onChange={handleChange}
           required
-          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white dark:bg-slate-800 text-gray-900 dark:text-white"
+          className="w-full px-4 py-3.5 border border-neutral-900 rounded-xl focus:ring-1 focus:ring-yellow-500 focus:border-transparent transition-all duration-200 bg-[#0F0F0F] text-white placeholder-neutral-600 font-light text-sm"
           placeholder="Your full name"
         />
       </div>
 
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+        <label htmlFor="email" className="block text-xs font-mono uppercase tracking-wider text-neutral-400 mb-2">
           Email
         </label>
         <input
@@ -100,13 +100,13 @@ const ContactForm = () => {
           value={formData.email}
           onChange={handleChange}
           required
-          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white dark:bg-slate-800 text-gray-900 dark:text-white"
+          className="w-full px-4 py-3.5 border border-neutral-900 rounded-xl focus:ring-1 focus:ring-yellow-500 focus:border-transparent transition-all duration-200 bg-[#0F0F0F] text-white placeholder-neutral-600 font-light text-sm"
           placeholder="your.email@example.com"
         />
       </div>
 
       <div>
-        <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+        <label htmlFor="subject" className="block text-xs font-mono uppercase tracking-wider text-neutral-400 mb-2">
           Subject
         </label>
         <input
@@ -116,13 +116,13 @@ const ContactForm = () => {
           value={formData.subject}
           onChange={handleChange}
           required
-          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white dark:bg-slate-800 text-gray-900 dark:text-white"
+          className="w-full px-4 py-3.5 border border-neutral-900 rounded-xl focus:ring-1 focus:ring-yellow-500 focus:border-transparent transition-all duration-200 bg-[#0F0F0F] text-white placeholder-neutral-600 font-light text-sm"
           placeholder="What's this about?"
         />
       </div>
 
       <div>
-        <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+        <label htmlFor="message" className="block text-xs font-mono uppercase tracking-wider text-neutral-400 mb-2">
           Message
         </label>
         <textarea
@@ -132,7 +132,7 @@ const ContactForm = () => {
           value={formData.message}
           onChange={handleChange}
           required
-          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none bg-white dark:bg-slate-800 text-gray-900 dark:text-white"
+          className="w-full px-4 py-3.5 border border-neutral-900 rounded-xl focus:ring-1 focus:ring-yellow-500 focus:border-transparent transition-all duration-200 resize-none bg-[#0F0F0F] text-white placeholder-neutral-600 font-light text-sm"
           placeholder="Tell me about your project or just say hello..."
         />
       </div>
@@ -140,18 +140,18 @@ const ContactForm = () => {
       <motion.button
         type="submit"
         disabled={isLoading}
-        className="w-full bg-blue-600 dark:bg-gradient-to-r dark:from-purple-600 dark:to-orange-500 text-white py-3 px-6 rounded-lg font-medium hover:bg-blue-700 dark:hover:opacity-90 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
+        className="w-full bg-yellow-500 text-black py-4 px-6 rounded-xl font-bold hover:bg-yellow-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2 shadow-lg"
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
       >
         {isLoading ? (
           <>
-            <Loader className="animate-spin" size={20} />
+            <Loader className="animate-spin text-black" size={18} />
             <span>Sending...</span>
           </>
         ) : (
           <>
-            <Send size={20} />
+            <Send size={18} className="text-black" />
             <span>Send Message</span>
           </>
         )}
@@ -161,7 +161,7 @@ const ContactForm = () => {
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="p-4 bg-green-50 border border-green-200 rounded-lg text-green-800"
+          className="p-4 bg-yellow-500/5 border border-yellow-500/10 rounded-xl text-yellow-500 text-sm text-center"
         >
           Thank you! Your message has been sent successfully.
         </motion.div>
@@ -171,7 +171,7 @@ const ContactForm = () => {
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="p-4 bg-red-50 border border-red-200 rounded-lg text-red-800"
+          className="p-4 bg-red-500/5 border border-red-500/10 rounded-xl text-red-400 text-sm text-center"
         >
           {errorMessage || 'Sorry, there was an error sending your message. Please try again.'}
         </motion.div>

@@ -65,8 +65,17 @@ const Projects = () => {
   };
 
   return (
-    <div className="pt-16 min-h-screen bg-gray-50 dark:bg-slate-950 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div className="pt-16 min-h-screen bg-[#0B0B0B] text-white transition-colors duration-300 relative">
+      {/* Subtle CSS Dot Grid Pattern */}
+      <div 
+        className="absolute inset-0 opacity-[0.05] pointer-events-none"
+        style={{
+          backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)',
+          backgroundSize: '24px 24px'
+        }}
+      />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
         {/* Header */}
         <motion.div
           className="text-center mb-16"
@@ -74,18 +83,19 @@ const Projects = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            My <span className="text-blue-600">Projects</span>
+          <span className="text-xs font-mono uppercase tracking-[0.3em] text-yellow-500 font-semibold block mb-2">WORKS</span>
+          <h1 className="text-4xl md:text-5xl font-black text-white mb-6 uppercase">
+            MY <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">PROJECTS.</span>
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
+          <p className="text-lg text-neutral-400 max-w-3xl mx-auto mb-8 font-light leading-relaxed">
             Here are some of the projects I've worked on. Each one represents a unique
             challenge and learning experience that has contributed to my growth as a developer.
           </p>
 
           <motion.button
-            className="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors duration-200 flex items-center space-x-2 mx-auto"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            className="bg-yellow-500 text-black px-8 py-3 rounded-xl font-bold hover:bg-yellow-600 transition-colors duration-200 flex items-center space-x-2 mx-auto"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
             onClick={() => {
               const link = document.createElement('a');
               link.href = "/Dumindu Dulanjaya_CV___Full_Stack_Developer.pdf";
@@ -93,7 +103,7 @@ const Projects = () => {
               link.click();
             }}
           >
-            <Download size={20} />
+            <Download size={18} />
             <span>Download CV</span>
           </motion.button>
         </motion.div>
@@ -120,24 +130,24 @@ const Projects = () => {
 
         {/* Call to Action */}
         <motion.div
-          className="text-center mt-20 p-8 bg-white dark:bg-slate-900 rounded-xl shadow-lg transition-colors duration-300"
+          className="text-center mt-20 p-10 bg-[#121212]/50 border border-neutral-900 rounded-2xl shadow-lg transition-colors duration-300"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-4 uppercase tracking-tight">
             Interested in working together?
           </h2>
-          <p className="text-gray-600 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
+          <p className="text-neutral-400 mb-8 max-w-2xl mx-auto font-light leading-relaxed text-sm sm:text-base">
             I'm always open to discussing new opportunities and interesting projects.
             Let's create something amazing together!
           </p>
           <motion.a
             href="/contact"
-            className="inline-block bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors duration-200"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            className="inline-block bg-yellow-500 text-black px-8 py-3.5 rounded-xl font-bold hover:bg-yellow-600 transition-colors duration-200"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
           >
             Contact Me
           </motion.a>

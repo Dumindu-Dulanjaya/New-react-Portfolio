@@ -21,7 +21,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 }) => {
   return (
     <motion.div
-      className="bg-white dark:bg-slate-900 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow transition-colors duration-300"
+      className="bg-[#121212]/50 border border-neutral-900 rounded-2xl overflow-hidden hover:border-neutral-800 transition-all duration-300 shadow-lg"
       whileHover={{ y: -5 }}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -32,20 +32,20 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         <img
           src={image}
           alt={title}
-          className="w-full h-48 object-cover transition-transform duration-300 hover:scale-105"
+          className="w-full h-48 object-cover transition-transform duration-350 hover:scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0B]/80 to-transparent opacity-60" />
       </div>
 
       <div className="p-6">
-        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{title}</h3>
-        <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">{description}</p>
+        <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
+        <p className="text-neutral-400 mb-4 line-clamp-3 font-light text-sm leading-relaxed">{description}</p>
 
-        <div className="flex flex-wrap gap-2 mb-4">
+        <div className="flex flex-wrap gap-2 mb-6">
           {techStack.map((tech, index) => (
             <span
               key={index}
-              className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 text-sm font-medium rounded-full"
+              className="px-2.5 py-0.5 bg-neutral-900 border border-neutral-850 text-neutral-400 text-[10px] font-mono rounded"
             >
               {tech}
             </span>
@@ -53,27 +53,29 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         </div>
 
         <div className="flex space-x-3">
-          <motion.a
-            href={liveLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <ExternalLink size={16} />
-            <span>Live Demo</span>
-          </motion.a>
+          {liveLink && (
+            <motion.a
+              href={liveLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center space-x-2 px-4 py-2 bg-yellow-500 text-black font-bold text-sm rounded-xl hover:bg-yellow-600 transition-colors duration-200"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <ExternalLink size={14} />
+              <span>Live Demo</span>
+            </motion.a>
+          )}
 
           <motion.a
             href={githubLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center space-x-2 px-4 py-2 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors duration-200"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            className="flex items-center space-x-2 px-4 py-2 border border-neutral-850 text-neutral-400 font-medium text-sm rounded-xl hover:bg-neutral-900 hover:text-white transition-colors duration-200"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
           >
-            <Github size={16} />
+            <Github size={14} />
             <span>Code</span>
           </motion.a>
         </div>

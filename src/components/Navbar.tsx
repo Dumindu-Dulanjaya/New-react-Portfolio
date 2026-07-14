@@ -40,8 +40,8 @@ const Navbar = () => {
   return (
     <motion.nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-        ? 'bg-white/90 dark:bg-slate-900/95 backdrop-blur-md shadow-lg'
-        : 'bg-transparent dark:bg-slate-900/50'
+        ? 'bg-[#0B0B0B]/95 border-b border-neutral-900 backdrop-blur-md shadow-lg'
+        : 'bg-transparent'
         }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -51,8 +51,8 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <Code2 className="h-8 w-8 text-blue-600" />
-            <span className="font-bold text-xl text-gray-900 dark:text-white">Portfolio</span>
+            <Code2 className="h-8 w-8 text-yellow-500" />
+            <span className="font-bold text-xl text-white">Portfolio</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -62,14 +62,14 @@ const Navbar = () => {
                 key={link.path}
                 to={link.path}
                 className={`relative px-3 py-2 text-sm font-medium transition-colors duration-200 ${location.pathname === link.path
-                  ? 'text-blue-600 dark:text-blue-400'
-                  : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
+                  ? 'text-yellow-500'
+                  : 'text-neutral-400 hover:text-yellow-400'
                   }`}
               >
                 {link.label}
                 {location.pathname === link.path && (
                   <motion.div
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-600 dark:bg-blue-400"
+                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-yellow-500"
                     layoutId="navbar-indicator"
                   />
                 )}
@@ -79,13 +79,13 @@ const Navbar = () => {
             {/* Theme Toggle Button */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
+              className="p-2 rounded-full hover:bg-neutral-900 transition-colors duration-200"
               aria-label="Toggle theme"
             >
               {isDark ? (
                 <Sun className="h-5 w-5 text-yellow-500" />
               ) : (
-                <Moon className="h-5 w-5 text-gray-600 dark:text-gray-400" />
+                <Moon className="h-5 w-5 text-neutral-400 hover:text-white" />
               )}
             </button>
           </div>
@@ -94,16 +94,16 @@ const Navbar = () => {
           <div className="flex items-center space-x-4 md:hidden">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
+              className="p-2 rounded-full hover:bg-neutral-900 transition-colors duration-200"
             >
               {isDark ? (
                 <Sun className="h-5 w-5 text-yellow-500" />
               ) : (
-                <Moon className="h-5 w-5 text-gray-600" />
+                <Moon className="h-5 w-5 text-neutral-400" />
               )}
             </button>
             <button
-              className="p-2 rounded-md text-gray-700 dark:text-gray-200 hover:text-blue-600 transition-colors"
+              className="p-2 rounded-md text-neutral-400 hover:text-white transition-colors"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -116,7 +116,7 @@ const Navbar = () => {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            className="md:hidden bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-t border-gray-200 dark:border-gray-800"
+            className="md:hidden bg-[#0C0C0C] backdrop-blur-md border-t border-neutral-900"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
@@ -128,8 +128,8 @@ const Navbar = () => {
                   key={link.path}
                   to={link.path}
                   className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${location.pathname === link.path
-                    ? 'text-blue-600 bg-blue-50 dark:bg-blue-900/20 dark:text-blue-400'
-                    : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-800'
+                    ? 'text-yellow-500 bg-yellow-500/5'
+                    : 'text-neutral-400 hover:text-yellow-400 hover:bg-neutral-900'
                     }`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >

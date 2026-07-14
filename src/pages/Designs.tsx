@@ -63,8 +63,17 @@ const Designs = () => {
     };
 
     return (
-        <div className="pt-24 min-h-screen bg-gray-50 dark:bg-slate-950 transition-colors duration-300">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="pt-24 min-h-screen bg-[#0B0B0B] text-white transition-colors duration-300 relative">
+            {/* Subtle CSS Dot Grid Pattern */}
+            <div 
+                className="absolute inset-0 opacity-[0.05] pointer-events-none"
+                style={{
+                    backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)',
+                    backgroundSize: '24px 24px'
+                }}
+            />
+
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
                 {/* Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -73,17 +82,18 @@ const Designs = () => {
                     className="text-center mb-16"
                 >
                     <div className="flex items-center justify-center mb-4">
-                        <Palette className="w-12 h-12 text-purple-600 dark:text-purple-400" />
+                        <Palette className="w-12 h-12 text-yellow-500" />
                     </div>
-                    <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-                        Graphic <span className="text-purple-600 dark:text-purple-400">Design</span>
+                    <span className="text-xs font-mono uppercase tracking-[0.3em] text-yellow-500 font-semibold block mb-2">CREATIVES</span>
+                    <h1 className="text-4xl md:text-5xl font-black text-white mb-6 uppercase">
+                        GRAPHIC <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">DESIGN.</span>
                     </h1>
-                    <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                    <p className="text-lg text-neutral-400 max-w-2xl mx-auto font-light leading-relaxed">
                         A collection of my graphic design work showcasing creativity, visual storytelling,
                         and digital activism. Each piece represents a unique concept and design approach.
                     </p>
-                    <div className="mt-6 inline-flex items-center px-4 py-2 bg-purple-100 dark:bg-purple-900/20 rounded-full">
-                        <span className="text-sm font-medium text-purple-700 dark:text-purple-300">
+                    <div className="mt-6 inline-flex items-center px-4 py-2 bg-neutral-900 border border-neutral-800 rounded-full">
+                        <span className="text-xs font-mono font-medium text-yellow-500 uppercase tracking-wider">
                             🏆 Top 10 at වර්ණ Pixel 2025 – ITUM
                         </span>
                     </div>
@@ -97,38 +107,38 @@ const Designs = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className="group relative bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer"
+                            className="group relative bg-[#121212]/50 border border-neutral-900 rounded-2xl overflow-hidden shadow-lg hover:border-neutral-800 transition-all duration-300 cursor-pointer"
                             onClick={() => setFullScreenImage({ src: design.image, index, title: design.title })}
                         >
                             {/* Image */}
-                            <div className="relative aspect-[4/3] overflow-hidden bg-gray-200 dark:bg-slate-800">
+                            <div className="relative aspect-[4/3] overflow-hidden bg-neutral-950">
                                 <img
                                     src={design.image}
                                     alt={design.title}
-                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 grayscale group-hover:grayscale-0"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0B]/80 via-transparent to-transparent opacity-60" />
 
                                 {/* Overlay Info */}
                                 <div className="absolute bottom-0 left-0 right-0 p-4 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                                    <p className="text-xs font-medium mb-1">{design.category}</p>
-                                    <p className="text-sm">{design.description}</p>
+                                    <p className="text-[10px] font-mono tracking-wider mb-1 text-yellow-500 uppercase">{design.category}</p>
+                                    <p className="text-xs text-neutral-300 font-light">{design.description}</p>
                                 </div>
                             </div>
 
                             {/* Card Content */}
-                            <div className="p-4">
-                                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">
+                            <div className="p-5">
+                                <h3 className="text-lg font-bold text-white mb-1">
                                     {design.title}
                                 </h3>
-                                <p className="text-sm text-purple-600 dark:text-purple-400 font-medium">
+                                <p className="text-xs text-yellow-500/80 font-mono tracking-wider uppercase">
                                     {design.category}
                                 </p>
                             </div>
 
                             {/* Click Indicator */}
-                            <div className="absolute top-4 right-4 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <span className="text-xs font-medium text-gray-700 dark:text-gray-300">
+                            <div className="absolute top-4 right-4 bg-[#121212]/90 border border-neutral-800 backdrop-blur-sm px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <span className="text-[10px] font-mono tracking-wider text-neutral-300 uppercase">
                                     Click to view
                                 </span>
                             </div>

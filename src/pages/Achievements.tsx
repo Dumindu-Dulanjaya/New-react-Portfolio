@@ -49,18 +49,28 @@ const Achievements = () => {
     ];
 
     return (
-        <div className="pt-24 min-h-screen">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="pt-24 min-h-screen bg-[#0B0B0B] text-white transition-colors duration-300 relative">
+            {/* Subtle CSS Dot Grid Pattern */}
+            <div 
+                className="absolute inset-0 opacity-[0.05] pointer-events-none"
+                style={{
+                    backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)',
+                    backgroundSize: '24px 24px'
+                }}
+            />
+
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
                     className="text-center mb-16"
                 >
-                    <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                        Achievements
+                    <span className="text-xs font-mono uppercase tracking-[0.3em] text-yellow-500 font-semibold block mb-2">MILESTONES</span>
+                    <h1 className="text-4xl md:text-5xl font-black text-white mb-6 uppercase">
+                        MY <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">ACHIEVEMENTS.</span>
                     </h1>
-                    <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                    <p className="text-lg text-neutral-400 max-w-2xl mx-auto font-light leading-relaxed">
                         A collection of my professional milestones, awards, and recognitions along my journey.
                     </p>
                 </motion.div>
@@ -72,31 +82,31 @@ const Achievements = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className={`bg-white dark:bg-slate-900 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 p-6 border border-gray-100 dark:border-slate-800 flex flex-col h-full ${achievement.images ? 'cursor-pointer hover:scale-[1.02] hover:border-gray-300 dark:hover:border-slate-600' : ''}`}
+                            className={`bg-[#121212]/50 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-6 border border-neutral-900 hover:border-neutral-800 flex flex-col h-full ${achievement.images ? 'cursor-pointer hover:scale-[1.01]' : ''}`}
                             onClick={() => achievement.images && setSelectedAchievement(achievement.id)}
                         >
-                            <div className={`w-12 h-12 rounded-lg ${achievement.bg} flex items-center justify-center mb-6`}>
-                                <achievement.icon className={`w-6 h-6 ${achievement.color}`} />
+                            <div className="w-12 h-12 rounded-lg bg-yellow-500/5 border border-yellow-500/10 flex items-center justify-center mb-6">
+                                <achievement.icon className="w-6 h-6 text-yellow-500" />
                             </div>
 
-                            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                            <h3 className="text-xl font-bold text-white mb-2">
                                 {achievement.title}
                             </h3>
 
-                            <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-4">
+                            <div className="flex items-center text-xs font-mono text-neutral-500 mb-4">
                                 <span className="font-medium mr-2">{achievement.organization}</span>
                                 <span>•</span>
-                                <Calendar className="w-4 h-4 mx-2" />
+                                <Calendar className="w-3.5 h-3.5 mx-2 text-yellow-500/80" />
                                 <span>{achievement.date}</span>
                             </div>
 
-                            <p className="text-gray-600 dark:text-gray-300 flex-grow">
+                            <p className="text-neutral-400 flex-grow font-light leading-relaxed text-sm">
                                 {achievement.description}
                             </p>
 
                             {achievement.images && (
-                                <div className="mt-4 pt-4 border-t border-gray-200 dark:border-slate-700">
-                                    <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400">
+                                <div className="mt-4 pt-4 border-t border-neutral-900">
+                                    <div className="flex items-center justify-between text-xs text-neutral-500">
                                         <span className="font-medium">📸 {achievement.images.length} images</span>
                                         <span className="text-xs bg-gray-100 dark:bg-slate-800 px-3 py-1 rounded-full">Click to view gallery</span>
                                     </div>
