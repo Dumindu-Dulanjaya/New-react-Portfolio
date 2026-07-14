@@ -196,42 +196,28 @@ const Home = () => {
                 </motion.div>
               </div>
 
-              {/* Right Side: Huge Borderless Minimalist Image */}
+              {/* Right Side: Large Borderless Minimalist Image */}
               <div className="lg:col-span-6 flex justify-center lg:justify-end order-1 lg:order-2 overflow-visible">
-                <div className="w-full max-w-[500px] lg:max-w-[560px] xl:max-w-[620px] relative">
-                  <motion.div
-                    animate={{ y: [-8, 8] }}
-                    transition={{
-                      repeat: Infinity,
-                      repeatType: "reverse",
-                      duration: 5,
-                      ease: "easeInOut"
-                    }}
-                    className="w-full"
-                  >
-                    <motion.div
-                      style={{
-                        transformOrigin: 'center center',
-                        rotateX,
-                        rotateY,
-                        rotateZ,
-                        x: translateX,
-                        y: translateY,
-                        transformStyle: 'preserve-3d'
-                      }}
-                      className="w-full relative cursor-grab active:cursor-grabbing select-none"
-                    >
-                      {/* Soft ambient background glow */}
-                      <div className="absolute inset-0 bg-yellow-500/10 rounded-full blur-[120px] pointer-events-none scale-90" />
-                      
-                      {/* The borderless image blending with #0B0B0B background */}
-                      <img 
-                        src={portfolioimage} 
-                        alt="Dumindu Dulanjaya" 
-                        className="w-full h-auto object-contain relative z-10 filter drop-shadow-[0_10px_50px_rgba(234,179,8,0.12)]"
-                      />
-                    </motion.div>
-                  </motion.div>
+                <div className="relative flex justify-center items-center w-full max-w-[500px] lg:max-w-[560px] xl:max-w-[620px]">
+                  
+                  {/* Yellow Circle */}
+                  <motion.div 
+                    initial={{ scale: 0.6, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="absolute z-0 rounded-full bg-[#EAB308] w-[280px] h-[280px] lg:w-[400px] lg:h-[400px]"
+                  />
+
+                  {/* Portrait Image */}
+                  <motion.img 
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+                    src={portfolioimage} 
+                    alt="Dumindu Dulanjaya" 
+                    className="relative z-10 h-[380px] lg:h-[520px] w-auto object-contain select-none filter grayscale contrast-125 translate-y-4"
+                  />
+                  
                 </div>
               </div>
 
