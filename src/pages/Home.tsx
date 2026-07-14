@@ -3,7 +3,7 @@ import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from
 import { ArrowDown, Download, Eye, Github, Mail, Linkedin, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import WelcomeLoader from '../components/WelcomeLoader';
-import profile1 from '../assets/profile1.jpeg';
+import portfolioimage from '../assets/portfolioimage.png';
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -227,7 +227,7 @@ const Home = () => {
                       
                       {/* Main Image */}
                       <img 
-                        src={profile1} 
+                        src={portfolioimage} 
                         alt="Dumindu Dulanjaya" 
                         className="w-full h-auto object-contain relative z-10 filter drop-shadow-[0_0_30px_rgba(234,179,8,0.15)]"
                       />
