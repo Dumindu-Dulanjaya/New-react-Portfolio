@@ -1,10 +1,14 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ArrowDown, Download, Eye } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowDown, Download, Eye, Github, Mail, Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import Tilt from 'react-parallax-tilt';
+import WelcomeLoader from '../components/WelcomeLoader';
 import profileImg from '../assets/profile_img.jpg';
 
 const Home = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
   const scrollToNext = () => {
     window.scrollTo({
       top: window.innerHeight,
@@ -13,181 +17,297 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
-      {/* Animated Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-100 to-purple-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 transition-colors duration-300">
-        <div className="absolute inset-0">
-          {[...Array(20)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute rounded-full bg-blue-400/10"
-              style={{
-                width: Math.random() * 200 + 50,
-                height: Math.random() * 200 + 50,
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-              }}
-              animate={{
-                y: [0, -30, 0],
-                x: [0, Math.random() * 50 - 25, 0],
-                scale: [1, 1.1, 1],
-              }}
-              transition={{
-                duration: Math.random() * 5 + 5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-          ))}
-        </div>
-      </div>
+    <>
+      <AnimatePresence mode="wait">
+        {isLoading && (
+          <WelcomeLoader onComplete={() => setIsLoading(false)} />
+        )}
+      </AnimatePresence>
 
-      {/* Hero Content */}
-      <div className="relative z-10 min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+      <div className="min-h-screen relative overflow-hidden bg-[#0B0B0B] text-white selection:bg-indigo-500 selection:text-white transition-colors duration-300">
+        
+        {/* Subtle CSS Dot Grid Pattern */}
+        <div 
+          className="absolute inset-0 opacity-[0.07] pointer-events-none"
+          style={{
+            backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)',
+            backgroundSize: '28px 28px'
+          }}
+        />
 
-          {/* Image Section - Left on desktop */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            className="order-1 md:order-1 flex justify-center md:justify-start"
+        {/* Ambient Gradient Glows */}
+        <div className="absolute top-1/4 left-1/10 w-96 h-96 bg-indigo-600/10 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-1/3 right-1/10 w-96 h-96 bg-emerald-600/10 rounded-full blur-[120px] pointer-events-none" />
+
+        {/* Hero Section Container */}
+        {!isLoading && (
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="relative z-10 min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16"
           >
-            <div className="relative">
-              <div className="absolute inset-0 bg-blue-600 rounded-full blur-2xl opacity-20 animate-pulse"></div>
-              <img
-                src={profileImg}
-                alt="Dumindu Dulanjaya"
-                className="relative w-72 h-72 md:w-96 md:h-96 rounded-full border-4 border-white shadow-2xl object-cover z-10"
-              />
-            </div>
-          </motion.div>
-
-          {/* Text Section - Right on desktop */}
-          <div className="order-2 md:order-2 text-center md:text-left">
-            <motion.h1
-              className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight"
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-            >
-              Hi, I'm{' '}
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent block mt-2">
-                Dumindu Dulanjaya
-              </span>
-            </motion.h1>
-
-            <motion.p
-              className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-lg mx-auto md:mx-0"
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.4 }}
-            >
-              Full-Stack Developer & UI/UX Designer passionate about creating beautiful,
-              functional digital experiences that make a difference.
-            </motion.p>
-
-            <motion.div
-              className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start items-center"
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.6 }}
-            >
-              <Link to="/projects">
-                <motion.button
-                  className="bg-blue-600 dark:bg-gradient-to-r dark:from-purple-600 dark:to-orange-500 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-blue-700 dark:hover:opacity-90 transition-all duration-200 flex items-center space-x-2 shadow-lg"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+            <div className="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center py-12">
+              
+              {/* Left Side: Content */}
+              <div className="lg:col-span-7 text-left flex flex-col justify-center order-2 lg:order-1">
+                <motion.div
+                  initial={{ opacity: 0, x: -40 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
                 >
-                  <Eye size={20} />
-                  <span>View Projects</span>
-                </motion.button>
-              </Link>
+                  {/* Subtle Badge */}
+                  <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-xs font-medium text-neutral-400 mb-6 tracking-wider uppercase">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                    Available for freelance & full-time
+                  </span>
 
+                  <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mb-6 leading-[1.05] text-white">
+                    FRONTEND
+                    <span className="block text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">
+                      DEVELOPER
+                    </span>
+                  </h1>
+
+                  <p className="text-base sm:text-lg text-neutral-400 mb-8 max-w-xl leading-relaxed">
+                    Crafting premium, high-performance web applications with modern interfaces. 
+                    Specialized in building seamless user experiences using <span className="text-white font-medium">ReactJS</span>, <span className="text-white font-medium">Nest.js</span>, <span className="text-white font-medium">PHP</span>, and <span className="text-white font-medium">Tailwind CSS</span>.
+                  </p>
+
+                  {/* Actions */}
+                  <div className="flex flex-wrap gap-4 items-center">
+                    <Link to="/projects">
+                      <motion.button
+                        className="relative group overflow-hidden bg-white text-black px-8 py-4 rounded-xl font-semibold text-base hover:bg-neutral-100 transition-all duration-300 flex items-center space-x-2 shadow-[0_4px_20px_rgba(255,255,255,0.1)]"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        <Eye size={18} />
+                        <span>View Projects</span>
+                      </motion.button>
+                    </Link>
+
+                    <motion.button
+                      className="border border-neutral-800 bg-neutral-950/40 backdrop-blur-sm text-neutral-300 hover:text-white px-8 py-4 rounded-xl font-semibold text-base hover:bg-neutral-900/60 hover:border-neutral-700 transition-all duration-300 flex items-center space-x-2"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() => {
+                        const link = document.createElement('a');
+                        link.href = "/Dumindu Dulanjaya_CV___Full_Stack_Developer.pdf";
+                        link.download = 'Dumindu_Dulanjaya_CV.pdf';
+                        link.click();
+                      }}
+                    >
+                      <Download size={18} />
+                      <span>Download CV</span>
+                    </motion.button>
+                  </div>
+
+                  {/* Social Quick Links */}
+                  <div className="flex items-center gap-4 mt-8 pt-8 border-t border-neutral-900">
+                    <span className="text-xs uppercase tracking-widest text-neutral-600 font-semibold">Connect:</span>
+                    <a href="https://github.com/Dumindu-Dulanjaya" target="_blank" rel="noreferrer" className="text-neutral-500 hover:text-white transition-colors">
+                      <Github size={20} />
+                    </a>
+                    <a href="mailto:your-email@example.com" className="text-neutral-500 hover:text-white transition-colors">
+                      <Mail size={20} />
+                    </a>
+                    <a href="#" className="text-neutral-500 hover:text-white transition-colors">
+                      <Linkedin size={20} />
+                    </a>
+                  </div>
+                </motion.div>
+              </div>
+
+              {/* Right Side: Interactive ID Badge Card */}
+              <div className="lg:col-span-5 flex justify-center order-1 lg:order-2">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                  className="w-full max-w-[340px] px-4"
+                >
+                  <Tilt
+                    tiltMaxAngleX={15}
+                    tiltMaxAngleY={15}
+                    perspective={1000}
+                    scale={1.04}
+                    transitionSpeed={1500}
+                    gyroscope={true}
+                    className="relative cursor-grab active:cursor-grabbing"
+                  >
+                    {/* Hanger Clip decoration */}
+                    <div className="absolute -top-7 left-1/2 transform -translate-x-1/2 flex flex-col items-center z-20 pointer-events-none">
+                      <div className="w-8 h-3 bg-neutral-800 rounded-t-md border border-neutral-700 shadow-inner" />
+                      <div className="w-12 h-4 bg-neutral-700 rounded-sm border border-neutral-600 flex items-center justify-center">
+                        <div className="w-4 h-1.5 bg-neutral-900 rounded-full" />
+                      </div>
+                    </div>
+
+                    {/* ID Card Wrapper with Neon Glow */}
+                    <div className="w-full bg-[#121212]/90 backdrop-blur-xl border border-neutral-800 rounded-3xl p-6 shadow-[0_0_50px_rgba(99,102,241,0.15)] hover:shadow-[0_0_50px_rgba(99,102,241,0.3)] transition-shadow duration-500 flex flex-col items-center text-center overflow-hidden">
+                      {/* Grid overlay inside the card */}
+                      <div 
+                        className="absolute inset-0 opacity-[0.03] pointer-events-none rounded-3xl"
+                        style={{
+                          backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)',
+                          backgroundSize: '16px 16px'
+                        }}
+                      />
+
+                      {/* Header Logo/Title inside ID */}
+                      <div className="w-full flex justify-between items-center border-b border-neutral-800/80 pb-4 mb-6 relative z-10">
+                        <div className="flex items-center gap-1.5">
+                          <div className="w-3 h-3 rounded-full bg-indigo-500" />
+                          <span className="text-[10px] tracking-[0.2em] font-bold text-neutral-400 uppercase">SYSTEM ID</span>
+                        </div>
+                        <span className="text-[9px] tracking-[0.1em] font-mono text-emerald-400 bg-emerald-500/5 px-2 py-0.5 rounded border border-emerald-500/10">
+                          ACTIVE // 2026
+                        </span>
+                      </div>
+
+                      {/* Professional Portrait PlaceHolder (Black-and-White Image) */}
+                      <div className="relative w-44 h-44 rounded-2xl overflow-hidden border border-neutral-800 bg-neutral-900 mb-6 group/image shadow-inner">
+                        {profileImg ? (
+                          <img
+                            src={profileImg}
+                            alt="Dumindu Dulanjaya"
+                            className="w-full h-full object-cover filter grayscale contrast-125 transition-all duration-500 group-hover/image:scale-105"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center text-neutral-600">
+                            Portrait Image
+                          </div>
+                        )}
+                        {/* Scan Line effect on photo */}
+                        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-500/5 to-transparent animate-[pulse_2s_infinite] pointer-events-none" />
+                      </div>
+
+                      {/* Member Info */}
+                      <div className="w-full relative z-10">
+                        <h2 className="text-xl font-bold tracking-tight text-white mb-1">
+                          Dumindu Dulanjaya
+                        </h2>
+                        <p className="text-xs font-semibold tracking-wider text-indigo-400 uppercase mb-4">
+                          Frontend Developer
+                        </p>
+
+                        {/* Card metadata / specs */}
+                        <div className="grid grid-cols-2 gap-2 text-left bg-neutral-950/60 border border-neutral-900 rounded-xl p-3 text-[10px] font-mono text-neutral-500">
+                          <div>
+                            <span className="block text-[8px] text-neutral-600 uppercase">Role</span>
+                            <span className="text-neutral-300">Creator / Dev</span>
+                          </div>
+                          <div>
+                            <span className="block text-[8px] text-neutral-600 uppercase">Location</span>
+                            <span className="text-neutral-300">Sri Lanka</span>
+                          </div>
+                          <div className="col-span-2 border-t border-neutral-900/60 pt-1.5 mt-1.5">
+                            <span className="block text-[8px] text-neutral-600 uppercase">Key Tech Stack</span>
+                            <span className="text-indigo-300/90">React • NestJS • Tailwind</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Barcode representation at bottom */}
+                      <div className="w-full flex flex-col items-center mt-6 pt-4 border-t border-neutral-900/80 relative z-10 opacity-70">
+                        <div className="h-6 w-full max-w-[200px] flex items-center gap-[2px] justify-center text-neutral-600 font-mono">
+                          {/* Simulated Barcode */}
+                          {[4, 2, 8, 1, 6, 2, 4, 3, 8, 2, 6, 1, 4, 8, 2, 5, 2, 7, 4, 2, 6, 1, 8].map((w, i) => (
+                            <div 
+                              key={i} 
+                              className="bg-neutral-400 h-full" 
+                              style={{ width: `${w * 0.5 + 1}px` }} 
+                            />
+                          ))}
+                        </div>
+                        <span className="text-[8px] font-mono text-neutral-600 mt-1">DUMINDU.DULANJAYA.2026</span>
+                      </div>
+                    </div>
+                  </Tilt>
+                </motion.div>
+              </div>
+
+            </div>
+
+            {/* Scroll Down Indicator */}
+            <motion.div
+              className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 1 }}
+            >
               <motion.button
-                className="border-2 border-blue-600 dark:border-white text-blue-600 dark:text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-blue-600 hover:text-white dark:hover:bg-white dark:hover:text-slate-900 transition-colors duration-200 flex items-center space-x-2"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => {
-                  const link = document.createElement('a');
-                  link.href = "/Dumindu Dulanjaya_CV___Full_Stack_Developer.pdf";
-                  link.download = 'Dumindu_Dulanjaya_CV.pdf';
-                  link.click();
-                }}
+                onClick={scrollToNext}
+                className="p-2.5 rounded-full border border-neutral-800 bg-neutral-900 hover:bg-neutral-800 text-neutral-400 hover:text-white transition-colors duration-200 shadow-md animate-bounce"
               >
-                <Download size={20} />
-                <span>Download CV</span>
+                <ArrowDown className="w-5 h-5" />
               </motion.button>
             </motion.div>
-          </div>
-
-        </div>
-
-        {/* Scroll Down Indicator */}
-        <motion.div
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1 }}
-        >
-          <motion.button
-            onClick={scrollToNext}
-            className="animate-bounce p-2 bg-white rounded-full shadow-md text-blue-600"
-          >
-            <ArrowDown className="w-6 h-6" />
-          </motion.button>
-        </motion.div>
+          </motion.div>
+        )}
       </div>
 
-      {/* Quick Preview Section */}
-      <section className="relative z-10 py-20 bg-white dark:bg-slate-950 transition-colors duration-300">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.h2
-            className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-12"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true }}
-          >
-            What I Do
-          </motion.h2>
+      {/* Services/Quick Preview Section */}
+      {!isLoading && (
+        <section className="relative z-10 py-24 bg-[#090909] border-t border-neutral-900 text-white transition-colors duration-300">
+          {/* Subtle Grid Pattern */}
+          <div 
+            className="absolute inset-0 opacity-[0.03] pointer-events-none"
+            style={{
+              backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)',
+              backgroundSize: '28px 28px'
+            }}
+          />
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                title: 'Frontend Development',
-                description: 'Creating responsive, interactive user interfaces with React, TypeScript, and modern CSS frameworks.',
-                icon: '🎨'
-              },
-              {
-                title: 'Backend Development',
-                description: 'Building robust APIs and server-side applications with Node.js, Python, and cloud technologies.',
-                icon: '⚙️'
-              },
-              {
-                title: 'UI/UX Design',
-                description: 'Designing intuitive user experiences with attention to accessibility and modern design principles.',
-                icon: '✨'
-              }
-            ].map((service, index) => (
-              <motion.div
-                key={index}
-                className="p-6 rounded-xl bg-gray-50 dark:bg-slate-900 hover:bg-blue-50 dark:hover:bg-slate-800 transition-colors duration-200"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5 }}
-              >
-                <div className="text-4xl mb-4">{service.icon}</div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{service.title}</h3>
-                <p className="text-gray-600 dark:text-gray-300">{service.description}</p>
-              </motion.div>
-            ))}
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <motion.h2
+              className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-16"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              viewport={{ once: true }}
+            >
+              What I Do
+            </motion.h2>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              {[
+                {
+                  title: 'Frontend Development',
+                  description: 'Creating responsive, interactive user interfaces with React, TypeScript, and modern CSS frameworks.',
+                  icon: '🎨'
+                },
+                {
+                  title: 'Backend Development',
+                  description: 'Building robust APIs and server-side applications with Node.js, Python, and cloud technologies.',
+                  icon: '⚙️'
+                },
+                {
+                  title: 'UI/UX Design',
+                  description: 'Designing intuitive user experiences with attention to accessibility and modern design principles.',
+                  icon: '✨'
+                }
+              ].map((service, index) => (
+                <motion.div
+                  key={index}
+                  className="p-8 rounded-2xl bg-[#121212]/50 border border-neutral-900 hover:border-neutral-800 hover:bg-[#161616] transition-all duration-300"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -5 }}
+                >
+                  <div className="text-4xl mb-6">{service.icon}</div>
+                  <h3 className="text-xl font-bold text-white mb-3">{service.title}</h3>
+                  <p className="text-neutral-400 text-sm leading-relaxed">{service.description}</p>
+                </motion.div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      )}
+    </>
   );
 };
 
