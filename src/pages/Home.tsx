@@ -13,17 +13,22 @@ const Home = () => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  // Spring physics configuration
-  const springConfig = { mass: 1.2, stiffness: 90, damping: 20 };
+  // Spring physics configuration (feels natural and responsive)
+  const springConfig = { mass: 1, stiffness: 100, damping: 30 };
   const springX = useSpring(mouseX, springConfig);
   const springY = useSpring(mouseY, springConfig);
 
-  // Map spring coordinates to translations and 3D rotations
-  const rotateX = useTransform(springY, [-250, 250], [15, -15]);
-  const rotateY = useTransform(springX, [-250, 250], [-15, 15]);
-  const rotateZ = useTransform(springX, [-250, 250], [-6, 6]);
-  const translateX = useTransform(springX, [-250, 250], [-12, 12]);
-  const translateY = useTransform(springY, [-250, 250], [-12, 12]);
+  // Map spring coordinates to different depths (Parallax effect)
+  // Portrait Image (Foreground - moves more)
+  const portraitX = useTransform(springX, [-250, 250], [-25, 25]);
+  const portraitY = useTransform(springY, [-250, 250], [-25, 25]);
+  const portraitRotateX = useTransform(springY, [-250, 250], [10, -10]);
+  const portraitRotateY = useTransform(springX, [-250, 250], [-10, 10]);
+  const portraitRotateZ = useTransform(springX, [-250, 250], [-4, 4]);
+
+  // Yellow Circle (Background - moves less)
+  const circleX = useTransform(springX, [-250, 250], [-10, 10]);
+  const circleY = useTransform(springY, [-250, 250], [-10, 10]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -200,23 +205,60 @@ const Home = () => {
               <div className="lg:col-span-6 flex justify-center lg:justify-end order-1 lg:order-2 overflow-visible">
                 <div className="relative flex justify-center items-center w-full max-w-[500px] lg:max-w-[560px] xl:max-w-[620px]">
                   
-                  {/* Yellow Circle */}
-                  <motion.div 
-                    initial={{ scale: 0.6, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="absolute z-0 rounded-full bg-[#EAB308] w-[280px] h-[280px] lg:w-[400px] lg:h-[400px]"
-                  />
+                  {/* Yellow Circle Floating Wrapper */}
+                  <motion.div
+                    animate={{ y: [-4, 4] }}
+                    transition={{
+                      repeat: Infinity,
+                      repeatType: "reverse",
+                      duration: 5,
+                      ease: "easeInOut"
+                    }}
+                    className="absolute z-0 w-[280px] h-[280px] lg:w-[400px] lg:h-[400px]"
+                  >
+                    {/* Yellow Circle Parallax Core */}
+                    <motion.div 
+                      initial={{ scale: 0.6, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{ duration: 0.8, ease: "easeOut" }}
+                      style={{
+                        x: circleX,
+                        y: circleY,
+                      }}
+                      className="w-full h-full rounded-full bg-[#EAB308]"
+                    />
+                  </motion.div>
 
-                  {/* Portrait Image */}
-                  <motion.img 
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-                    src={portfolioimage} 
-                    alt="Dumindu Dulanjaya" 
-                    className="relative z-10 h-[380px] lg:h-[520px] w-auto object-contain select-none filter grayscale contrast-125 translate-y-4"
-                  />
+                  {/* Portrait Image Floating Wrapper (with delay offset) */}
+                  <motion.div
+                    animate={{ y: [-8, 8] }}
+                    transition={{
+                      repeat: Infinity,
+                      repeatType: "reverse",
+                      duration: 5,
+                      ease: "easeInOut",
+                      delay: 0.4
+                    }}
+                    className="relative z-10 flex justify-center items-center"
+                  >
+                    {/* Portrait Image Parallax Core */}
+                    <motion.img 
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+                      style={{
+                        x: portraitX,
+                        y: portraitY,
+                        rotateX: portraitRotateX,
+                        rotateY: portraitRotateY,
+                        rotateZ: portraitRotateZ,
+                        transformStyle: 'preserve-3d'
+                      }}
+                      src={portfolioimage} 
+                      alt="Dumindu Dulanjaya" 
+                      className="h-[380px] lg:h-[520px] w-auto object-contain select-none filter grayscale contrast-125 translate-y-4"
+                    />
+                  </motion.div>
                   
                 </div>
               </div>
