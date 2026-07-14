@@ -256,7 +256,7 @@ const Home = () => {
                       }}
                       src={portfolioimage} 
                       alt="Dumindu Dulanjaya" 
-                      className="h-[380px] lg:h-[520px] w-auto object-contain select-none filter grayscale contrast-125 translate-y-4"
+                      className="h-[380px] lg:h-[520px] w-auto object-contain select-none translate-y-4"
                     />
                   </motion.div>
                   
