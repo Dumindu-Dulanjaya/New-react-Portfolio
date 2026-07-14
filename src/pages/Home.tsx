@@ -130,7 +130,7 @@ const Home = () => {
             >
               
               {/* Left Side: Content */}
-              <div className="lg:col-span-7 text-left flex flex-col justify-center order-2 lg:order-1">
+              <div className="lg:col-span-6 text-left flex flex-col justify-center order-2 lg:order-1">
                 <motion.div
                   initial={{ opacity: 0, x: -40 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -196,10 +196,9 @@ const Home = () => {
                 </motion.div>
               </div>
 
-              {/* Right Side: Hanging ID Card (replaced with custom physics profile image) */}
-              <div className="lg:col-span-5 flex justify-center order-1 lg:order-2">
-                <div className="w-full max-w-[420px] px-4 relative">
-                  
+              {/* Right Side: Huge Borderless Minimalist Image */}
+              <div className="lg:col-span-6 flex justify-center lg:justify-end order-1 lg:order-2 overflow-visible">
+                <div className="w-full max-w-[500px] lg:max-w-[560px] xl:max-w-[620px] relative">
                   <motion.div
                     animate={{ y: [-8, 8] }}
                     transition={{
@@ -222,18 +221,17 @@ const Home = () => {
                       }}
                       className="w-full relative cursor-grab active:cursor-grabbing select-none"
                     >
-                      {/* Glow behind the image */}
-                      <div className="absolute inset-0 bg-yellow-500/10 rounded-full blur-[100px] pointer-events-none" />
+                      {/* Soft ambient background glow */}
+                      <div className="absolute inset-0 bg-yellow-500/10 rounded-full blur-[120px] pointer-events-none scale-90" />
                       
-                      {/* Main Image */}
+                      {/* The borderless image blending with #0B0B0B background */}
                       <img 
                         src={portfolioimage} 
                         alt="Dumindu Dulanjaya" 
-                        className="w-full h-auto object-contain relative z-10 filter drop-shadow-[0_0_30px_rgba(234,179,8,0.15)]"
+                        className="w-full h-auto object-contain relative z-10 filter drop-shadow-[0_10px_50px_rgba(234,179,8,0.12)]"
                       />
                     </motion.div>
                   </motion.div>
-
                 </div>
               </div>
 
