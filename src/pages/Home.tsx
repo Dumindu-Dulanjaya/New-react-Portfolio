@@ -172,7 +172,7 @@ const Home = () => {
                           <img
                             src={profileImg}
                             alt="Dumindu Dulanjaya"
-                            className="w-full h-full object-cover filter grayscale contrast-125 transition-all duration-500 group-hover/image:scale-105"
+                            className="w-full h-full object-cover transition-all duration-500 group-hover/image:scale-105"
                           />
                         ) : (
                           <div className="w-full h-full flex items-center justify-center text-neutral-600">
