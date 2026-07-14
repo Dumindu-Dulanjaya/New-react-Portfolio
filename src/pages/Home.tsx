@@ -3,7 +3,7 @@ import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from
 import { ArrowDown, Download, Eye, Github, Mail, Linkedin, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import WelcomeLoader from '../components/WelcomeLoader';
-import profileImg from '../assets/profile_img.jpg';
+import profile1 from '../assets/profile1.jpeg';
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -196,30 +196,23 @@ const Home = () => {
                 </motion.div>
               </div>
 
-              {/* Right Side: Hanging ID Card (Pendulum Physics) */}
+              {/* Right Side: Hanging ID Card (replaced with custom physics profile image) */}
               <div className="lg:col-span-5 flex justify-center order-1 lg:order-2">
-                <div className="w-full max-w-[340px] px-4 relative">
+                <div className="w-full max-w-[420px] px-4 relative">
                   
                   <motion.div
-                    animate={{ y: [-6, 6] }}
+                    animate={{ y: [-8, 8] }}
                     transition={{
                       repeat: Infinity,
                       repeatType: "reverse",
-                      duration: 4,
+                      duration: 5,
                       ease: "easeInOut"
                     }}
                     className="w-full"
                   >
-                    <div className="absolute -top-7 left-1/2 transform -translate-x-1/2 flex flex-col items-center z-20 pointer-events-none">
-                      <div className="w-8 h-3 bg-neutral-800 rounded-t-md border border-neutral-700 shadow-inner" />
-                      <div className="w-12 h-4 bg-neutral-700 rounded-sm border border-neutral-600 flex items-center justify-center">
-                        <div className="w-4 h-1.5 bg-neutral-900 rounded-full" />
-                      </div>
-                    </div>
-
                     <motion.div
                       style={{
-                        transformOrigin: 'top center',
+                        transformOrigin: 'center center',
                         rotateX,
                         rotateY,
                         rotateZ,
@@ -227,77 +220,17 @@ const Home = () => {
                         y: translateY,
                         transformStyle: 'preserve-3d'
                       }}
-                      className="w-full bg-[#121212]/90 backdrop-blur-xl border border-neutral-800 rounded-3xl p-6 shadow-[0_0_50px_rgba(99,102,241,0.15)] hover:shadow-[0_0_50px_rgba(99,102,241,0.3)] transition-shadow duration-500 flex flex-col items-center text-center overflow-hidden cursor-grab active:cursor-grabbing"
+                      className="w-full relative cursor-grab active:cursor-grabbing select-none"
                     >
-                      <div 
-                        className="absolute inset-0 opacity-[0.03] pointer-events-none rounded-3xl"
-                        style={{
-                          backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)',
-                          backgroundSize: '16px 16px'
-                        }}
+                      {/* Glow behind the image */}
+                      <div className="absolute inset-0 bg-yellow-500/10 rounded-full blur-[100px] pointer-events-none" />
+                      
+                      {/* Main Image */}
+                      <img 
+                        src={profile1} 
+                        alt="Dumindu Dulanjaya" 
+                        className="w-full h-auto object-contain relative z-10 filter drop-shadow-[0_0_30px_rgba(234,179,8,0.15)]"
                       />
-
-                      <div className="w-full flex justify-between items-center border-b border-neutral-800/80 pb-4 mb-6 relative z-10">
-                        <div className="flex items-center gap-1.5">
-                          <div className="w-3 h-3 rounded-full bg-indigo-500" />
-                          <span className="text-[10px] tracking-[0.2em] font-bold text-neutral-400 uppercase">SYSTEM ID</span>
-                        </div>
-                        <span className="text-[9px] tracking-[0.1em] font-mono text-emerald-400 bg-emerald-500/5 px-2 py-0.5 rounded border border-emerald-500/10">
-                          ACTIVE // 2026
-                        </span>
-                      </div>
-
-                      <div className="relative w-44 h-44 rounded-2xl overflow-hidden border border-neutral-800 bg-neutral-900 mb-6 group/image shadow-inner">
-                        {profileImg ? (
-                          <img
-                            src={profileImg}
-                            alt="Dumindu Dulanjaya"
-                            className="w-full h-full object-cover transition-all duration-500 group-hover/image:scale-105"
-                          />
-                        ) : (
-                          <div className="w-full h-full flex items-center justify-center text-neutral-600">
-                            Portrait Image
-                          </div>
-                        )}
-                        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-500/5 to-transparent animate-[pulse_2s_infinite] pointer-events-none" />
-                      </div>
-
-                      <div className="w-full relative z-10">
-                        <h2 className="text-xl font-bold tracking-tight text-white mb-1">
-                          Dumindu Dulanjaya
-                        </h2>
-                        <p className="text-xs font-semibold tracking-wider text-indigo-400 uppercase mb-4">
-                          Frontend Developer
-                        </p>
-
-                        <div className="grid grid-cols-2 gap-2 text-left bg-neutral-950/60 border border-neutral-900 rounded-xl p-3 text-[10px] font-mono text-neutral-500">
-                          <div>
-                            <span className="block text-[8px] text-neutral-600 uppercase">Role</span>
-                            <span className="text-neutral-300">Creator / Dev</span>
-                          </div>
-                          <div>
-                            <span className="block text-[8px] text-neutral-600 uppercase">Location</span>
-                            <span className="text-neutral-300">Sri Lanka</span>
-                          </div>
-                          <div className="col-span-2 border-t border-neutral-900/60 pt-1.5 mt-1.5">
-                            <span className="block text-[8px] text-neutral-600 uppercase">Key Tech Stack</span>
-                            <span className="text-indigo-300/90">React • NestJS • Tailwind</span>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="w-full flex flex-col items-center mt-6 pt-4 border-t border-neutral-900/80 relative z-10 opacity-70">
-                        <div className="h-6 w-full max-w-[200px] flex items-center gap-[2px] justify-center text-neutral-600 font-mono">
-                          {[4, 2, 8, 1, 6, 2, 4, 3, 8, 2, 6, 1, 4, 8, 2, 5, 2, 7, 4, 2, 6, 1, 8].map((w, i) => (
-                            <div 
-                              key={i} 
-                              className="bg-neutral-400 h-full" 
-                              style={{ width: `${w * 0.5 + 1}px` }} 
-                            />
-                          ))}
-                        </div>
-                        <span className="text-[8px] font-mono text-neutral-600 mt-1">DUMINDU.DULANJAYA.2026</span>
-                      </div>
                     </motion.div>
                   </motion.div>
 

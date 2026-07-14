@@ -1,15 +1,9 @@
-import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useEffect } from 'react';
-import img4 from '../assets/img4.jpeg';
-import img5 from '../assets/img5.jpeg';
-import img6 from '../assets/img6.jpeg';
-import img7 from '../assets/img7.jpeg';
-import img8 from '../assets/img8.jpeg';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import profileImg from '../assets/profile_img.jpg';
 import {
   Code,
   Database,
-  Globe,
   Smartphone,
   Palette,
   GitBranch,
@@ -18,16 +12,37 @@ import {
 } from 'lucide-react';
 
 const About = () => {
-  const images = [img4, img5, img6, img7, img8];
-  const [currentIndex, setCurrentIndex] = useState(0);
+  // Mouse movement tracking values for the ID Card
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 3000);
+  // Spring physics configuration
+  const springConfig = { mass: 1.2, stiffness: 90, damping: 20 };
+  const springX = useSpring(mouseX, springConfig);
+  const springY = useSpring(mouseY, springConfig);
 
-    return () => clearInterval(timer);
-  }, []);
+  // Map spring coordinates to translations and 3D rotations
+  const rotateX = useTransform(springY, [-250, 250], [15, -15]);
+  const rotateY = useTransform(springX, [-250, 250], [-15, 15]);
+  const rotateZ = useTransform(springX, [-250, 250], [-6, 6]);
+  const translateX = useTransform(springX, [-250, 250], [-12, 12]);
+  const translateY = useTransform(springY, [-250, 250], [-12, 12]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const x = e.clientX - rect.left - width / 2;
+    const y = e.clientY - rect.top - height / 2;
+    mouseX.set(x);
+    mouseY.set(y);
+  };
+
+  const handleMouseLeave = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+  };
+
   const skills = [
     { name: 'React', icon: <Code className="w-8 h-8" />, level: 95 },
     { name: 'TypeScript', icon: <Code className="w-8 h-8" />, level: 90 },
@@ -59,88 +74,187 @@ const About = () => {
   };
 
   return (
-    <div className="pt-16 min-h-screen bg-gray-50 dark:bg-slate-950 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div className="pt-16 min-h-screen bg-[#0B0B0B] text-white transition-colors duration-300">
+      {/* Subtle Dot Grid Pattern */}
+      <div 
+        className="absolute inset-0 opacity-[0.05] pointer-events-none"
+        style={{
+          backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)',
+          backgroundSize: '24px 24px'
+        }}
+      />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
         {/* Header */}
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-20"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            About <span className="text-blue-600">Me</span>
+          <span className="text-xs font-mono uppercase tracking-[0.3em] text-yellow-500 font-semibold block mb-2">ABOUT</span>
+          <h1 className="text-4xl md:text-5xl font-black text-white mb-6 uppercase">
+            ABOUT <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">ME.</span>
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            I'm a passionate Full Stack Developer with a Love for creating dynamic, user-friendly web applications. With expertise in both frontend and backend technologies, I strive to build seamless digital experiences that solve real-world problems.
+          <p className="text-lg text-neutral-400 max-w-3xl mx-auto font-light leading-relaxed">
+            I'm a passionate Full Stack Developer with a love for creating dynamic, user-friendly web applications. With expertise in both frontend and backend technologies, I strive to build seamless digital experiences that solve real-world problems.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 mb-20">
+        <div className="grid lg:grid-cols-12 gap-12 mb-20 items-center">
           {/* Bio Section */}
           <motion.div
+            className="lg:col-span-7"
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">My Journey</h2>
-            <div className="space-y-4 text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+            <h2 className="text-3xl font-extrabold text-white mb-6 tracking-tight">My Journey</h2>
+            <div className="space-y-6 text-neutral-400 text-base sm:text-lg leading-relaxed font-light">
               <p>
-                My journey in tech started with a fascination for how things work behind the scenes, and it has evolved into a passion for creat
-
+                My journey in tech started with a fascination for how things work behind the scenes, and it has evolved into a passion for creating high-performance digital environments.
               </p>
               <p>
-                I’m a passionate and dedicated undergraduate student currently pursuing my studies at the Institute of Technology, University of Moratuwa (ITUM).I have a growing interest in areas such as web development, software engineering, and emerging technologies.
+                I’m a dedicated undergraduate student currently pursuing my studies at the <span className="text-white font-medium">Institute of Technology, University of Moratuwa (ITUM)</span>. I specialize in web technologies, software architecture, and interactive client layouts.
               </p>
               <p>
-                As I continue my academic journey, I actively seek opportunities to expand my skills through hands-on projects, collaborations, and continuous learning. I enjoy contributing to open-source projects, learning from tech communities, and staying updated with the latest advancements in the tech world.
+                As I continue my academic journey, I actively seek opportunities to expand my skills through hands-on projects, collaborations, and continuous learning. I enjoy contributing to open-source systems, learning from tech communities, and staying updated with advancements in the dev ecosystem.
               </p>
             </div>
           </motion.div>
 
-          {/* Image Slideshow */}
-          <motion.div
-            className="relative h-96 rounded-xl overflow-hidden shadow-lg bg-gray-900"
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.4 }}
+          {/* Interactive ID Badge Section (Right Side) */}
+          <div 
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            className="lg:col-span-5 flex justify-center items-center py-6"
           >
-            <AnimatePresence mode="wait">
+            <div className="w-full max-w-[320px] relative">
+              
+              {/* Floating idle wrapper */}
               <motion.div
-                key={currentIndex}
-                className="absolute inset-0 w-full h-full"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5 }}
+                animate={{ y: [-6, 6] }}
+                transition={{
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  duration: 4,
+                  ease: "easeInOut"
+                }}
+                className="w-full"
               >
-                {/* Blurred Background */}
-                <div
-                  className="absolute inset-0 bg-cover bg-center blur-xl opacity-50 scale-110"
-                  style={{ backgroundImage: `url(${images[currentIndex]})` }}
-                />
+                {/* Hanger clip */}
+                <div className="absolute -top-7 left-1/2 transform -translate-x-1/2 flex flex-col items-center z-20 pointer-events-none">
+                  <div className="w-8 h-3 bg-neutral-850 rounded-t-md border border-neutral-700 shadow-inner" />
+                  <div className="w-12 h-4 bg-neutral-800 rounded-sm border border-neutral-750 flex items-center justify-center">
+                    <div className="w-4 h-1.5 bg-neutral-950 rounded-full" />
+                  </div>
+                </div>
 
-                {/* Main Image */}
-                <img
-                  src={images[currentIndex]}
-                  alt={`Slide ${currentIndex + 1}`}
-                  className="relative z-10 w-full h-full object-contain p-2"
-                />
+                {/* ID Badge Card Body */}
+                <motion.div
+                  style={{
+                    transformOrigin: 'top center',
+                    rotateX,
+                    rotateY,
+                    rotateZ,
+                    x: translateX,
+                    y: translateY,
+                    transformStyle: 'preserve-3d'
+                  }}
+                  className="w-full bg-[#121212]/95 backdrop-blur-xl border border-neutral-800 rounded-3xl p-6 shadow-[0_0_40px_rgba(255,255,255,0.03)] hover:shadow-[0_0_50px_rgba(234,179,8,0.15)] transition-shadow duration-500 flex flex-col items-center text-center overflow-hidden cursor-grab active:cursor-grabbing"
+                >
+                  <div 
+                    className="absolute inset-0 opacity-[0.03] pointer-events-none rounded-3xl"
+                    style={{
+                      backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)',
+                      backgroundSize: '16px 16px'
+                    }}
+                  />
+
+                  {/* Top identifier */}
+                  <div className="w-full flex justify-between items-center border-b border-neutral-850 pb-4 mb-6 relative z-10">
+                    <div className="flex items-center gap-1.5">
+                      <div className="w-2.5 h-2.5 rounded-full bg-yellow-500" />
+                      <span className="text-[9px] tracking-[0.2em] font-bold text-neutral-400 uppercase">SYSTEM ID</span>
+                    </div>
+                    <span className="text-[8px] tracking-[0.1em] font-mono text-yellow-500 bg-yellow-500/5 px-2 py-0.5 rounded border border-yellow-500/10">
+                      MEMBER // ITUM
+                    </span>
+                  </div>
+
+                  {/* Profile image (Grayscale version inside ID) */}
+                  <div className="relative w-40 h-40 rounded-2xl overflow-hidden border border-neutral-800 bg-neutral-900 mb-6 shadow-inner">
+                    {profileImg ? (
+                      <img
+                        src={profileImg}
+                        alt="Dumindu Dulanjaya"
+                        className="w-full h-full object-cover filter grayscale contrast-125"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-neutral-600">
+                        Portrait Image
+                      </div>
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-yellow-500/5 to-transparent pointer-events-none" />
+                  </div>
+
+                  {/* Member details */}
+                  <div className="w-full relative z-10">
+                    <h2 className="text-lg font-bold tracking-tight text-white mb-0.5">
+                      Dumindu Dulanjaya
+                    </h2>
+                    <p className="text-[10px] font-semibold tracking-wider text-yellow-500 uppercase mb-4">
+                      Frontend Developer
+                    </p>
+
+                    {/* Metadata fields */}
+                    <div className="grid grid-cols-2 gap-2 text-left bg-neutral-950/80 border border-neutral-900 rounded-xl p-3 text-[9px] font-mono text-neutral-500">
+                      <div>
+                        <span className="block text-[7px] text-neutral-600 uppercase">Role</span>
+                        <span className="text-neutral-300">Creator / Dev</span>
+                      </div>
+                      <div>
+                        <span className="block text-[7px] text-neutral-600 uppercase">Location</span>
+                        <span className="text-neutral-300">Sri Lanka</span>
+                      </div>
+                      <div className="col-span-2 border-t border-neutral-900/60 pt-1.5 mt-1.5">
+                        <span className="block text-[7px] text-neutral-600 uppercase">Key Tech Stack</span>
+                        <span className="text-yellow-400/90">React • NestJS • Tailwind</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Simulated barcode */}
+                  <div className="w-full flex flex-col items-center mt-6 pt-4 border-t border-neutral-850 relative z-10 opacity-60">
+                    <div className="h-6 w-full max-w-[180px] flex items-center gap-[2px] justify-center text-neutral-600 font-mono">
+                      {[3, 2, 6, 1, 8, 2, 4, 3, 5, 2, 6, 1, 4, 8, 2, 4, 2, 7, 3, 2, 6, 1, 8].map((w, i) => (
+                        <div 
+                          key={i} 
+                          className="bg-neutral-400 h-full" 
+                          style={{ width: `${w * 0.5 + 1}px` }} 
+                        />
+                      ))}
+                    </div>
+                    <span className="text-[7px] font-mono text-neutral-600 mt-1">DUMINDU.DULANJAYA.2026</span>
+                  </div>
+
+                </motion.div>
               </motion.div>
-            </AnimatePresence>
-            <div className="absolute -top-4 -right-4 w-full h-full bg-blue-200 rounded-xl -z-10"></div>
-          </motion.div>
+
+            </div>
+          </div>
         </div>
 
         {/* Skills Section */}
         <motion.div
+          className="mt-32"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
         >
           <motion.h2
-            className="text-3xl font-bold text-gray-900 dark:text-white text-center mb-12"
+            className="text-3xl font-extrabold text-white text-center mb-16 uppercase tracking-tight"
             variants={itemVariants}
           >
             Skills & Technologies
@@ -150,26 +264,26 @@ const About = () => {
             {skills.map((skill, index) => (
               <motion.div
                 key={skill.name}
-                className="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow transition-colors duration-300"
+                className="bg-[#121212] border border-neutral-900 p-6 rounded-2xl shadow-lg hover:border-neutral-800 transition-all duration-300"
                 variants={itemVariants}
                 whileHover={{ y: -5 }}
               >
-                <div className="flex items-center justify-center w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full mx-auto mb-4 text-blue-600 dark:text-blue-400">
+                <div className="flex items-center justify-center w-16 h-16 bg-neutral-950 border border-neutral-900 rounded-full mx-auto mb-4 text-yellow-500">
                   {skill.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white text-center mb-4">
+                <h3 className="text-xl font-bold text-white text-center mb-4">
                   {skill.name}
                 </h3>
-                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mb-2">
+                <div className="w-full bg-neutral-950 rounded-full h-2 mb-2 border border-neutral-900">
                   <motion.div
-                    className="bg-blue-600 dark:bg-blue-500 h-2 rounded-full"
+                    className="bg-gradient-to-r from-yellow-500 to-orange-500 h-1.5 rounded-full"
                     initial={{ width: 0 }}
                     whileInView={{ width: `${skill.level}%` }}
                     transition={{ duration: 1, delay: index * 0.1 }}
                     viewport={{ once: true }}
                   />
                 </div>
-                <p className="text-center text-gray-600 dark:text-gray-400 text-sm">{skill.level}%</p>
+                <p className="text-center text-neutral-500 text-xs font-mono">{skill.level}%</p>
               </motion.div>
             ))}
           </div>
@@ -177,46 +291,43 @@ const About = () => {
 
         {/* Education & Experience */}
         <motion.div
-          className="mt-20 grid md:grid-cols-2 gap-12"
+          className="mt-32 grid md:grid-cols-2 gap-12"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
         >
           <div>
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Education</h3>
+            <h3 className="text-2xl font-extrabold text-white mb-8 tracking-tight uppercase">Education</h3>
             <div className="space-y-4">
-              <div className="border-l-4 border-blue-600 pl-4">
-                <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
+              <div className="border-l-2 border-yellow-500 pl-4">
+                <h4 className="text-lg font-bold text-white">
                   Diploma in Information Technology
                 </h4>
-                <p className="text-blue-600 dark:text-blue-400 font-medium">Institute Of Technology University Of Moratuwa</p>
-                <p className="text-gray-600 dark:text-gray-400">2023 - Present</p>
-                <p className="text-gray-600 dark:text-gray-300 mt-2">
-                  Undergraduated , focusing on software engineering and web technologies.
+                <p className="text-yellow-500 font-mono text-sm">Institute Of Technology University Of Moratuwa</p>
+                <p className="text-neutral-500 text-xs font-mono">2023 - Present</p>
+                <p className="text-neutral-400 text-sm mt-3 font-light">
+                  Undergraduate, focusing on software engineering and web technologies.
                 </p>
               </div>
             </div>
           </div>
 
           <div>
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Experience</h3>
-            <div className="space-y-4">
-              <div className="border-l-4 border-blue-600 pl-4">
-                <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
+            <h3 className="text-2xl font-extrabold text-white mb-8 tracking-tight uppercase">Experience</h3>
+            <div className="space-y-6">
+              <div className="border-l-2 border-yellow-500 pl-4">
+                <h4 className="text-lg font-bold text-white">
                   Learning Full Stack Developing
                 </h4>
-                <p className="text-blue-600 dark:text-blue-400 font-medium"></p>
-                <p className="text-gray-600 dark:text-gray-400">2023 - Present</p>
-                <p className="text-gray-600 dark:text-gray-300 mt-2"></p>
+                <p className="text-neutral-500 text-xs font-mono">2023 - Present</p>
               </div>
-              <div className="border-l-4 border-gray-300 dark:border-gray-700 pl-4">
-                <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
+              <div className="border-l-2 border-neutral-850 pl-4">
+                <h4 className="text-lg font-bold text-white">
                   Frontend Developer
                 </h4>
-                <p className="text-gray-600 dark:text-gray-400 font-medium"></p>
-                <p className="text-gray-600 dark:text-gray-400">2023 - Present</p>
-                <p className="text-gray-600 dark:text-gray-300 mt-2">
+                <p className="text-neutral-500 text-xs font-mono">2023 - Present</p>
+                <p className="text-neutral-400 text-sm mt-3 font-light">
                   Developed responsive web applications using React and modern JavaScript.
                 </p>
               </div>
