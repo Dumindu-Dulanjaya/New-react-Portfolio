@@ -1,13 +1,46 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { ArrowDown, Download, Eye, Github, Mail, Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import Tilt from 'react-parallax-tilt';
 import WelcomeLoader from '../components/WelcomeLoader';
 import profileImg from '../assets/profile_img.jpg';
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
+
+  // Mouse movement tracking values
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  // Spring physics configuration (feels weighted like real plastic/card)
+  const springConfig = { mass: 1.2, stiffness: 90, damping: 20 };
+  const springX = useSpring(mouseX, springConfig);
+  const springY = useSpring(mouseY, springConfig);
+
+  // Map spring coordinates to translations and 3D rotations
+  const rotateX = useTransform(springY, [-250, 250], [15, -15]);
+  const rotateY = useTransform(springX, [-250, 250], [-15, 15]);
+  // Z rotation creates a subtle pendulum swing wobble based on horizontal movement
+  const rotateZ = useTransform(springX, [-250, 250], [-6, 6]);
+  const translateX = useTransform(springX, [-250, 250], [-12, 12]);
+  const translateY = useTransform(springY, [-250, 250], [-12, 12]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    // Calculate cursor offset from center of container
+    const x = e.clientX - rect.left - width / 2;
+    const y = e.clientY - rect.top - height / 2;
+    mouseX.set(x);
+    mouseY.set(y);
+  };
+
+  const handleMouseLeave = () => {
+    // Reset to center smoothly
+    mouseX.set(0);
+    mouseY.set(0);
+  };
 
   const scrollToNext = () => {
     window.scrollTo({
@@ -47,7 +80,12 @@ const Home = () => {
             transition={{ duration: 1, ease: "easeOut" }}
             className="relative z-10 min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16"
           >
-            <div className="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center py-12">
+            {/* The outer container tracks mouse movements */}
+            <div 
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+              className="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center py-12"
+            >
               
               {/* Left Side: Content */}
               <div className="lg:col-span-7 text-left flex flex-col justify-center order-2 lg:order-1">
@@ -119,24 +157,22 @@ const Home = () => {
                 </motion.div>
               </div>
 
-              {/* Right Side: Interactive ID Badge Card */}
+              {/* Right Side: Hanging ID Card (Pendulum Physics) */}
               <div className="lg:col-span-5 flex justify-center order-1 lg:order-2">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.4 }}
-                  className="w-full max-w-[340px] px-4"
-                >
-                  <Tilt
-                    tiltMaxAngleX={15}
-                    tiltMaxAngleY={15}
-                    perspective={1000}
-                    scale={1.04}
-                    transitionSpeed={1500}
-                    gyroscope={true}
-                    className="relative cursor-grab active:cursor-grabbing"
+                <div className="w-full max-w-[340px] px-4 relative">
+                  
+                  {/* Floating Idle Wrapper */}
+                  <motion.div
+                    animate={{ y: [-6, 6] }}
+                    transition={{
+                      repeat: Infinity,
+                      repeatType: "reverse",
+                      duration: 4,
+                      ease: "easeInOut"
+                    }}
+                    className="w-full"
                   >
-                    {/* Hanger Clip decoration */}
+                    {/* Hanger Clip decoration (Pivoting base) */}
                     <div className="absolute -top-7 left-1/2 transform -translate-x-1/2 flex flex-col items-center z-20 pointer-events-none">
                       <div className="w-8 h-3 bg-neutral-800 rounded-t-md border border-neutral-700 shadow-inner" />
                       <div className="w-12 h-4 bg-neutral-700 rounded-sm border border-neutral-600 flex items-center justify-center">
@@ -144,8 +180,19 @@ const Home = () => {
                       </div>
                     </div>
 
-                    {/* ID Card Wrapper with Neon Glow */}
-                    <div className="w-full bg-[#121212]/90 backdrop-blur-xl border border-neutral-800 rounded-3xl p-6 shadow-[0_0_50px_rgba(99,102,241,0.15)] hover:shadow-[0_0_50px_rgba(99,102,241,0.3)] transition-shadow duration-500 flex flex-col items-center text-center overflow-hidden">
+                    {/* Mouse-Tracking Physics Card */}
+                    <motion.div
+                      style={{
+                        transformOrigin: 'top center',
+                        rotateX,
+                        rotateY,
+                        rotateZ,
+                        x: translateX,
+                        y: translateY,
+                        transformStyle: 'preserve-3d'
+                      }}
+                      className="w-full bg-[#121212]/90 backdrop-blur-xl border border-neutral-800 rounded-3xl p-6 shadow-[0_0_50px_rgba(99,102,241,0.15)] hover:shadow-[0_0_50px_rgba(99,102,241,0.3)] transition-shadow duration-500 flex flex-col items-center text-center overflow-hidden cursor-grab active:cursor-grabbing"
+                    >
                       {/* Grid overlay inside the card */}
                       <div 
                         className="absolute inset-0 opacity-[0.03] pointer-events-none rounded-3xl"
@@ -166,7 +213,7 @@ const Home = () => {
                         </span>
                       </div>
 
-                      {/* Professional Portrait PlaceHolder (Black-and-White Image) */}
+                      {/* Portrait Image (Colored version) */}
                       <div className="relative w-44 h-44 rounded-2xl overflow-hidden border border-neutral-800 bg-neutral-900 mb-6 group/image shadow-inner">
                         {profileImg ? (
                           <img
@@ -223,9 +270,10 @@ const Home = () => {
                         </div>
                         <span className="text-[8px] font-mono text-neutral-600 mt-1">DUMINDU.DULANJAYA.2026</span>
                       </div>
-                    </div>
-                  </Tilt>
-                </motion.div>
+                    </motion.div>
+                  </motion.div>
+
+                </div>
               </div>
 
             </div>
