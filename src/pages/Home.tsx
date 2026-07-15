@@ -108,13 +108,13 @@ const Home = () => {
                 >
                   <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-xs font-mono text-yellow-500 mb-6 tracking-wider uppercase">
                     <span className="w-2 h-2 rounded-full bg-yellow-500 animate-pulse" />
-                    FRONTEND DEVELOPER // FULL-STACK SOFTWARE DEVELOPER
+                    SOFTWARE ENGINEER // FULL-STACK DEVELOPER
                   </span>
 
                   <h1 className="text-5xl sm:text-6xl md:text-7xl font-black tracking-tight mb-6 leading-[1.05] text-white">
-                    FRONTEND
+                    SOFTWARE
                     <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">
-                      DEVELOPER.
+                      ENGINEER.
                     </span>
                   </h1>
 
