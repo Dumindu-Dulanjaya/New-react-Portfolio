@@ -87,7 +87,7 @@ const Projects = () => {
             whileTap={{ scale: 0.98 }}
             onClick={() => {
               const link = document.createElement('a');
-              link.href = "/Dumindu Dulanjaya_CV___Full_Stack_Developer.pdf";
+              link.href = "/Dumindu Dulanjaya_CV_Software_Engineer.pdf";
               link.download = 'Dumindu_Dulanjaya_CV.pdf';
               link.click();
             }}
