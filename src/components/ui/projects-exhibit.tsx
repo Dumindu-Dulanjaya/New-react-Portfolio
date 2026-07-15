@@ -1,6 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Github, ExternalLink } from "lucide-react";
+import anawuma from "../../assets/anawuma.png";
+import sanota from "../../assets/sanota.png";
+import vms from "../../assets/vms.png";
+import knoweb from "../../assets/knoweb.png";
 
 // Simple local class name merger to replace shadcn/tailwind-merge
 const cn = (...inputs: any[]) => {
@@ -15,7 +19,7 @@ const PROJECTS = [
     subtitle: "Digital Restaurant & Hotel Management Application",
     description: "Developed a full-stack restaurant and hotel management system with QR-based customer ordering and real-time kitchen order tracking. Built secure admin dashboards for billing, inventory management, reservations, and sales reporting. Integrated Socket.IO for real-time order updates.",
     tech: ["React.js", "Next.js", "NestJS", "MySQL", "Socket.IO"],
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1000", // Premium digital restaurant/billing device image
+    image: anawuma, // Premium digital restaurant/billing device image
     github: "https://github.com/Knoweb/Anawuma-Resturant-App-.git",
     live: "http://152.42.179.36/",
   },
@@ -25,7 +29,7 @@ const PROJECTS = [
     subtitle: "Industrial Engineering & Automation Platform",
     description: "Developed a responsive industrial automation platform with a modern React frontend and Spring Boot backend. Designed and implemented RESTful APIs with secure authentication and MySQL database integration. Integrated interactive maps and dynamic project showcases to enhance user engagement.",
     tech: ["React.js", "Spring Boot", "MySQL", "Vite", "Framer Motion", "Leaflet API"],
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1000", // High-tech automation factory layout
+    image: sanota, // High-tech automation factory layout
     github: "https://github.com/Knoweb/sanota-site.git",
     live: "http://188.166.182.111",
   },
@@ -35,7 +39,7 @@ const PROJECTS = [
     subtitle: "Supermarket Management System (Ongoing)",
     description: "Developing a full-stack supermarket management system featuring inventory, billing, logistics, and customer storefront modules. Built an administrative dashboard for product, inventory, and order management with real-time monitoring and Socket.IO-based live rider tracking.",
     tech: ["React.js", "Next.js", "TypeScript", "MySQL", "Socket.IO", "Tailwind CSS"],
-    image: "https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1000", // Grocery checkout or modern logistical retail image
+    image: vms, // Grocery checkout or modern logistical retail image
     github: "https://github.com/Dumindu-Dulanjaya/vms-super-mart.git",
     live: "https://vms-super-mart.vercel.app/",
   },
@@ -45,7 +49,7 @@ const PROJECTS = [
     subtitle: "Corporate Website for Knoweb Solutions",
     description: "Designed and developed the official corporate website for Knoweb Solutions using Next.js and React. Improved website performance, responsiveness, and SEO through server-side rendering and modern frontend practices. Deployed and maintained the production cloud platform.",
     tech: ["React.js", "Next.js", "JavaScript", "Tailwind CSS", "Git"],
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000", // High-end tech agency office/design setup
+    image: knoweb, // High-end tech agency office/design setup
     github: "https://github.com/Knoweb/Knoweb-site.git",
     live: "http://167.71.217.97",
   },

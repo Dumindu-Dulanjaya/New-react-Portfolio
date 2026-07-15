@@ -2,13 +2,17 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Download } from 'lucide-react';
 import ProjectCard from '../components/ProjectCard';
+import anawuma from '../assets/anawuma.png';
+import sanota from '../assets/sanota.png';
+import vms from '../assets/vms.png';
+import knoweb from '../assets/knoweb.png';
 
 const Projects = () => {
   const projects = [
     {
       title: "Anawuma",
       description: "Developed a full-stack restaurant and hotel management system with QR-based customer ordering and real-time kitchen order tracking. Built secure admin dashboards for billing, inventory management, reservations, and sales reporting. Integrated Socket.IO for real-time order updates.",
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1000",
+      image: anawuma,
       liveLink: "http://152.42.179.36/",
       githubLink: "https://github.com/Knoweb/Anawuma-Resturant-App-.git",
       techStack: ["React.js", "Next.js", "NestJS", "MySQL", "Socket.IO"]
@@ -16,7 +20,7 @@ const Projects = () => {
     {
       title: "Sanota",
       description: "Developed a responsive industrial automation platform with a modern React frontend and Spring Boot backend. Designed and implemented RESTful APIs with secure authentication and MySQL database integration. Integrated interactive maps and dynamic project showcases to enhance user engagement.",
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1000",
+      image: sanota,
       liveLink: "http://188.166.182.111",
       githubLink: "https://github.com/Knoweb/sanota-site.git",
       techStack: ["React.js", "Spring Boot", "MySQL", "Vite", "Framer Motion", "Leaflet API"]
@@ -24,7 +28,7 @@ const Projects = () => {
     {
       title: "VMS Super Mart",
       description: "Developing a full-stack supermarket management system featuring inventory, billing, logistics, and customer storefront modules. Built an administrative dashboard for product, inventory, and order management with real-time monitoring and Socket.IO-based live rider tracking.",
-      image: "https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1000",
+      image: vms,
       liveLink: "https://vms-super-mart.vercel.app/",
       githubLink: "https://github.com/Dumindu-Dulanjaya/vms-super-mart.git",
       techStack: ["React.js", "Next.js", "TypeScript", "MySQL", "Socket.IO", "Tailwind CSS"]
@@ -32,7 +36,7 @@ const Projects = () => {
     {
       title: "Knoweb Official Website",
       description: "Designed and developed the official corporate website for Knoweb Solutions using Next.js and React. Improved website performance, responsiveness, and SEO through server-side rendering and modern frontend practices. Deployed and maintained the production cloud platform.",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000",
+      image: knoweb,
       liveLink: "http://167.71.217.97",
       githubLink: "https://github.com/Knoweb/Knoweb-site.git",
       techStack: ["React.js", "Next.js", "JavaScript", "Tailwind CSS", "Git"]
