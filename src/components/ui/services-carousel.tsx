@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Code, Database, Layers } from "lucide-react";
+import { Code, Database, Layers, Cloud } from "lucide-react";
 
 // Simple local class name merger to replace shadcn/tailwind-merge
 const cn = (...inputs: any[]) => {
@@ -17,6 +17,7 @@ const SERVICES = [
     image: "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?q=80&w=1200", // Clean UI coding stock image
     description: "Crafting responsive, high-fidelity user interfaces. Specialized in semantic layouts, component architectures, and responsive flow using React, TypeScript, and Tailwind CSS.",
     tags: ["React.js", "TypeScript", "Tailwind CSS", "Next.js"],
+    featuredProject: { name: "Sanota Platform", href: "/projects" },
   },
   {
     id: "backend",
@@ -26,6 +27,7 @@ const SERVICES = [
     image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200", // Backend server logic code image
     description: "Engineering robust and scalable API services and databases. Proficient in structure design, authorization, data caching, and server flows using Nest.js, Node, and PHP.",
     tags: ["Nest.js", "Spring Boot", "MySQL", "MongoDB", "Node.js"],
+    featuredProject: { name: "Anawuma Management System", href: "/projects" },
   },
   {
     id: "uiux",
@@ -35,6 +37,17 @@ const SERVICES = [
     image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=1200", // Figma/Design layout wireframe image
     description: "Designing elegant user journeys with attention to modern layouts, accessibility, typography hierarchy, and wireframing for digital application interfaces.",
     tags: ["Figma", "User Flows", "Wireframing", "Prototyping"],
+    featuredProject: { name: "Sanota Design (Figma)", href: "/projects" },
+  },
+  {
+    id: "devops",
+    num: "04",
+    label: "DevOps & Cloud",
+    icon: Cloud,
+    image: "https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=1200", // Server rack / cloud terminal image
+    description: "Deploying and maintaining scalable cloud environments. Experienced in setting up automated CI/CD pipelines using GitHub Actions, managing cloud hosting, and optimizing server performance.",
+    tags: ["GitHub Actions", "CI/CD", "DigitalOcean", "Vercel", "Git"],
+    featuredProject: { name: "Knoweb Deployment", href: "/projects" },
   },
 ];
 
@@ -191,10 +204,10 @@ export function ServicesCarousel() {
                         initial={{ opacity: 0, y: 15 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 10 }}
-                        className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end bg-gradient-to-t from-black via-black/50 to-transparent pointer-events-none"
+                        className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end bg-gradient-to-t from-black via-black/80 to-transparent pointer-events-auto"
                       >
                         {/* Tags (Tech Stack) Configuration */}
-                        <div className="flex flex-wrap gap-2 mb-4">
+                        <div className="flex flex-wrap gap-2 mb-3">
                           {service.tags.map((tag) => (
                             <span key={tag} className="bg-white/10 text-white/90 px-2.5 py-1 rounded border border-white/5 text-[9px] font-bold tracking-wider uppercase font-mono backdrop-blur-md">
                               {tag}
@@ -202,9 +215,21 @@ export function ServicesCarousel() {
                           ))}
                         </div>
                         
-                        <p className="text-neutral-300 font-light text-sm md:text-base leading-relaxed tracking-tight">
+                        <p className="text-neutral-300 font-light text-xs md:text-sm leading-relaxed tracking-tight mb-4">
                           {service.description}
                         </p>
+
+                        {service.featuredProject && (
+                          <a 
+                            href={service.featuredProject.href}
+                            className="inline-flex items-center gap-1.5 text-xs font-semibold text-yellow-500 hover:text-yellow-400 transition-colors group/link mt-1"
+                          >
+                            <span>⚡ Featured Work:</span>
+                            <span className="underline decoration-yellow-500/50 underline-offset-4 group-hover/link:decoration-yellow-400 transition-all">
+                              {service.featuredProject.name}
+                            </span>
+                          </a>
+                        )}
                       </motion.div>
                     )}
                   </AnimatePresence>
