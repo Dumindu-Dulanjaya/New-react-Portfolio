@@ -205,22 +205,44 @@ const Home = () => {
               <div className="lg:col-span-6 flex justify-center lg:justify-end order-1 lg:order-2 overflow-visible">
                 <div className="relative flex justify-center items-center w-full max-w-[500px] lg:max-w-[560px] xl:max-w-[620px] h-[550px] overflow-visible">
                   
-                  {/* Animated HTML Dot Grid Layer Behind the Circle */}
-                  <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none overflow-visible">
-                    <div className="grid grid-cols-10 gap-x-6 gap-y-6 opacity-30">
-                      {Array.from({ length: 80 }).map((_, i) => (
+                  {/* Top-Left Animated Dot Grid */}
+                  <div className="absolute top-[100px] left-[50px] lg:top-[90px] lg:left-[90px] z-0 pointer-events-none">
+                    <div className="grid grid-cols-5 gap-x-4 gap-y-4">
+                      {Array.from({ length: 25 }).map((_, i) => (
                         <motion.div
                           key={i}
                           className="w-1 h-1 rounded-full bg-white"
                           animate={{
-                            scale: [1, 1.6, 1],
-                            opacity: [0.2, 0.8, 0.2]
+                            scale: [1, 1.5, 1],
+                            opacity: [0.2, 0.9, 0.2]
                           }}
                           transition={{
-                            duration: 4 + (i % 4),
+                            duration: 2.5 + (i % 3),
                             repeat: Infinity,
                             ease: "easeInOut",
-                            delay: (i % 10) * 0.15
+                            delay: (i % 5) * 0.15
+                          }}
+                        />
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Bottom-Right Animated Dot Grid */}
+                  <div className="absolute bottom-[100px] right-[50px] lg:bottom-[90px] lg:right-[90px] z-0 pointer-events-none">
+                    <div className="grid grid-cols-5 gap-x-4 gap-y-4">
+                      {Array.from({ length: 25 }).map((_, i) => (
+                        <motion.div
+                          key={i}
+                          className="w-1 h-1 rounded-full bg-white"
+                          animate={{
+                            scale: [1, 1.5, 1],
+                            opacity: [0.2, 0.9, 0.2]
+                          }}
+                          transition={{
+                            duration: 2.5 + (i % 3),
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                            delay: (i % 5) * 0.15
                           }}
                         />
                       ))}
