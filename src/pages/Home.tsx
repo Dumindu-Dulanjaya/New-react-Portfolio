@@ -6,6 +6,7 @@ import WelcomeLoader from '../components/WelcomeLoader';
 import portfolioimage from '../assets/portfolioimage.png';
 import { MinimalistHeroRight } from '../components/ui/minimalist-hero-right';
 import { ServicesCarousel } from '../components/ui/services-carousel';
+import { ProjectsExhibit } from '../components/ui/projects-exhibit';
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -204,120 +205,9 @@ const Home = () => {
         </section>
       )}
 
-      {/* Projects Showcase Redesign Section (Asymmetrical Layout) */}
+      {/* Projects Showcase Section */}
       {!isLoading && (
-        <section className="relative z-10 py-32 bg-[#0B0B0B] border-t border-neutral-900 text-white transition-colors duration-300">
-          <div 
-            className="absolute inset-0 opacity-[0.02] pointer-events-none"
-            style={{
-              backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)',
-              backgroundSize: '28px 28px'
-            }}
-          />
-
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-28">
-              <div>
-                <span className="text-xs font-mono uppercase tracking-[0.3em] text-yellow-500 font-semibold block mb-2">WORKS</span>
-                <h2 className="text-3xl md:text-5xl font-black tracking-tight text-white uppercase">PROJECTS EXHIBIT.</h2>
-              </div>
-              <Link to="/projects">
-                <motion.button 
-                  className="mt-6 md:mt-0 flex items-center gap-2 group text-sm text-neutral-400 hover:text-white transition-colors font-mono tracking-wider"
-                  whileHover={{ x: 5 }}
-                >
-                  VIEW ALL PROJECTS <ArrowRight size={16} className="text-yellow-500" />
-                </motion.button>
-              </Link>
-            </div>
-
-            {/* Asymmetrical Gallery Grid Layout */}
-            <div className="space-y-36">
-              {featuredProjects.map((project, index) => {
-                const isEven = index % 2 === 0;
-
-                return (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    className={`grid grid-cols-1 lg:grid-cols-12 gap-8 items-center ${isEven ? '' : 'lg:flex-row-reverse'}`}
-                  >
-                    
-                    {/* Project Image Block (asymmetric sizing) */}
-                    <div className={`col-span-1 lg:col-span-7 overflow-hidden relative rounded-2xl border border-neutral-900 bg-neutral-950 group ${isEven ? 'order-1' : 'order-1 lg:order-2'}`}>
-                      <div className="aspect-[16/10] overflow-hidden relative">
-                        <img 
-                          src={project.image} 
-                          alt={project.title} 
-                          className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 grayscale group-hover:grayscale-0"
-                        />
-                        <div className="absolute inset-0 bg-neutral-950/20 group-hover:bg-transparent transition-colors duration-500" />
-                      </div>
-
-                      {/* Monochromatic Overlay Hover Info */}
-                      <a 
-                        href={project.github} 
-                        target="_blank" 
-                        rel="noreferrer"
-                        className="absolute inset-0 flex items-center justify-center bg-black/85 opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-sm"
-                      >
-                        <div className="text-center p-6">
-                          <span className="inline-flex items-center justify-center p-3 bg-neutral-900 border border-neutral-800 rounded-full text-white mb-3 hover:bg-neutral-800 transition-colors">
-                            <Github size={24} />
-                          </span>
-                          <p className="text-xs font-mono tracking-widest text-yellow-500 uppercase">View Code on GitHub</p>
-                        </div>
-                      </a>
-                    </div>
-
-                    {/* Project Text Info Block */}
-                    <div className={`col-span-1 lg:col-span-5 flex flex-col justify-center ${isEven ? 'order-2 lg:pl-10' : 'order-2 lg:order-1 lg:pr-10'}`}>
-                      {/* Big Typography Numbering */}
-                      <span className="text-6xl sm:text-7xl font-black text-neutral-800/40 tracking-widest font-mono mb-4 block select-none">
-                        {project.number}
-                      </span>
-                      
-                      <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white mb-4">
-                        {project.title}
-                      </h3>
-
-                      <p className="text-neutral-400 text-sm sm:text-base leading-relaxed font-light mb-6">
-                        {project.description}
-                      </p>
-
-                      {/* Monochromatic Tech Badges */}
-                      <div className="flex flex-wrap gap-2 mb-6">
-                        {project.tags.map((tag, tIdx) => (
-                          <span 
-                            key={tIdx} 
-                            className="text-[9px] font-mono font-medium tracking-wider text-neutral-400 bg-neutral-900 border border-neutral-800 px-3 py-1 rounded"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-
-                      <a 
-                        href={project.github} 
-                        target="_blank" 
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-2 text-xs font-mono text-neutral-300 hover:text-yellow-400 transition-colors uppercase tracking-widest"
-                      >
-                        Explore Project Repository <ArrowRight size={14} />
-                      </a>
-                    </div>
-
-                  </motion.div>
-                );
-              })}
-            </div>
-
-          </div>
-        </section>
+        <ProjectsExhibit />
       )}
     </>
   );
