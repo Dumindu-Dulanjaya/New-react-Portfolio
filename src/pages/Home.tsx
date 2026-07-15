@@ -108,7 +108,7 @@ const Home = () => {
                 >
                   <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-xs font-mono text-yellow-500 mb-6 tracking-wider uppercase">
                     <span className="w-2 h-2 rounded-full bg-yellow-500 animate-pulse" />
-                    SOFTWARE ENGINEER // FULL-STACK DEVELOPER
+                    SOFTWARE ENGINEERING INTERN // FULL-STACK DEVELOPER
                   </span>
 
                   <h1 className="text-5xl sm:text-6xl md:text-7xl font-black tracking-tight mb-6 leading-[1.05] text-white">
@@ -119,7 +119,7 @@ const Home = () => {
                   </h1>
 
                   <p className="text-base sm:text-lg text-neutral-400 mb-8 max-w-xl leading-relaxed font-light">
-                    Crafting premium, high-performance web applications with modern interfaces. Specialized in building seamless user experiences using <span className="text-white font-medium">ReactJS</span>, <span className="text-white font-medium">Nest.js</span>, <span className="text-white font-medium">PHP</span>, and modern database management systems like <span className="text-white font-medium">MongoDB</span> and <span className="text-white font-medium">MySQL</span>.
+                    A motivated Software Engineer specializing in building enterprise software solutions, scalable web architectures, and interactive digital platforms using <span className="text-white font-medium">React.js</span>, <span className="text-white font-medium">NestJS</span>, and <span className="text-white font-medium">Spring Boot</span>.
                   </p>
 
                   <div className="flex flex-wrap gap-4 items-center">
