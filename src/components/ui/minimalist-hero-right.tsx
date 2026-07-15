@@ -89,7 +89,7 @@ export const MinimalistHeroRight = ({ imageSrc, imageAlt }: MinimalistHeroRightP
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 16 }} // translate-y-4 ට සමානයි
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="relative z-20 h-[380px] lg:h-[500px] w-auto object-contain select-none filter grayscale contrast-125 brightness-105"
+        className="relative z-20 h-[380px] lg:h-[500px] w-auto object-contain select-none"
       />
 
     </div>
