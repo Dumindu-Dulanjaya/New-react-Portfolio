@@ -1,49 +1,16 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowDown, Download, Eye, Github, Mail, Linkedin, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import WelcomeLoader from '../components/WelcomeLoader';
 import portfolioimage from '../assets/portfolioimage.png';
+import { MinimalistHeroRight } from '../components/ui/minimalist-hero-right';
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [hoveredService, setHoveredService] = useState<number | null>(null);
 
-  // Mouse movement tracking values for the Hero ID Card
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
 
-  // Spring physics configuration (highly responsive and smooth)
-  const springConfig = { mass: 1, stiffness: 120, damping: 25 };
-  const springX = useSpring(mouseX, springConfig);
-  const springY = useSpring(mouseY, springConfig);
-
-  // Map spring coordinates to different depths (Parallax effect)
-  // Layer 1 (Background - White Dots: factor 0.05)
-  const dotsX = useTransform(springX, [-250, 250], [-12, 12]);
-  const dotsY = useTransform(springY, [-250, 250], [-12, 12]);
-
-  // Layer 2 (Middle ground - Yellow Circle: factor 0.15)
-  const circleX = useTransform(springX, [-250, 250], [-36, 36]);
-  const circleY = useTransform(springY, [-250, 250], [-36, 36]);
-  const circleRotateX = useTransform(springY, [-250, 250], [4, -4]);
-  const circleRotateY = useTransform(springX, [-250, 250], [-4, 4]);
-
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
-    const x = e.clientX - rect.left - width / 2;
-    const y = e.clientY - rect.top - height / 2;
-    mouseX.set(x);
-    mouseY.set(y);
-  };
-
-  const handleMouseLeave = () => {
-    mouseX.set(0);
-    mouseY.set(0);
-  };
 
   const scrollToNext = () => {
     const servicesSection = document.getElementById('services-section');
@@ -129,8 +96,6 @@ const Home = () => {
             className="relative z-10 min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16"
           >
             <div 
-              onMouseMove={handleMouseMove}
-              onMouseLeave={handleMouseLeave}
               className="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center py-12"
             >
               
@@ -201,90 +166,12 @@ const Home = () => {
                 </motion.div>
               </div>
 
-              {/* Right Side: Large Borderless Minimalist Image (3D Multi-Layered Parallax) */}
+              {/* Right Side: Large Borderless Minimalist Image (Custom Parallax Component) */}
               <div className="lg:col-span-6 flex justify-center lg:justify-end order-1 lg:order-2 overflow-visible">
-                <div className="relative flex justify-center items-center w-full max-w-[500px] lg:max-w-[560px] xl:max-w-[620px] h-[550px] overflow-visible">
-                  
-                  {/* Layer 1: White Dot Grids (Background Parallax - z-0) */}
-                  <motion.div 
-                    style={{ x: dotsX, y: dotsY }}
-                    className="absolute inset-0 z-0 pointer-events-none overflow-visible"
-                  >
-                    {/* Top-Left Animated Dot Grid */}
-                    <div className="absolute top-[100px] left-[50px] lg:top-[90px] lg:left-[90px]">
-                      <div className="grid grid-cols-5 gap-x-4 gap-y-4">
-                        {Array.from({ length: 25 }).map((_, i) => (
-                          <motion.div
-                            key={i}
-                            className="w-1 h-1 rounded-full bg-white"
-                            animate={{
-                              scale: [1, 1.5, 1],
-                              opacity: [0.2, 0.9, 0.2]
-                            }}
-                            transition={{
-                              duration: 2.5 + (i % 3),
-                              repeat: Infinity,
-                              ease: "easeInOut",
-                              delay: (i % 5) * 0.15
-                            }}
-                          />
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Bottom-Right Animated Dot Grid */}
-                    <div className="absolute bottom-[100px] right-[50px] lg:bottom-[90px] lg:right-[90px]">
-                      <div className="grid grid-cols-5 gap-x-4 gap-y-4">
-                        {Array.from({ length: 25 }).map((_, i) => (
-                          <motion.div
-                            key={i}
-                            className="w-1 h-1 rounded-full bg-white"
-                            animate={{
-                              scale: [1, 1.5, 1],
-                              opacity: [0.2, 0.9, 0.2]
-                            }}
-                            transition={{
-                              duration: 2.5 + (i % 3),
-                              repeat: Infinity,
-                              ease: "easeInOut",
-                              delay: (i % 5) * 0.15
-                            }}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                  </motion.div>
-
-                  {/* Layer 2: Yellow Circle (Middle ground Parallax - z-10) */}
-                  <motion.div 
-                    initial={{ scale: 0.6, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                    style={{
-                      x: circleX,
-                      y: circleY,
-                      rotateX: circleRotateX,
-                      rotateY: circleRotateY,
-                      transformStyle: 'preserve-3d'
-                    }}
-                    className="absolute z-10 w-[280px] h-[280px] lg:w-[400px] lg:h-[400px] rounded-full bg-[#EAB308]"
-                  />
-
-                  {/* Layer 3: Portrait Image (Foreground Static - z-20) */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                    className="relative z-20 flex justify-center items-center"
-                  >
-                    <img 
-                      src={portfolioimage} 
-                      alt="Dumindu Dulanjaya" 
-                      className="h-[380px] lg:h-[520px] w-auto object-contain select-none translate-y-4"
-                    />
-                  </motion.div>
-                  
-                </div>
+                <MinimalistHeroRight 
+                  imageSrc={portfolioimage} 
+                  imageAlt="Dumindu Dulanjaya" 
+                />
               </div>
 
             </div>
