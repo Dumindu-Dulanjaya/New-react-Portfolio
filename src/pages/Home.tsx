@@ -29,12 +29,6 @@ const Home = () => {
   const circleRotateX = useTransform(springY, [-250, 250], [4, -4]);
   const circleRotateY = useTransform(springX, [-250, 250], [-4, 4]);
 
-  // Layer 3 (Foreground - Portrait Image: factor 0.25)
-  const portraitX = useTransform(springX, [-250, 250], [-60, 60]);
-  const portraitY = useTransform(springY, [-250, 250], [-60, 60]);
-  const portraitRotateX = useTransform(springY, [-250, 250], [12, -12]);
-  const portraitRotateY = useTransform(springX, [-250, 250], [-12, 12]);
-  const portraitRotateZ = useTransform(springX, [-250, 250], [-5, 5]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -276,19 +270,11 @@ const Home = () => {
                     className="absolute z-10 w-[280px] h-[280px] lg:w-[400px] lg:h-[400px] rounded-full bg-[#EAB308]"
                   />
 
-                  {/* Layer 3: Portrait Image (Foreground Parallax - z-20) */}
+                  {/* Layer 3: Portrait Image (Foreground Static - z-20) */}
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                    style={{
-                      x: portraitX,
-                      y: portraitY,
-                      rotateX: portraitRotateX,
-                      rotateY: portraitRotateY,
-                      rotateZ: portraitRotateZ,
-                      transformStyle: 'preserve-3d'
-                    }}
                     className="relative z-20 flex justify-center items-center"
                   >
                     <img 
