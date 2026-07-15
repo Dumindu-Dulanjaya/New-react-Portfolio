@@ -13,22 +13,28 @@ const Home = () => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  // Spring physics configuration (feels natural and responsive)
-  const springConfig = { mass: 1, stiffness: 100, damping: 30 };
+  // Spring physics configuration (highly responsive and smooth)
+  const springConfig = { mass: 1, stiffness: 120, damping: 25 };
   const springX = useSpring(mouseX, springConfig);
   const springY = useSpring(mouseY, springConfig);
 
   // Map spring coordinates to different depths (Parallax effect)
-  // Portrait Image (Foreground - moves more)
-  const portraitX = useTransform(springX, [-250, 250], [-25, 25]);
-  const portraitY = useTransform(springY, [-250, 250], [-25, 25]);
-  const portraitRotateX = useTransform(springY, [-250, 250], [10, -10]);
-  const portraitRotateY = useTransform(springX, [-250, 250], [-10, 10]);
-  const portraitRotateZ = useTransform(springX, [-250, 250], [-4, 4]);
+  // Layer 1 (Background - White Dots: factor 0.05)
+  const dotsX = useTransform(springX, [-250, 250], [-12, 12]);
+  const dotsY = useTransform(springY, [-250, 250], [-12, 12]);
 
-  // Yellow Circle (Background - moves less)
-  const circleX = useTransform(springX, [-250, 250], [-10, 10]);
-  const circleY = useTransform(springY, [-250, 250], [-10, 10]);
+  // Layer 2 (Middle ground - Yellow Circle: factor 0.15)
+  const circleX = useTransform(springX, [-250, 250], [-36, 36]);
+  const circleY = useTransform(springY, [-250, 250], [-36, 36]);
+  const circleRotateX = useTransform(springY, [-250, 250], [4, -4]);
+  const circleRotateY = useTransform(springX, [-250, 250], [-4, 4]);
+
+  // Layer 3 (Foreground - Portrait Image: factor 0.25)
+  const portraitX = useTransform(springX, [-250, 250], [-60, 60]);
+  const portraitY = useTransform(springY, [-250, 250], [-60, 60]);
+  const portraitRotateX = useTransform(springY, [-250, 250], [12, -12]);
+  const portraitRotateY = useTransform(springX, [-250, 250], [-12, 12]);
+  const portraitRotateZ = useTransform(springX, [-250, 250], [-5, 5]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -201,75 +207,96 @@ const Home = () => {
                 </motion.div>
               </div>
 
-              {/* Right Side: Large Borderless Minimalist Image (Stable with Animated Dot Grid Behind) */}
+              {/* Right Side: Large Borderless Minimalist Image (3D Multi-Layered Parallax) */}
               <div className="lg:col-span-6 flex justify-center lg:justify-end order-1 lg:order-2 overflow-visible">
                 <div className="relative flex justify-center items-center w-full max-w-[500px] lg:max-w-[560px] xl:max-w-[620px] h-[550px] overflow-visible">
                   
-                  {/* Top-Left Animated Dot Grid */}
-                  <div className="absolute top-[100px] left-[50px] lg:top-[90px] lg:left-[90px] z-0 pointer-events-none">
-                    <div className="grid grid-cols-5 gap-x-4 gap-y-4">
-                      {Array.from({ length: 25 }).map((_, i) => (
-                        <motion.div
-                          key={i}
-                          className="w-1 h-1 rounded-full bg-white"
-                          animate={{
-                            scale: [1, 1.5, 1],
-                            opacity: [0.2, 0.9, 0.2]
-                          }}
-                          transition={{
-                            duration: 2.5 + (i % 3),
-                            repeat: Infinity,
-                            ease: "easeInOut",
-                            delay: (i % 5) * 0.15
-                          }}
-                        />
-                      ))}
+                  {/* Layer 1: White Dot Grids (Background Parallax - z-0) */}
+                  <motion.div 
+                    style={{ x: dotsX, y: dotsY }}
+                    className="absolute inset-0 z-0 pointer-events-none overflow-visible"
+                  >
+                    {/* Top-Left Animated Dot Grid */}
+                    <div className="absolute top-[100px] left-[50px] lg:top-[90px] lg:left-[90px]">
+                      <div className="grid grid-cols-5 gap-x-4 gap-y-4">
+                        {Array.from({ length: 25 }).map((_, i) => (
+                          <motion.div
+                            key={i}
+                            className="w-1 h-1 rounded-full bg-white"
+                            animate={{
+                              scale: [1, 1.5, 1],
+                              opacity: [0.2, 0.9, 0.2]
+                            }}
+                            transition={{
+                              duration: 2.5 + (i % 3),
+                              repeat: Infinity,
+                              ease: "easeInOut",
+                              delay: (i % 5) * 0.15
+                            }}
+                          />
+                        ))}
+                      </div>
                     </div>
-                  </div>
 
-                  {/* Bottom-Right Animated Dot Grid */}
-                  <div className="absolute bottom-[100px] right-[50px] lg:bottom-[90px] lg:right-[90px] z-0 pointer-events-none">
-                    <div className="grid grid-cols-5 gap-x-4 gap-y-4">
-                      {Array.from({ length: 25 }).map((_, i) => (
-                        <motion.div
-                          key={i}
-                          className="w-1 h-1 rounded-full bg-white"
-                          animate={{
-                            scale: [1, 1.5, 1],
-                            opacity: [0.2, 0.9, 0.2]
-                          }}
-                          transition={{
-                            duration: 2.5 + (i % 3),
-                            repeat: Infinity,
-                            ease: "easeInOut",
-                            delay: (i % 5) * 0.15
-                          }}
-                        />
-                      ))}
+                    {/* Bottom-Right Animated Dot Grid */}
+                    <div className="absolute bottom-[100px] right-[50px] lg:bottom-[90px] lg:right-[90px]">
+                      <div className="grid grid-cols-5 gap-x-4 gap-y-4">
+                        {Array.from({ length: 25 }).map((_, i) => (
+                          <motion.div
+                            key={i}
+                            className="w-1 h-1 rounded-full bg-white"
+                            animate={{
+                              scale: [1, 1.5, 1],
+                              opacity: [0.2, 0.9, 0.2]
+                            }}
+                            transition={{
+                              duration: 2.5 + (i % 3),
+                              repeat: Infinity,
+                              ease: "easeInOut",
+                              delay: (i % 5) * 0.15
+                            }}
+                          />
+                        ))}
+                      </div>
                     </div>
-                  </div>
+                  </motion.div>
 
-                  {/* Stable Yellow Circle */}
-                  <div className="absolute z-0 w-[280px] h-[280px] lg:w-[400px] lg:h-[400px] flex items-center justify-center">
-                    <motion.div 
-                      initial={{ scale: 0.6, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      transition={{ duration: 0.8, ease: "easeOut" }}
-                      className="w-full h-full rounded-full bg-[#EAB308]"
-                    />
-                  </div>
+                  {/* Layer 2: Yellow Circle (Middle ground Parallax - z-10) */}
+                  <motion.div 
+                    initial={{ scale: 0.6, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    style={{
+                      x: circleX,
+                      y: circleY,
+                      rotateX: circleRotateX,
+                      rotateY: circleRotateY,
+                      transformStyle: 'preserve-3d'
+                    }}
+                    className="absolute z-10 w-[280px] h-[280px] lg:w-[400px] lg:h-[400px] rounded-full bg-[#EAB308]"
+                  />
 
-                  {/* Stable Portrait Image */}
-                  <div className="relative z-10 flex justify-center items-center">
-                    <motion.img 
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                  {/* Layer 3: Portrait Image (Foreground Parallax - z-20) */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                    style={{
+                      x: portraitX,
+                      y: portraitY,
+                      rotateX: portraitRotateX,
+                      rotateY: portraitRotateY,
+                      rotateZ: portraitRotateZ,
+                      transformStyle: 'preserve-3d'
+                    }}
+                    className="relative z-20 flex justify-center items-center"
+                  >
+                    <img 
                       src={portfolioimage} 
                       alt="Dumindu Dulanjaya" 
                       className="h-[380px] lg:h-[520px] w-auto object-contain select-none translate-y-4"
                     />
-                  </div>
+                  </motion.div>
                   
                 </div>
               </div>
