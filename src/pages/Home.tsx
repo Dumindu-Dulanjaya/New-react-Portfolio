@@ -106,27 +106,26 @@ const Home = () => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
                 >
-                  <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-xs font-medium text-neutral-400 mb-6 tracking-wider uppercase">
-                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                    Available for freelance & full-time
+                  <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-xs font-mono text-yellow-500 mb-6 tracking-wider uppercase">
+                    <span className="w-2 h-2 rounded-full bg-yellow-500 animate-pulse" />
+                    FRONTEND DEVELOPER // FULL-STACK SOFTWARE DEVELOPER
                   </span>
 
-                  <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mb-6 leading-[1.05] text-white">
+                  <h1 className="text-5xl sm:text-6xl md:text-7xl font-black tracking-tight mb-6 leading-[1.05] text-white">
                     FRONTEND
-                    <span className="block text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">
-                      DEVELOPER
+                    <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">
+                      DEVELOPER.
                     </span>
                   </h1>
 
-                  <p className="text-base sm:text-lg text-neutral-400 mb-8 max-w-xl leading-relaxed">
-                    Crafting premium, high-performance web applications with modern interfaces. 
-                    Specialized in building seamless user experiences using <span className="text-white font-medium">ReactJS</span>, <span className="text-white font-medium">Nest.js</span>, <span className="text-white font-medium">PHP</span>, and <span className="text-white font-medium">Tailwind CSS</span>.
+                  <p className="text-base sm:text-lg text-neutral-400 mb-8 max-w-xl leading-relaxed font-light">
+                    Crafting premium, high-performance web applications with modern interfaces. Specialized in building seamless user experiences using <span className="text-white font-medium">ReactJS</span>, <span className="text-white font-medium">Nest.js</span>, <span className="text-white font-medium">PHP</span>, and modern database management systems like <span className="text-white font-medium">MongoDB</span> and <span className="text-white font-medium">MySQL</span>.
                   </p>
 
                   <div className="flex flex-wrap gap-4 items-center">
                     <Link to="/projects">
                       <motion.button
-                        className="relative group overflow-hidden bg-white text-black px-8 py-4 rounded-xl font-semibold text-base hover:bg-neutral-100 transition-all duration-300 flex items-center space-x-2 shadow-[0_4px_20px_rgba(255,255,255,0.1)]"
+                        className="relative group overflow-hidden bg-white text-black px-8 py-4 rounded-xl font-bold text-base hover:bg-neutral-100 transition-all duration-300 flex items-center space-x-2 shadow-[0_4px_20px_rgba(255,255,255,0.05)]"
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                       >
@@ -136,7 +135,7 @@ const Home = () => {
                     </Link>
 
                     <motion.button
-                      className="border border-neutral-800 bg-neutral-950/40 backdrop-blur-sm text-neutral-300 hover:text-white px-8 py-4 rounded-xl font-semibold text-base hover:bg-neutral-900/60 hover:border-neutral-700 transition-all duration-300 flex items-center space-x-2"
+                      className="border border-neutral-800 bg-neutral-950/40 backdrop-blur-sm text-neutral-300 hover:text-white px-8 py-4 rounded-xl font-bold text-base hover:bg-neutral-900/60 hover:border-neutral-700 transition-all duration-300 flex items-center space-x-2"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       onClick={() => {
@@ -152,14 +151,14 @@ const Home = () => {
                   </div>
 
                   <div className="flex items-center gap-4 mt-8 pt-8 border-t border-neutral-900">
-                    <span className="text-xs uppercase tracking-widest text-neutral-600 font-semibold">Connect:</span>
+                    <span className="text-xs font-mono uppercase tracking-widest text-neutral-600">Connect:</span>
                     <a href="https://github.com/Dumindu-Dulanjaya" target="_blank" rel="noreferrer" className="text-neutral-500 hover:text-white transition-colors">
                       <Github size={20} />
                     </a>
-                    <a href="mailto:your-email@example.com" className="text-neutral-500 hover:text-white transition-colors">
+                    <a href="mailto:dulanjaya420@gmail.com" className="text-neutral-500 hover:text-white transition-colors">
                       <Mail size={20} />
                     </a>
-                    <a href="#" className="text-neutral-500 hover:text-white transition-colors">
+                    <a href="https://www.linkedin.com/in/dumindu-dulanjaya-486745305/" target="_blank" rel="noreferrer" className="text-neutral-500 hover:text-white transition-colors">
                       <Linkedin size={20} />
                     </a>
                   </div>
