@@ -37,7 +37,7 @@ const SERVICES = [
     image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=1200", // Figma/Design layout wireframe image
     description: "Designing elegant user journeys with attention to modern layouts, accessibility, typography hierarchy, and wireframing for digital application interfaces.",
     tags: ["Figma", "User Flows", "Wireframing", "Prototyping"],
-    featuredProject: { name: "Sanota Design (Figma)", href: "/projects" },
+    featuredProject: { name: "Sanota Design (Figma)", href: "https://www.figma.com/design/vfJtYSMRwsXnUjvGkBbAWl/Dumindu-Dulanjaya-s-team-library?node-id=0-1&t=qNYQW4MrkPbddkaf-1" },
   },
   {
     id: "devops",
@@ -222,6 +222,8 @@ export function ServicesCarousel() {
                         {service.featuredProject && (
                           <a 
                             href={service.featuredProject.href}
+                            target={service.featuredProject.href.startsWith("http") ? "_blank" : undefined}
+                            rel={service.featuredProject.href.startsWith("http") ? "noopener noreferrer" : undefined}
                             className="inline-flex items-center gap-1.5 text-xs font-semibold text-yellow-500 hover:text-yellow-400 transition-colors group/link mt-1"
                           >
                             <span>⚡ Featured Work:</span>
