@@ -6,51 +6,36 @@ import ProjectCard from '../components/ProjectCard';
 const Projects = () => {
   const projects = [
     {
-      title: ' Just launched my Movie Search & Trailer Finder App with React!',
-      description: 'A React-based movie search application that allows users to search for movies by title, view posters, and get release years using the OMDb API.',
-      image: 'https://i.postimg.cc/V6SPt4Q9/jakub-zerdzicki-Rn-H1m7-DPt-AU-unsplash.jpg',
-      liveLink: 'https://lnkd.in/eaNhB7-4',
-      githubLink: 'https://github.com/Dumindu-Dulanjaya/movie-search-app.git',
-      techStack: ['React', 'JavaScript', 'CSS', 'Tailwind CSS']
+      title: "Anawuma",
+      description: "Developed a full-stack restaurant and hotel management system with QR-based customer ordering and real-time kitchen order tracking. Built secure admin dashboards for billing, inventory management, reservations, and sales reporting. Integrated Socket.IO for real-time order updates.",
+      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1000",
+      liveLink: "http://152.42.179.36/",
+      githubLink: "https://github.com/Knoweb/Anawuma-Resturant-App-.git",
+      techStack: ["React.js", "Next.js", "NestJS", "MySQL", "Socket.IO"]
     },
     {
-      title: 'Library Management System',
-      description: 'Developed a full-stack Library Management System to automate book tracking, member management, and borrowing processes. The system provides librarians with an intuitive interface to manage inventory while giving users a seamless experience to explore available books.',
-      image: 'https://i.postimg.cc/dVFh6fNZ/henrique-ferreira-AP5-7-Zqtf6-Y-unsplash-1.jpg',
-      githubLink: 'https://github.com/Dumindu-Dulanjaya/Library-Management-System.git',
-      techStack: ['python']
+      title: "Sanota",
+      description: "Developed a responsive industrial automation platform with a modern React frontend and Spring Boot backend. Designed and implemented RESTful APIs with secure authentication and MySQL database integration. Integrated interactive maps and dynamic project showcases to enhance user engagement.",
+      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1000",
+      liveLink: "http://188.166.182.111",
+      githubLink: "https://github.com/Knoweb/sanota-site.git",
+      techStack: ["React.js", "Spring Boot", "MySQL", "Vite", "Framer Motion", "Leaflet API"]
     },
     {
-      title: 'Weather Forecast App',
-      description: 'A responsive weather application with location-based forecasts, interactive maps, weather alerts, and beautiful animated weather icons.',
-      image: 'https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=600',
-      liveLink: 'https://lnkd.in/e6JV3QjD',
-      githubLink: 'https://github.com/Dumindu-Dulanjaya/Weather-App.git',
-      techStack: ['React', 'OpenWeather API', 'Mapbox', 'CSS3', 'PWA']
+      title: "VMS Super Mart",
+      description: "Developing a full-stack supermarket management system featuring inventory, billing, logistics, and customer storefront modules. Built an administrative dashboard for product, inventory, and order management with real-time monitoring and Socket.IO-based live rider tracking.",
+      image: "https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1000",
+      liveLink: "https://vms-super-mart.vercel.app/",
+      githubLink: "https://github.com/Dumindu-Dulanjaya/vms-super-mart.git",
+      techStack: ["React.js", "Next.js", "TypeScript", "MySQL", "Socket.IO", "Tailwind CSS"]
     },
     {
-      title: 'Java Calculator App ',
-      description: 'Built a Java Swing calculator using MVC architecture for clean, scalable code!',
-      image: 'https://i.postimg.cc/52QWRnkX/404-Hlbfm6-J7-VR8-unsplash.jpg',
-      linkedLink: 'https://www.linkedin.com/posts/dumindu-dulanjaya-486745305_java-mvc-oop-activity-7321850110861066240-kdUR?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE3izGYBdTx9JhO1f0jqfjHkw5TyeeTuPYk',
-      githubLink: 'https://github.com/Dumindu-Dulanjaya/Calculator.git',
-      techStack: ['Java', 'Swing', 'MVC', 'OOP']
-    },
-    {
-      title: 'Web Confrence Management System',
-      description: 'A Web Conference Management System is an online platform designed to manage and streamline the planning, organization, and execution of virtual or in-person conferences.',
-      image: 'https://i.postimg.cc/253rrC6S/charlesdeluvio-Lks7vei-e-Ag-unsplash.jpg',
-      liveLink: 'https://web-conference-management-system-gray.vercel.app/',
-      githubLink: 'https://github.com/Dumindu-Dulanjaya/Web-Conference-Management-System.git',
-      techStack: ['Html', 'Css', 'Java Script', 'My sql']
-    },
-    {
-      title: 'Portfolio Website',
-      description: 'A modern, responsive portfolio website with smooth animations, dark mode toggle, blog integration, and optimized performance.',
-      image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=600',
-      liveLink: 'https://new-react-portfolio-rho.vercel.app/',
-      githubLink: 'https://github.com/Dumindu-Dulanjaya/New-react-Portfolio',
-      techStack: ['React', 'Framer Motion', 'Tailwind CSS', 'Vite', 'Netlify']
+      title: "Knoweb Official Website",
+      description: "Designed and developed the official corporate website for Knoweb Solutions using Next.js and React. Improved website performance, responsiveness, and SEO through server-side rendering and modern frontend practices. Deployed and maintained the production cloud platform.",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000",
+      liveLink: "http://167.71.217.97",
+      githubLink: "https://github.com/Knoweb/Knoweb-site.git",
+      techStack: ["React.js", "Next.js", "JavaScript", "Tailwind CSS", "Git"]
     }
   ];
 
