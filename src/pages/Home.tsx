@@ -201,64 +201,53 @@ const Home = () => {
                 </motion.div>
               </div>
 
-              {/* Right Side: Large Borderless Minimalist Image */}
+              {/* Right Side: Large Borderless Minimalist Image (Stable with Animated Dot Grid Behind) */}
               <div className="lg:col-span-6 flex justify-center lg:justify-end order-1 lg:order-2 overflow-visible">
-                <div className="relative flex justify-center items-center w-full max-w-[500px] lg:max-w-[560px] xl:max-w-[620px]">
+                <div className="relative flex justify-center items-center w-full max-w-[500px] lg:max-w-[560px] xl:max-w-[620px] h-[550px] overflow-visible">
                   
-                  {/* Yellow Circle Floating Wrapper */}
-                  <motion.div
-                    animate={{ y: [-4, 4] }}
-                    transition={{
-                      repeat: Infinity,
-                      repeatType: "reverse",
-                      duration: 5,
-                      ease: "easeInOut"
-                    }}
-                    className="absolute z-0 w-[280px] h-[280px] lg:w-[400px] lg:h-[400px]"
-                  >
-                    {/* Yellow Circle Parallax Core */}
+                  {/* Animated HTML Dot Grid Layer Behind the Circle */}
+                  <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none overflow-visible">
+                    <div className="grid grid-cols-10 gap-x-6 gap-y-6 opacity-30">
+                      {Array.from({ length: 80 }).map((_, i) => (
+                        <motion.div
+                          key={i}
+                          className="w-1 h-1 rounded-full bg-white"
+                          animate={{
+                            scale: [1, 1.6, 1],
+                            opacity: [0.2, 0.8, 0.2]
+                          }}
+                          transition={{
+                            duration: 4 + (i % 4),
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                            delay: (i % 10) * 0.15
+                          }}
+                        />
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Stable Yellow Circle */}
+                  <div className="absolute z-0 w-[280px] h-[280px] lg:w-[400px] lg:h-[400px] flex items-center justify-center">
                     <motion.div 
                       initial={{ scale: 0.6, opacity: 0 }}
                       animate={{ scale: 1, opacity: 1 }}
                       transition={{ duration: 0.8, ease: "easeOut" }}
-                      style={{
-                        x: circleX,
-                        y: circleY,
-                      }}
                       className="w-full h-full rounded-full bg-[#EAB308]"
                     />
-                  </motion.div>
+                  </div>
 
-                  {/* Portrait Image Floating Wrapper (with delay offset) */}
-                  <motion.div
-                    animate={{ y: [-8, 8] }}
-                    transition={{
-                      repeat: Infinity,
-                      repeatType: "reverse",
-                      duration: 5,
-                      ease: "easeInOut",
-                      delay: 0.4
-                    }}
-                    className="relative z-10 flex justify-center items-center"
-                  >
-                    {/* Portrait Image Parallax Core */}
+                  {/* Stable Portrait Image */}
+                  <div className="relative z-10 flex justify-center items-center">
                     <motion.img 
-                      initial={{ opacity: 0, y: 30 }}
+                      initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-                      style={{
-                        x: portraitX,
-                        y: portraitY,
-                        rotateX: portraitRotateX,
-                        rotateY: portraitRotateY,
-                        rotateZ: portraitRotateZ,
-                        transformStyle: 'preserve-3d'
-                      }}
+                      transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
                       src={portfolioimage} 
                       alt="Dumindu Dulanjaya" 
                       className="h-[380px] lg:h-[520px] w-auto object-contain select-none translate-y-4"
                     />
-                  </motion.div>
+                  </div>
                   
                 </div>
               </div>
