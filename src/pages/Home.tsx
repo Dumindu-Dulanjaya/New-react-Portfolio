@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import WelcomeLoader from '../components/WelcomeLoader';
 import portfolioimage from '../assets/portfolioimage.png';
 import { MinimalistHeroRight } from '../components/ui/minimalist-hero-right';
+import { ServicesCarousel } from '../components/ui/services-carousel';
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -197,87 +198,9 @@ const Home = () => {
       {!isLoading && (
         <section 
           id="services-section"
-          className="relative z-10 py-32 bg-[#090909] border-t border-neutral-900 text-white transition-colors duration-300"
+          className="relative z-10 py-20 bg-[#0B0B0B] border-t border-neutral-900 text-white transition-colors duration-300"
         >
-          <div 
-            className="absolute inset-0 opacity-[0.02] pointer-events-none"
-            style={{
-              backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)',
-              backgroundSize: '28px 28px'
-            }}
-          />
-
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            
-            {/* Minimalist Grid Header */}
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 mb-24 items-baseline">
-              <div className="md:col-span-4">
-                <span className="text-xs font-mono uppercase tracking-[0.3em] text-yellow-500 font-semibold block mb-2">SERVICES</span>
-                <h2 className="text-3xl md:text-5xl font-black tracking-tight text-white uppercase">WHAT I DO.</h2>
-              </div>
-              <div className="md:col-span-8">
-                <p className="text-neutral-400 text-base md:text-lg max-w-xl font-light leading-relaxed">
-                  Delivering high-performance, modular frontend environments and robust service infrastructures backed by user-focused design aesthetics.
-                </p>
-              </div>
-            </div>
-
-            {/* Typography-Driven Accordion List */}
-            <div className="border-t border-neutral-900">
-              {services.map((service, index) => (
-                <div
-                  key={index}
-                  className="relative border-b border-neutral-900 py-10 cursor-pointer overflow-hidden group"
-                  onMouseEnter={() => setHoveredService(index)}
-                  onMouseLeave={() => setHoveredService(null)}
-                >
-                  
-                  {/* Subtle Background Glow behind hovered list item */}
-                  <AnimatePresence>
-                    {hoveredService === index && (
-                      <motion.div
-                        layoutId="serviceGlow"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.8 }}
-                        transition={{ duration: 0.3 }}
-                        className="absolute -left-12 top-1/2 -translate-y-1/2 w-48 h-48 rounded-full bg-yellow-500/10 blur-[50px] pointer-events-none z-0"
-                      />
-                    )}
-                  </AnimatePresence>
-
-                  <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-                    
-                    {/* Index & Title */}
-                    <div className="lg:col-span-5 flex items-baseline gap-6">
-                      <span className="text-xs font-mono text-yellow-500/70 font-bold tracking-widest">
-                        {(index + 1).toString().padStart(2, '0')}
-                      </span>
-                      <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-neutral-300 group-hover:text-white transition-colors duration-300">
-                        {service.title}
-                      </h3>
-                    </div>
-
-                    {/* Description */}
-                    <div className="lg:col-span-5">
-                      <p className="text-neutral-400 text-sm sm:text-base leading-relaxed font-light group-hover:text-neutral-300 transition-colors duration-300">
-                        {service.description}
-                      </p>
-                    </div>
-
-                    {/* Tech details */}
-                    <div className="lg:col-span-2 lg:text-right self-center">
-                      <span className="text-[10px] font-mono text-neutral-600 group-hover:text-yellow-400/80 transition-colors duration-300 block tracking-wider uppercase">
-                        {service.tech}
-                      </span>
-                    </div>
-
-                  </div>
-                </div>
-              ))}
-            </div>
-
-          </div>
+          <ServicesCarousel />
         </section>
       )}
 
