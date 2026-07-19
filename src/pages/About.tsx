@@ -268,30 +268,17 @@ const About = () => {
             
             {/* Left Column: Spotlight 3D Card wrapper (Spline Scene with overflow-visible) */}
             <div className="lg:col-span-6 flex overflow-visible">
-              <Card className="w-full bg-[#121212] border border-neutral-900 rounded-3xl overflow-visible flex flex-col justify-between p-6 relative min-h-[500px] lg:h-full">
+              <Card className="w-full bg-[#121212] border border-neutral-900 rounded-3xl overflow-hidden flex flex-col justify-between p-0 relative min-h-[500px] lg:h-full">
                 <Spotlight
                   className="-top-40 left-0 md:left-60 md:-top-20"
                   size={320}
                 />
                 
-                <div className="relative z-10 flex flex-col h-full justify-between gap-6">
-                  <div>
-                    <span className="text-xs font-mono uppercase tracking-[0.2em] text-yellow-500 font-semibold block mb-2">Interactive 3D Art</span>
-                    <h3 className="text-2xl font-black bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 uppercase tracking-tight">
-                      Interactive Spline Scene
-                    </h3>
-                    <p className="mt-2 text-neutral-400 text-xs font-light leading-relaxed">
-                      Hover and interact with this real-time 3D spline scene. Designed to highlight high-fidelity interface design paradigms.
-                    </p>
-                  </div>
-                  
-                  {/* Spline Canvas element */}
-                  <div className="flex-1 relative mt-2 rounded-2xl overflow-hidden bg-neutral-950/40 border border-neutral-900/50 min-h-[300px]">
-                    <SplineScene 
-                      scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
+                <div className="relative z-10 w-full h-full flex-1">
+                  <SplineScene 
+                    scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </Card>
             </div>

@@ -1,22 +1,21 @@
-# Profile Portrait Color & Light Theme Overrides
+# Light Theme CSS Overrides Optimization
 
-I have successfully updated the ID card profile image in `About.tsx` to color, and implemented global dark/light mode switching overrides in `index.css`.
+I have successfully updated and optimized the light mode styles inside `index.css` to provide high contrast, clean visibility, and a premium aesthetic when the user switches to light theme.
 
 ## Key Changes Made
 
-### 1. Restored ID Portrait Color
-- Removed the class filters `filter grayscale contrast-125` from the `img` element representing the user's profile portrait in the simulated ID card.
+### 1. Expanded Background Selectors
+- Included overrides for background opacity formats (such as `/50`, `/40`, `/30`, `/80`) used across card grids, contact forms, services carousels, and tag badges.
+- Changed neutral dark backgrounds to clean whites and light slates.
 
-### 2. Implemented Global Light Theme Overrides
-- Added `html:not(.dark)` class selectors inside `index.css` to override background colors, text colors, and borders globally whenever light mode is active:
-  * `.bg-[#0B0B0B]` updates to `#ffffff`
-  * `.bg-[#121212]` and `.bg-black` updates to `#f8fafc`
-  * `.bg-neutral-950` updates to `#f1f5f9`
-  * `text-white` updates to `#0f172a`
-  * `text-neutral-400` updates to `#64748b`
-  * `border-neutral-900` updates to `#e2e8f0`
-- Integrated input fields, placeholders, navbar scrolls, and button hover states for a complete light mode style alignment.
+### 2. Resolved Text Contrast & Gradients
+- Re-targeted white text gradients (`from-neutral-50`) to fallback to high-contrast dark slate (`#0f172a`) in light mode, fixing the invisible "INTERACTIVE SPLINE SCENE" headers.
+- Set high-contrast slate text values for description block variables (`text-neutral-400` -> `#64748b`, `text-neutral-300` -> `#475569`, etc.) to ensure readability on white backgrounds.
+- Preserved yellow and orange accents with slightly darker tones (`#d97706`) for better readability.
 
-### 3. Verification & Deployment
+### 3. Button & Indicator Optimization
+- Adjusted the active navigation button background (`bg-white text-black`) to adapt as light-grey with subtle slate borders in light mode.
+
+### 4. Verification & Deployment
 - Built production package.
 - Pushed changes to GitHub repository.
