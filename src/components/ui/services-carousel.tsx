@@ -1,6 +1,10 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Code, Database, Layers, Cloud } from "lucide-react";
+import anawuma from "../../assets/anawuma.png";
+import sanota from "../../assets/sanota.png";
+import vms from "../../assets/vms.png";
+import knoweb from "../../assets/knoweb.png";
 
 // Simple local class name merger to replace shadcn/tailwind-merge
 const cn = (...inputs: any[]) => {
@@ -14,7 +18,7 @@ const SERVICES = [
     num: "01",
     label: "Frontend Development",
     icon: Code, 
-    image: "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?q=80&w=1200", // Clean UI coding stock image
+    image: knoweb, // Real front-end corporate website screenshot
     description: "Crafting responsive, high-fidelity user interfaces. Specialized in semantic layouts, component architectures, and responsive flow using React, TypeScript, and Tailwind CSS.",
     tags: ["React.js", "TypeScript", "Tailwind CSS", "Next.js"],
     featuredProject: { name: "Sanota Platform", href: "/projects" },
@@ -24,7 +28,7 @@ const SERVICES = [
     num: "02",
     label: "Backend Development",
     icon: Database, 
-    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200", // Backend server logic code image
+    image: anawuma, // Real billing & ordering restaurant application mockup
     description: "Engineering robust and scalable API services and databases. Proficient in structure design, authorization, data caching, and server flows using Nest.js, Node, and PHP.",
     tags: ["Nest.js", "Spring Boot", "MySQL", "MongoDB", "Node.js"],
     featuredProject: { name: "Anawuma Management System", href: "/projects" },
@@ -34,7 +38,7 @@ const SERVICES = [
     num: "03",
     label: "UI/UX Design",
     icon: Layers, 
-    image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=1200", // Figma/Design layout wireframe image
+    image: sanota, // Real interactive mapping and controls platform mockup
     description: "Designing elegant user journeys with attention to modern layouts, accessibility, typography hierarchy, and wireframing for digital application interfaces.",
     tags: ["Figma", "User Flows", "Wireframing", "Prototyping"],
     featuredProject: { name: "Sanota Design (Figma)", href: "https://www.figma.com/design/vfJtYSMRwsXnUjvGkBbAWl/Dumindu-Dulanjaya-s-team-library?node-id=0-1&t=qNYQW4MrkPbddkaf-1" },
@@ -44,7 +48,7 @@ const SERVICES = [
     num: "04",
     label: "DevOps & Cloud",
     icon: Cloud,
-    image: "https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=1200", // Server rack / cloud terminal image
+    image: vms, // Real logistical rider dashboard interface screenshot
     description: "Deploying and maintaining scalable cloud environments. Experienced in setting up automated CI/CD pipelines using GitHub Actions, managing cloud hosting, and optimizing server performance.",
     tags: ["GitHub Actions", "CI/CD", "DigitalOcean", "Vercel", "Git"],
     featuredProject: { name: "Knoweb Deployment", href: "/projects" },
@@ -193,8 +197,8 @@ export function ServicesCarousel() {
                     src={service.image}
                     alt={service.label}
                     className={cn(
-                      "w-full h-full object-cover transition-all duration-700 opacity-30",
-                      isActive ? "grayscale-0 blur-0 brightness-75" : "grayscale blur-[2px] brightness-50"
+                      "w-full h-full object-cover transition-all duration-700 opacity-65",
+                      isActive ? "grayscale-0 blur-0 brightness-90" : "grayscale blur-[2px] brightness-50"
                     )}
                   />
 
