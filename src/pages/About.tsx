@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import profileImg from '../assets/profile_img.jpg';
+import { SplineScene } from '../components/ui/splite';
+import { Card } from '../components/ui/card';
+import { Spotlight } from '../components/ui/spotlight';
 import {
   Code,
   Database,
@@ -245,7 +248,7 @@ const About = () => {
           </div>
         </div>
 
-        {/* Skills Section */}
+        {/* Skills Section (Restructured 2-Column Spotlight Spline Layout) */}
         <motion.div
           className="mt-32"
           variants={containerVariants}
@@ -260,32 +263,75 @@ const About = () => {
             Skills & Technologies
           </motion.h2>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {skills.map((skill, index) => (
-              <motion.div
-                key={skill.name}
-                className="bg-[#121212] border border-neutral-900 p-6 rounded-2xl shadow-lg hover:border-neutral-800 transition-all duration-300"
-                variants={itemVariants}
-                whileHover={{ y: -5 }}
-              >
-                <div className="flex items-center justify-center w-16 h-16 bg-neutral-950 border border-neutral-900 rounded-full mx-auto mb-4 text-yellow-500">
-                  {skill.icon}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+            
+            {/* Left Column: Spotlight 3D Card wrapper */}
+            <div className="lg:col-span-5 flex">
+              <Card className="w-full bg-[#121212] border border-neutral-900 overflow-hidden rounded-2xl flex flex-col justify-between p-6 relative">
+                <Spotlight
+                  className="-top-40 left-0 md:left-60 md:-top-20"
+                  size={260}
+                />
+                
+                <div className="relative z-10 flex flex-col h-full justify-between gap-6">
+                  <div>
+                    <span className="text-xs font-mono uppercase tracking-[0.2em] text-yellow-500 font-semibold block mb-2">Interactive 3D Art</span>
+                    <h3 className="text-2xl font-black bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 uppercase tracking-tight">
+                      Interactive Spline Scene
+                    </h3>
+                    <p className="mt-2 text-neutral-400 text-xs font-light leading-relaxed">
+                      Hover and interact with this real-time 3D spline scene. Designed to highlight high-fidelity interface design paradigms.
+                    </p>
+                  </div>
+                  
+                  {/* Spline Canvas element */}
+                  <div className="flex-1 min-h-[220px] relative mt-2 rounded-xl overflow-hidden bg-neutral-950/40 border border-neutral-900/50">
+                    <SplineScene 
+                      scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-white text-center mb-4">
-                  {skill.name}
-                </h3>
-                <div className="w-full bg-neutral-950 rounded-full h-2 mb-2 border border-neutral-900">
+              </Card>
+            </div>
+
+            {/* Right Column: Redesigned list layout with custom horizontal graph style */}
+            <div className="lg:col-span-7 flex flex-col justify-center gap-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {skills.map((skill, index) => (
                   <motion.div
-                    className="bg-gradient-to-r from-yellow-500 to-orange-500 h-1.5 rounded-full"
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${skill.level}%` }}
-                    transition={{ duration: 1, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                  />
-                </div>
-                <p className="text-center text-neutral-500 text-xs font-mono">{skill.level}%</p>
-              </motion.div>
-            ))}
+                    key={skill.name}
+                    className="bg-[#121212] border border-neutral-900 p-5 rounded-2xl shadow-md hover:border-neutral-800 transition-all duration-300 flex items-center gap-4"
+                    variants={itemVariants}
+                    whileHover={{ y: -2 }}
+                  >
+                    <div className="flex items-center justify-center w-12 h-12 bg-neutral-950 border border-neutral-900 rounded-full text-yellow-500 shrink-0">
+                      {skill.icon}
+                    </div>
+                    
+                    <div className="flex-1 min-w-0">
+                      <div className="flex justify-between items-baseline mb-2">
+                        <h4 className="font-bold text-white text-sm truncate uppercase tracking-wide">
+                          {skill.name}
+                        </h4>
+                        <span className="text-[10px] font-mono text-yellow-500">{skill.level}%</span>
+                      </div>
+                      
+                      <div className="w-full bg-neutral-950 rounded-full h-1.5 border border-neutral-900 overflow-hidden">
+                        <motion.div
+                          className="bg-gradient-to-r from-yellow-500 to-orange-500 h-full rounded-full"
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${skill.level}%` }}
+                          transition={{ duration: 1.2, delay: index * 0.05 }}
+                          viewport={{ once: true }}
+                        />
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
           </div>
         </motion.div>
 
