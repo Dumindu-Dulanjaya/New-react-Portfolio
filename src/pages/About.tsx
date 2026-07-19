@@ -4,6 +4,7 @@ import profileImg from '../assets/profile_img.jpg';
 import { SplineScene } from '../components/ui/splite';
 import { Card } from '../components/ui/card';
 import { Spotlight } from '../components/ui/spotlight';
+import { TechArchitecture } from '../components/ui/tech-architecture';
 import {
   Code,
   Database,
@@ -265,9 +266,9 @@ const About = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
             
-            {/* Left Column: Spotlight 3D Card wrapper (Expanded) */}
-            <div className="lg:col-span-7 flex">
-              <Card className="w-full bg-[#121212] border border-neutral-900 overflow-hidden rounded-2xl flex flex-col justify-between p-6 relative min-h-[500px] lg:h-[550px]">
+            {/* Left Column: Spotlight 3D Card wrapper (Spline Scene with overflow-visible) */}
+            <div className="lg:col-span-6 flex overflow-visible">
+              <Card className="w-full bg-[#121212] border border-neutral-900 rounded-3xl overflow-visible flex flex-col justify-between p-6 relative min-h-[500px] lg:h-full">
                 <Spotlight
                   className="-top-40 left-0 md:left-60 md:-top-20"
                   size={320}
@@ -285,7 +286,7 @@ const About = () => {
                   </div>
                   
                   {/* Spline Canvas element */}
-                  <div className="flex-1 relative mt-2 rounded-xl overflow-hidden bg-neutral-950/40 border border-neutral-900/50">
+                  <div className="flex-1 relative mt-2 rounded-2xl overflow-hidden bg-neutral-950/40 border border-neutral-900/50 min-h-[300px]">
                     <SplineScene 
                       scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
                       className="w-full h-full object-cover"
@@ -295,41 +296,9 @@ const About = () => {
               </Card>
             </div>
 
-            {/* Right Column: Redesigned list layout (Compact single-column list) */}
-            <div className="lg:col-span-5 flex flex-col justify-center">
-              <div className="flex flex-col gap-3">
-                {skills.map((skill, index) => (
-                  <motion.div
-                    key={skill.name}
-                    className="bg-[#121212] border border-neutral-900 p-4 rounded-xl shadow-md hover:border-neutral-800 transition-all duration-300 flex items-center gap-4"
-                    variants={itemVariants}
-                    whileHover={{ x: 4 }}
-                  >
-                    <div className="flex items-center justify-center w-10 h-10 bg-neutral-950 border border-neutral-900 rounded-lg text-yellow-500 shrink-0">
-                      {React.cloneElement(skill.icon, { className: "w-5 h-5" })}
-                    </div>
-                    
-                    <div className="flex-1 min-w-0">
-                      <div className="flex justify-between items-baseline mb-1">
-                        <h4 className="font-bold text-white text-xs truncate uppercase tracking-wider">
-                          {skill.name}
-                        </h4>
-                        <span className="text-[9px] font-mono text-yellow-500">{skill.level}%</span>
-                      </div>
-                      
-                      <div className="w-full bg-neutral-950 rounded-full h-1 border border-neutral-900 overflow-hidden">
-                        <motion.div
-                          className="bg-gradient-to-r from-yellow-500 to-orange-500 h-full rounded-full"
-                          initial={{ width: 0 }}
-                          whileInView={{ width: `${skill.level}%` }}
-                          transition={{ duration: 1.2, delay: index * 0.05 }}
-                          viewport={{ once: true }}
-                        />
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+            {/* Right Column: Premium Tech Architecture (Pillars & Stack tags) */}
+            <div className="lg:col-span-6 flex">
+              <TechArchitecture />
             </div>
 
           </div>
