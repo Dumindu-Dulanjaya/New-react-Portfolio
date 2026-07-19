@@ -1,15 +1,20 @@
-# Full-Bleed 3D Spline Scene Card
+# Services Preview Local Screenshots & Opacity Upgrade
 
-I have successfully removed the header text elements and padding from the 3D Spline Scene card wrapper, allowing the 3D art canvas to expand to full-bleed.
+I have successfully imported your actual project screenshots and updated the preview display inside the Services Carousel (`services-carousel.tsx`) with higher visibility.
 
 ## Key Changes Made
 
-### 1. Removed Text Headers
-- Removed heading tags (`Interactive 3D Art`, `Interactive Spline Scene`) and the description paragraph inside the Left Column Card element of `About.tsx`.
+### 1. Mapped Local Screenshots
+- Imported `anawuma`, `sanota`, `vms`, and `knoweb` from `../../assets/`.
+- Mapped them to:
+  * **Frontend Development**: `knoweb.png`
+  * **Backend Development**: `anawuma.png`
+  * **UI/UX Design**: `sanota.png`
+  * **DevOps & Cloud**: `vms.png`
 
-### 2. Configured Full-Bleed Layout
-- Updated `Card` padding to `p-0` to remove padding gaps.
-- Assigned the `SplineScene` component to fill the entire card bounds (`w-full h-full object-cover`), enlarging the 3D interactive robot to maximum visibility.
+### 2. Enhanced Image Contrast & Opacity
+- Changed background preview card image opacity parameter from `opacity-30` to `opacity-65`.
+- Updated active item filter from `brightness-75` to `brightness-90` to render the screenshots with clear visibility.
 
 ### 3. Verification & Deployment
 - Built production package.

@@ -197,8 +197,8 @@ export function ServicesCarousel() {
                     src={service.image}
                     alt={service.label}
                     className={cn(
-                      "w-full h-full object-cover transition-all duration-700 opacity-65",
-                      isActive ? "grayscale-0 blur-0 brightness-90" : "grayscale blur-[2px] brightness-50"
+                      "w-full h-full object-cover transition-all duration-700",
+                      isActive ? "opacity-90 grayscale-0 blur-0 brightness-95" : "opacity-30 grayscale blur-[2px] brightness-50"
                     )}
                   />
 
