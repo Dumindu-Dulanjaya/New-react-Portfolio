@@ -306,45 +306,69 @@ const About = () => {
 
         {/* Education & Experience */}
         <motion.div
-          className="mt-32 grid md:grid-cols-2 gap-12"
+          className="mt-32 grid md:grid-cols-2 gap-12 border-t border-neutral-900 pt-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
         >
+          {/* Education Column */}
           <div>
-            <h3 className="text-2xl font-extrabold text-white mb-8 tracking-tight uppercase">Education</h3>
-            <div className="space-y-4">
+            <h3 className="text-2xl font-black text-white mb-8 tracking-tight uppercase">Education</h3>
+            <div className="space-y-8">
               <div className="border-l-2 border-yellow-500 pl-4">
-                <h4 className="text-lg font-bold text-white">
-                  Diploma in Information Technology
+                <span className="text-[10px] font-mono tracking-widest text-neutral-500 uppercase block mb-1">
+                  2023 - Present
+                </span>
+                <h4 className="text-lg font-bold text-white uppercase tracking-wide">
+                  National Diploma in Technology (IT)
                 </h4>
-                <p className="text-yellow-500 font-mono text-sm">Institute Of Technology University Of Moratuwa</p>
-                <p className="text-neutral-500 text-xs font-mono">2023 - Present</p>
-                <p className="text-neutral-400 text-sm mt-3 font-light">
-                  Undergraduate, focusing on software engineering and web technologies.
+                <p className="text-yellow-500 font-mono text-xs mt-1">
+                  Institute of Technology, University of Moratuwa
+                </p>
+                <p className="text-neutral-400 text-xs mt-3 font-light leading-relaxed">
+                  Focusing on software engineering systems, modern database schemas, web architectures, and algorithms.
+                </p>
+              </div>
+
+              <div className="border-l-2 border-neutral-800 pl-4">
+                <span className="text-[10px] font-mono tracking-widest text-neutral-500 uppercase block mb-1">
+                  Certifications
+                </span>
+                <h4 className="text-sm font-bold text-neutral-200 uppercase tracking-wide">
+                  Technical Certifications
+                </h4>
+                <p className="text-neutral-400 text-xs mt-2 font-light leading-relaxed">
+                  • Java OOP (Udemy) & Front-End Development (UoM)
+                  <br />
+                  • Python & Web Design (UoM)
+                  <br />
+                  • National Certificate in IT and MS Office (NVQ 3)
                 </p>
               </div>
             </div>
           </div>
 
+          {/* Experience Column */}
           <div>
-            <h3 className="text-2xl font-extrabold text-white mb-8 tracking-tight uppercase">Experience</h3>
+            <h3 className="text-2xl font-black text-white mb-8 tracking-tight uppercase">Experience</h3>
             <div className="space-y-6">
               <div className="border-l-2 border-yellow-500 pl-4">
-                <h4 className="text-lg font-bold text-white">
-                  Learning Full Stack Developing
+                <span className="text-[10px] font-mono tracking-widest text-neutral-500 uppercase block mb-1">
+                  Feb 2026 — Present
+                </span>
+                <h4 className="text-lg font-bold text-white uppercase tracking-wide">
+                  Software Engineering Intern
                 </h4>
-                <p className="text-neutral-500 text-xs font-mono">2023 - Present</p>
-              </div>
-              <div className="border-l-2 border-neutral-850 pl-4">
-                <h4 className="text-lg font-bold text-white">
-                  Frontend Developer
-                </h4>
-                <p className="text-neutral-500 text-xs font-mono">2023 - Present</p>
-                <p className="text-neutral-400 text-sm mt-3 font-light">
-                  Developed responsive web applications using React and modern JavaScript.
+                <p className="text-yellow-500 font-mono text-xs mt-1">
+                  Knoweb Solutions (Pvt) Ltd
                 </p>
+                
+                <ul className="text-neutral-400 text-xs mt-4 font-light space-y-2.5 leading-relaxed list-disc list-inside">
+                  <li>Contributed to responsive web apps using React.js and Tailwind CSS.</li>
+                  <li>Developed scalable RESTful APIs and backend microservices with NestJS and Spring Boot frameworks with MySQL.</li>
+                  <li>Implemented robust CI/CD pipelines using GitHub Actions and deployed on DigitalOcean cloud infrastructure.</li>
+                </ul>
               </div>
             </div>
           </div>
