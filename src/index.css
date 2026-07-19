@@ -85,33 +85,43 @@ html:not(.dark) body {
   color: #0f172a !important;
 }
 
-/* Override background colors */
-html:not(.dark) .bg-\[\#0B0B0B\] {
+/* Base background classes overrides */
+html:not(.dark) .bg-\[\#0B0B0B\],
+html:not(.dark) .bg-\[\#0A0A0A\],
+html:not(.dark) .bg-\[\#121212\],
+html:not(.dark) .bg-\[\#0F0F0F\],
+html:not(.dark) .bg-\[\#090909\],
+html:not(.dark) .bg-neutral-900,
+html:not(.dark) .bg-neutral-950,
+html:not(.dark) .bg-black,
+html:not(.dark) .bg-black\/\[0\.96\] {
   background-color: #ffffff !important;
 }
-html:not(.dark) .bg-\[\#121212\] {
+
+/* Semi-transparent/nested card background overrides */
+html:not(.dark) .bg-\[\#121212\]\/50,
+html:not(.dark) .bg-\[\#0F0F0F\]\/50,
+html:not(.dark) .bg-\[\#0A0A0A\]\/40,
+html:not(.dark) .bg-neutral-950\/40,
+html:not(.dark) .bg-neutral-950\/80,
+html:not(.dark) .bg-neutral-900\/10,
+html:not(.dark) .bg-neutral-900\/30,
+html:not(.dark) .bg-neutral-900\/50,
+html:not(.dark) .bg-neutral-900\/60,
+html:not(.dark) .bg-neutral-800\/20,
+html:not(.dark) .bg-neutral-800\/50 {
   background-color: #f8fafc !important;
-}
-html:not(.dark) .bg-neutral-950 {
-  background-color: #f1f5f9 !important;
-}
-html:not(.dark) .bg-\[\#0A0A0A\]\/40 {
-  background-color: rgba(241, 245, 249, 0.6) !important;
-}
-html:not(.dark) .bg-black\/\[0\.96\] {
-  background-color: #f8fafc !important;
-}
-html:not(.dark) .bg-neutral-900\/30 {
-  background-color: rgba(241, 245, 249, 0.4) !important;
-}
-html:not(.dark) .bg-neutral-950\/40 {
-  background-color: rgba(248, 250, 252, 0.4) !important;
-}
-html:not(.dark) .bg-neutral-950\/80 {
-  background-color: rgba(241, 245, 249, 0.8) !important;
 }
 
-/* Override text colors */
+/* Call to action card & special elements overrides */
+html:not(.dark) .bg-gradient-to-r.from-neutral-900 {
+  background-image: linear-gradient(to right, #f1f5f9, #f8fafc) !important;
+}
+html:not(.dark) .bg-gradient-to-br.from-neutral-900 {
+  background-image: linear-gradient(to bottom right, #f1f5f9, #f8fafc) !important;
+}
+
+/* Override text colors globally for high contrast */
 html:not(.dark) .text-white {
   color: #0f172a !important;
 }
@@ -127,52 +137,74 @@ html:not(.dark) .text-neutral-300 {
 html:not(.dark) .text-neutral-400 {
   color: #64748b !important;
 }
+html:not(.dark) .text-neutral-500 {
+  color: #64748b !important;
+}
 
-/* Override border colors */
-html:not(.dark) .border-neutral-900 {
+/* Gradient text adjustments to prevent white-on-white text */
+html:not(.dark) .from-neutral-50,
+html:not(.dark) .from-neutral-100,
+html:not(.dark) .from-white {
+  --tw-gradient-from: #0f172a !important;
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+}
+html:not(.dark) .to-neutral-400,
+html:not(.dark) .to-neutral-500 {
+  --tw-gradient-to: #334155 !important;
+}
+
+/* Active navigation indicators / elements */
+html:not(.dark) .text-yellow-500,
+html:not(.dark) .text-yellow-400 {
+  color: #d97706 !important; /* Slightly darker amber/yellow for light mode contrast */
+}
+
+/* Border colors overrides */
+html:not(.dark) .border-neutral-900,
+html:not(.dark) .border-neutral-900\/60,
+html:not(.dark) .border-neutral-900\/80,
+html:not(.dark) .border-neutral-950,
+html:not(.dark) .border-neutral-850,
+html:not(.dark) .border-neutral-800,
+html:not(.dark) .border-neutral-700 {
   border-color: #e2e8f0 !important;
 }
-html:not(.dark) .border-neutral-900\/60 {
-  border-color: rgba(226, 232, 240, 0.6) !important;
-}
-html:not(.dark) .border-neutral-900\/80 {
-  border-color: rgba(226, 232, 240, 0.8) !important;
-}
-html:not(.dark) .border-neutral-850 {
-  border-color: #cbd5e1 !important;
-}
-html:not(.dark) .border-neutral-800 {
-  border-color: #cbd5e1 !important;
-}
 
-/* Navigation & components adjustments */
+/* Navigation, buttons, tags and interactives */
 html:not(.dark) .fixed.top-0 {
   background-color: rgba(255, 255, 255, 0.95) !important;
-  border-bottom-color: #cbd5e1 !important;
+  border-bottom-color: #e2e8f0 !important;
 }
-html:not(.dark) .hover\:bg-neutral-900\/30:hover {
-  background-color: rgba(226, 232, 240, 0.6) !important;
+html:not(.dark) .hover\:bg-neutral-900\/30:hover,
+html:not(.dark) .hover\:bg-neutral-900\/60:hover,
+html:not(.dark) .hover\:bg-neutral-900:hover {
+  background-color: #f1f5f9 !important;
 }
-html:not(.dark) .hover\:bg-neutral-900\/60:hover {
-  background-color: rgba(226, 232, 240, 0.8) !important;
-}
-html:not(.dark) .hover\:border-neutral-700:hover {
-  border-color: #94a3b8 !important;
-}
+html:not(.dark) .hover\:border-neutral-700:hover,
 html:not(.dark) .hover\:border-neutral-800:hover {
   border-color: #cbd5e1 !important;
 }
 html:not(.dark) .hover\:text-white:hover {
   color: #0f172a !important;
 }
-html:not(.dark) .hover\:bg-neutral-900:hover {
+html:not(.dark) .bg-white.text-black {
   background-color: #f1f5f9 !important;
+  border-color: #e2e8f0 !important;
+  color: #0f172a !important;
 }
-html:not(.dark) input, html:not(.dark) textarea {
+html:not(.dark) .bg-neutral-950\/40 .bg-white.text-black {
+  background-color: #ffffff !important;
+}
+
+/* Inputs fields */
+html:not(.dark) input, 
+html:not(.dark) textarea {
   background-color: #ffffff !important;
   color: #0f172a !important;
-  border-color: #cbd5e1 !important;
+  border-color: #e2e8f0 !important;
 }
-html:not(.dark) input::placeholder, html:not(.dark) textarea::placeholder {
+html:not(.dark) input::placeholder, 
+html:not(.dark) textarea::placeholder {
   color: #94a3b8 !important;
 }
