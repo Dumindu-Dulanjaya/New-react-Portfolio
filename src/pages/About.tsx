@@ -192,7 +192,7 @@ const About = () => {
                       <img
                         src={profileImg}
                         alt="Dumindu Dulanjaya"
-                        className="w-full h-full object-cover filter grayscale contrast-125"
+                        className="w-full h-full object-cover"
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center text-neutral-600">
